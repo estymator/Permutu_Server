@@ -46,4 +46,11 @@ public class Block{
     public int getColor() {
         return color;
     }
+
+    public String genereteHTMLBlock(){
+        return "<button onclick=\"selected(this)\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2\" " +
+                "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\">\n" +
+                "               " + SIGNS[this.sign] +"\n" +
+                "            </button>";
+    }
 }
