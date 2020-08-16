@@ -4,7 +4,6 @@ public class Hand extends BlockCollection {
 
     public Hand(String label) {
         super(label);
-
     }
 
 

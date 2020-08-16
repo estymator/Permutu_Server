@@ -1,5 +1,6 @@
 package permutu.Models;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class BlockCollection{
 
@@ -9,7 +10,7 @@ public class BlockCollection{
 
     public BlockCollection(String label) {
         this.label = label;
-        this.blocks = new ArrayList<Block>();
+        this.blocks = new ArrayList<>();
     }
 
     public void addBlock(Block block){
@@ -36,11 +37,18 @@ public class BlockCollection{
         return blocks;
     }
 
-    void swapCards(int firstIndex, int secondIndex){
+    void swapBlocks(int firstIndex, int secondIndex){
         Block temp = blocks.get(firstIndex);
         blocks.set(firstIndex,blocks.get(secondIndex));
         blocks.set(secondIndex,temp);
     }
 
+    public void shuffle(){
+        Random generator = new Random();
+        for(int i = 0; i < blocks.size(); i++){
+            int j = generator.nextInt(size() -1);
+            swapBlocks(i,j);
+        }
+    }
 
 }
