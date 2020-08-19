@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
    <!-- TODO przeniesc requesty do tego plik -> -->
-    <script src="../scripts/requests.js"></script>
+
 </head>
 
 
 
 <body>
+
 <div id="fullscreen_bg" class="fullscreen_bg"/>
 
 <div class="container">
@@ -37,7 +38,6 @@
 
 <script>
    
-    
     $("#registerForm").on("submit", function(event) {
         
        event.preventDefault();
