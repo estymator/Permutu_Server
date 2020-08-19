@@ -1,6 +1,11 @@
 # Permutu_Server
 API Serwer for Permutu games application
 
+##build 
+./gradlew build
+
+##Run
+./gradlew bootRun
 ### /register - POST
 
 - login(string)
@@ -15,3 +20,8 @@ API Serwer for Permutu games application
 - password(string)
 
 ### /logout -GET
+
+##USER
+
+### /user/all - GET
+
