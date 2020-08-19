@@ -20,3 +20,8 @@ API Serwer for Permutu games application
 - password(string)
 
 ### /logout -GET
+
+##USER
+
+### /user/all - GET
+

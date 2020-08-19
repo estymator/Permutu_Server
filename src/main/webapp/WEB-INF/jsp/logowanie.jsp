@@ -16,10 +16,10 @@
 
 <div class="container">
 
-	<form class="form-signin">
+	<form class="form-signin" id="loginForm">
 		<h1 class="form-signin-heading text-muted">Logowanie</h1>
-		<input type="text" class="form-control" placeholder="Login" required="" autofocus="">
-        <input type="password" class="form-control" placeholder="Hasło" required="">
+		<input type="text" name="login" class="form-control" placeholder="Login" required="" autofocus="">
+        <input type="password" name="password" class="form-control" placeholder="Hasło" required="">
         <label class="checkbox">
             <input type="checkbox" name="remember" value="1"> Zapamiętaj mnie
         </label>
@@ -30,5 +30,34 @@
 	</form>
 
 </div>
+
+<script>
+
+    $("#loginForm").on("submit", function(event) {
+
+       event.preventDefault();
+       var login=$(this).find("[name=login]").val();
+       var password=$(this).find("[name=password]").val();
+
+
+
+
+        //POST request
+        $.post('http://localhost:8081/login', { "login": login,
+                                                    "password": password,
+                                                    },
+        function(returnedData){
+            console.log(returnedData);
+        }).fail(function(){
+            console.log("error");
+        });
+
+
+       // process form
+    });
+
+</script>
+
+
 </body>
 </html>

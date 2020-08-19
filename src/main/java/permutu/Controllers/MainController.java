@@ -1,6 +1,7 @@
 package permutu.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import permutu.Models.User;
@@ -14,7 +15,9 @@ public class MainController {
     @Autowired
     private UserRepository userRepository;
 
-
+//    Encode password when register
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping(path="/register")
     public @ResponseBody User addNewUser(@RequestParam String login,
@@ -23,9 +26,10 @@ public class MainController {
                     @RequestParam int userRoleID,
                     @RequestParam int userRoleUrlID){
         User u = new User();
+
         u.setLogin(login);
         u.setEmail(email);
-        u.setPassword(password);
+        u.setPassword(passwordEncoder.encode(password));
         u.setUserRoleId(userRoleID);
         u.setUserRoleId(userRoleUrlID);
         u.setLogin(login);
@@ -34,16 +38,6 @@ public class MainController {
         return u;
 
     }
-
-//    @GetMapping(path="/login")
-//    public ModelAndView login()
-//    {
-//        System.out.println("Logowanie");
-//        ModelAndView mv = new ModelAndView();
-//        mv.setViewName("logowanie");
-//        return mv;
-//    }
-
 
 
 

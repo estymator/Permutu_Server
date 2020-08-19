@@ -56,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/error").permitAll()
-                .antMatchers("/*").hasAnyAuthority("administrator","klient")
+                .antMatchers("/*").hasAnyAuthority("1","2")
                 .anyRequest().authenticated()
                 .and()
                 .cors().and()
@@ -66,7 +66,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=true")
                 .defaultSuccessUrl("/home")
                 .usernameParameter("login")
-                .passwordParameter("haslo")
+                .passwordParameter("password")
                 .and()
                 // logout
                 .logout()

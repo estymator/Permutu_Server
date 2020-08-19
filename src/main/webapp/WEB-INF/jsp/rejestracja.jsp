@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-   <!-- TODO przeniesc requesty do tego plik -> -->
 
 </head>
 
@@ -41,19 +40,21 @@
     $("#registerForm").on("submit", function(event) {
         
        event.preventDefault();
-      var user={}
-       user.login=$(this).find("[name=login]").val();
-       user.password=$(this).find("[name=password]").val();
-       user.passwordRepeat=$(this).find("[name=passwordRepeat]").val();
-       user.email=$(this).find("[name=email]").val();
-       user.userRoleID=1;
-       user.userRoleUrlID=1;
+       var login=$(this).find("[name=login]").val();
+       var password=$(this).find("[name=password]").val();
+       var passwordRepeat=$(this).find("[name=passwordRepeat]").val();
+       var email=$(this).find("[name=email]").val();
+       var userRoleID=1;
+       var userRoleUrlID=1;
        
-        var JsonUser=JSON.stringify(user);
 
       
         //POST request
-        $.post('http://localhost:8081/register', { login: "pawel", password : "costam"}, 
+        $.post('http://localhost:8081/register', { "login": login,
+                                                    "password": password,
+                                                    "email": email,
+                                                    "userRoleID": userRoleID,
+                                                    "userRoleUrlID": userRoleUrlID},
         function(returnedData){
             console.log(returnedData);
         }).fail(function(){
