@@ -8,7 +8,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
     private String login,password,email;
-    private int userRoleId, userRoleUrlID;
+    private int userRoleID, userRoleUrlID;
 
     public Integer getUserId() {
         return userId;
@@ -40,11 +40,11 @@ public class User {
     }
 
     public int getUserRoleId() {
-        return userRoleId;
+        return userRoleID;
     }
 
     public void setUserRoleId(int userRoleId) {
-        this.userRoleId = userRoleId;
+        this.userRoleID = userRoleId;
     }
 
     public int getUserRoleUrlID() {

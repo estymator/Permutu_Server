@@ -2,13 +2,15 @@ package permutu.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import permutu.Models.User;
 import permutu.Repositories.UserRepository;
 
 import java.security.Principal;
-
+@Controller
 @CrossOrigin
 @RestController
 public class MainController {
@@ -46,16 +48,18 @@ public class MainController {
         System.out.println("User login");
         return userRepository.findByLogin(login);
     }
-
+/*
     @GetMapping(path="/home")
     public @ResponseBody Iterable<User> sendHome(Principal principal)
     {
         System.out.println("/home "+principal.getName());
         return findUserByLogin(principal.getName());
     }
+*/
 
 
-    @GetMapping(path="/error")
+
+        @GetMapping(path="/error")
     public String errorPage()
     {
         System.out.println("Error");

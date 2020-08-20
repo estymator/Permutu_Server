@@ -8,20 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import permutu.Models.StreamMessageModel;
 
 @Controller
-public class GameController {
+public class HomeController {
 
 
-    @GetMapping("/game")
-    public String showLoginView(Model model) {
-
-        return "game";
+    @GetMapping("/home")
+    public String showHomeView(Model model) {
+        return "home";
     }
-/*
-    @MessageMapping("/game")
-    @SendTo("/game")
-    public StreamMessageModel send(StreamMessageModel message) throws Exception {
-        return new StreamMessageModel(message.getGameId(), message.getPlayerId(), message.getMove());
-    }
-    */
 
 }

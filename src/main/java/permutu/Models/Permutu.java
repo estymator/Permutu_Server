@@ -8,15 +8,21 @@ public class Permutu {
      */
     private Hand mainPile;
 
+    private Pile redPile;
+
+    private Pile blackPile;
+
+    private Pile greenPile;
+
     public Permutu(){
         try {
-            Pile redPile = new Pile("red");
+            this.redPile = new Pile("red");
             redPile.shuffle();
 
-            Pile blackPile = new Pile("black");
+            this.blackPile = new Pile("black");
             blackPile.shuffle();
 
-            Pile greenPile = new Pile("green");
+            this.greenPile = new Pile("green");
             greenPile.shuffle();
 
             players = new Players("RoomName");
@@ -26,4 +32,43 @@ public class Permutu {
         }
     }
 
+    public Players getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(Players players) {
+        this.players = players;
+    }
+
+    public Hand getMainPile() {
+        return mainPile;
+    }
+
+    public void setMainPile(Hand mainPile) {
+        this.mainPile = mainPile;
+    }
+
+    public Pile getRedPile() {
+        return redPile;
+    }
+
+    public void setRedPile(Pile redPile) {
+        this.redPile = redPile;
+    }
+
+    public Pile getBlackPile() {
+        return blackPile;
+    }
+
+    public void setBlackPile(Pile blackPile) {
+        this.blackPile = blackPile;
+    }
+
+    public Pile getGreenPile() {
+        return greenPile;
+    }
+
+    public void setGreenPile(Pile greenPile) {
+        this.greenPile = greenPile;
+    }
 }
