@@ -45,8 +45,8 @@
        var passwordRepeat=$(this).find("[name=passwordRepeat]").val();
        var email=$(this).find("[name=email]").val();
        var userRoleID=1;
-       var userRoleUrlID=1;
-       
+
+
 
       
         //POST request
@@ -54,7 +54,7 @@
                                                     "password": password,
                                                     "email": email,
                                                     "userRoleID": userRoleID,
-                                                    "userRoleUrlID": userRoleUrlID},
+                                                    },
         function(returnedData){
             console.log(returnedData);
         }).fail(function(){

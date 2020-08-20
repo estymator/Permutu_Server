@@ -12,7 +12,7 @@ API Serwer for Permutu games application
 - password(string)
 - email(string)
 - userRoleID(int)
-- userRoleUrlID(int)
+
 
 ### /login - POST
 

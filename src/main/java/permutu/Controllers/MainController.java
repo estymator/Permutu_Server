@@ -25,15 +25,13 @@ public class MainController {
     public @ResponseBody User addNewUser(@RequestParam String login,
                     @RequestParam String password,
                     @RequestParam String email,
-                    @RequestParam int userRoleID,
-                    @RequestParam int userRoleUrlID){
+                    @RequestParam int userRoleID){
         User u = new User();
 
         u.setLogin(login);
         u.setEmail(email);
         u.setPassword(passwordEncoder.encode(password));
-        u.setUserRoleId(userRoleID);
-        u.setUserRoleId(userRoleUrlID);
+        u.setUserRoleId(1);
         u.setLogin(login);
         userRepository.save(u);
         System.out.println("Rejestracja " + u.getLogin());
