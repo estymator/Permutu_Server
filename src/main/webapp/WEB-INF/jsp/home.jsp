@@ -21,13 +21,9 @@
         <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
     </section>
     <div class="container">
-        <% RoomCollection rooms = new RoomCollection();
-        rooms.addRoom(new Room("Koza", new Permutu()));
-        rooms.addRoom(new Room("Krowa", new Permutu()));
-        rooms.addRoom(new Room("Zdrowa", new Permutu()));
-        %>
+        <% RoomCollection rooms = (RoomCollection)request.getAttribute("rooms");%>
 
-                <form action="/game" method="get">
+                <form action="/join" method="get">
             <table class="table table-sm">
                 <thead>
                 <tr>

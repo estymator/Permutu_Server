@@ -8,6 +8,9 @@ public class RoomCollection {
 
     public RoomCollection() {
         this.rooms = new ArrayList<>();
+        rooms.add(new Room("Room_1", new Permutu()));
+        rooms.add(new Room("Room_2", new Permutu()));
+        rooms.add(new Room("Room_4", new Permutu()));
     }
 
     public ArrayList<Room> getRooms() {
@@ -29,6 +32,14 @@ public class RoomCollection {
     public boolean isEmpty(){
         return rooms.isEmpty();
     }
+
+    public Room getRoom(String roomName){
+        for(Room r : rooms){
+            if(r.getRoomName().equals(roomName)) return r;
+        }
+        return null;
+    }
+
 
 
 

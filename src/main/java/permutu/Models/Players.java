@@ -14,6 +14,10 @@ public class Players extends User {
     public Players(String name) {
         this.players = new ArrayList<User>();
     }
+
+    public Players() {
+        this.players = new ArrayList<User>();
+    }
     /**
      * Add new player  to list
      * @param player who will be add to list
@@ -48,5 +52,13 @@ public class Players extends User {
             }
         }
         return -1;
+    }
+
+    public ArrayList<User> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<User> players) {
+        this.players = players;
     }
 }

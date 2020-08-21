@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="permutu.Models.Permutu" %>
-<%@ page import="permutu.Models.Block, permutu.Models.Pile" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="permutu.Models.*" %>
+<%@ page import="permutu.Helpers.StaticRooms" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -18,6 +19,11 @@
 <body class="bg-light">
 
 <%Permutu testPermutu = new Permutu();%>
+
+<% RoomCollection rooms = StaticRooms.getRooms();
+    for (User u: rooms.getRoom("Room_1").getPlayers().getPlayers()) {
+        out.print(u.getLogin());
+    }%>
 
 
 

@@ -6,6 +6,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+import permutu.Models.Permutu;
+import permutu.Models.Room;
+import permutu.Models.RoomCollection;
 
 
 @SpringBootApplication

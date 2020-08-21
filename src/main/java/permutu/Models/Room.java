@@ -4,16 +4,31 @@ public class Room {
 
     private String  roomName;
 
-    private Integer playersInRoom;
+    private Integer playersInRoom = 0;
 
     private final Integer MAX_NUMBERS_OF_PLAYERS = 4;
 
     private Permutu game;
+    private Players players;
+
+    public Players getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(Players players) {
+        this.players = players;
+    }
 
     public Room(String roomName, Permutu game) {
         this.roomName = roomName;
         this.game = game;
+        this.players = new Players();
     }
+
+  public void addPlayer(User user){
+        players.addPlayer(user);
+        playersInRoom++;
+  }
 
     public Permutu getGame() {
         return game;

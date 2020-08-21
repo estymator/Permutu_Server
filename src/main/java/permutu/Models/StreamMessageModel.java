@@ -2,24 +2,18 @@ package permutu.Models;
 
 public class StreamMessageModel {
 
-    private Integer gameId;
-
-    private Integer playerId;
+    private String playerLogin;
 
     private String[] move;
 
-    public StreamMessageModel(Integer gameId, Integer playerId, String[] move) {
-        this.gameId = gameId;
+    public StreamMessageModel(String playerLogin, String[] move) {
         this.move = move;
-        this.playerId = playerId;
+        this.playerLogin = playerLogin;
     }
 
-    public Integer getGameId() {
-        return gameId;
-    }
 
-    public Integer getPlayerId() {
-        return playerId;
+    public String getPlayerLogin() {
+        return playerLogin;
     }
 
 
