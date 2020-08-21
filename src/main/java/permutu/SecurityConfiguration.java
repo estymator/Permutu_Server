@@ -53,12 +53,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // URLs matching for access rights
                 .antMatchers("/").permitAll()
-                .antMatchers("/game").permitAll()
                 .antMatchers("/home").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/error").permitAll()
                 .antMatchers("/*").hasAnyAuthority("1","2")
+                .antMatchers("/admin/*").hasAuthority("2")
                 .anyRequest().authenticated()
                 .and()
                 .cors().and()
