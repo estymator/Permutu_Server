@@ -56,14 +56,6 @@ public class MainController {
 */
 
 
-
-        @GetMapping(path="/error")
-    public String errorPage()
-    {
-        System.out.println("Error");
-        return "Error";
-    }
-
     @GetMapping(path="/")
     public @ResponseBody String sendRoot()
     {
