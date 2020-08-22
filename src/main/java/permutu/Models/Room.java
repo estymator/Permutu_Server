@@ -1,5 +1,7 @@
 package permutu.Models;
 
+import java.util.ArrayList;
+
 public class Room {
 
     private String  roomName;
@@ -11,8 +13,8 @@ public class Room {
     private Permutu game;
     private Players players;
 
-    public Players getPlayers() {
-        return players;
+    public ArrayList<User> getPlayers() {
+        return players.getPlayers();
     }
 
     public void setPlayers(Players players) {
@@ -64,5 +66,12 @@ public class Room {
                 "        <label for=\"roomId\">Wybierz</label>" +
                     "</td>" +
                 "</tr>";
+    }
+
+    public boolean isPlayer(String name){
+        for(User u: this.getPlayers()){
+            if(u.getLogin().equals(name)) return true;
+        }
+        return false;
     }
 }

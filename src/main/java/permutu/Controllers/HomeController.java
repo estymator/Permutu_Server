@@ -5,12 +5,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import permutu.Helpers.StaticRooms;
 import permutu.Models.*;
 import permutu.Repositories.UserRepository;
 
@@ -24,7 +20,7 @@ public class HomeController {
     @Autowired
     private ServletContext servletContext;
 
-    private RoomCollection rooms = StaticRooms.getRooms();
+    private SingletonRooms rooms = SingletonRooms.getInstance();
     @Autowired
     private UserRepository userRepository;
 
@@ -34,12 +30,17 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/join")
+    @GetMapping("/join/room/{roomName}")
     @ResponseBody
-    public ModelAndView join(Principal principal) {
+    public ModelAndView join(Principal principal, @PathVariable String roomName) {
         String login = principal.getName();
-        User currentUser = userRepository.findUserByLogin(login);
-        rooms.getRoom("Room_1").addPlayer(currentUser);
+        if(rooms.getRoom(roomName).isPlayer(login)){
+            return new ModelAndView("redirect:" + "game");
+        }
+        else{
+            User currentUser = userRepository.findUserByLogin(login);
+            rooms.getRoom("Room_1").addPlayer(currentUser);
+        }
         return new ModelAndView("redirect:" + "game");
     }
 
@@ -47,11 +48,11 @@ public class HomeController {
         request.setAttribute("rooms",rooms);
     }
 
-    public RoomCollection getRooms() {
+    public SingletonRooms getRooms() {
         return rooms;
     }
 
-    public void setRooms(RoomCollection rooms) {
+    public void setRooms(SingletonRooms rooms) {
         this.rooms = rooms;
     }
 }
