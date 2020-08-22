@@ -21,7 +21,7 @@
         <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
     </section>
     <div class="container">
-        <% RoomCollection rooms = (RoomCollection)request.getAttribute("rooms");%>
+        <% SingletonRooms rooms = (SingletonRooms) request.getAttribute("rooms");%>
 
                 <form action="/join" method="get">
             <table class="table table-sm">

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="permutu.Models.*" %>
-<%@ page import="permutu.Helpers.StaticRooms" %>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -20,8 +20,8 @@
 
 <%Permutu testPermutu = new Permutu();%>
 
-<% RoomCollection rooms = StaticRooms.getRooms();
-    for (User u: rooms.getRoom("Room_1").getPlayers().getPlayers()) {
+<% SingletonRooms rooms = SingletonRooms.getInstance();
+    for (User u: rooms.getRoom("Room_1").getPlayers()) {
         out.print(u.getLogin());
     }%>
 
