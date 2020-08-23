@@ -15,6 +15,7 @@ public class LoginView {
         return LOGIN_VIEW;
     }
 
+
     @GetMapping("/register")
     public String showRegisterView(Model model) {
 

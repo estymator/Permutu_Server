@@ -25,3 +25,11 @@ API Serwer for Permutu games application
 
 ### /user/all - GET
 
+### /admin/user/email - POST
+
+-email(string)
+
+### /admin/user/login - POST
+
+-login(string)
+
