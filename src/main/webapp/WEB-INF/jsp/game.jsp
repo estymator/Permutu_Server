@@ -22,8 +22,12 @@
 <body class="bg-light">
 
 
+
 <% SingletonRooms rooms = SingletonRooms.getInstance();
-    for (User u: rooms.getRoom("Room_1").getPlayers()) { //TODO Change to get room name dynamic.
+    String roomName = (String)  request.getSession().getAttribute("room");
+    System.out.println(roomName);
+    Room room = rooms.getRoom(roomName);
+    for (User u: room.getPlayers()) { //TODO Change to get room name dynamic.
         out.print(u.getLogin());
     }%>
 

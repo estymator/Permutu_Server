@@ -53,6 +53,13 @@ public class SingletonRooms {
         return null;
     }
 
+    public Room getPlayerRoom(String playerName){
+        for(Room r : rooms){
+            if(r.isPlayer(playerName)) return r;
+        }
+        return null;
+    }
+
 
 
 

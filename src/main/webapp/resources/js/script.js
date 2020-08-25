@@ -32,6 +32,7 @@ function disconnect() {
 function sendMove() {
     move.playerLogin = document.getElementById("login").innerText ;
     move.selectedBlocks = selectedBlocks;
+    move.roomName = document
     console.log(move);
     move.send("/move", {}, JSON.stringify(move));
 }

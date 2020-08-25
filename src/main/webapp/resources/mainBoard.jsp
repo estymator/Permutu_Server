@@ -6,10 +6,10 @@
 
 
 <% SingletonRooms rooms = SingletonRooms.getInstance();
-    Permutu game = rooms.getRoom("Room_1").getGame();
-    for (User u: rooms.getRoom("Room_1").getPlayers()) {
-        out.print(u.getLogin());
-    }%>
+    String roomName = (String)  request.getSession().getAttribute("room");
+    System.out.println(roomName + "mb");
+    Permutu game = rooms.getRoom(roomName).getGame();
+    %>
 <div class="container block-row red-block d-flex flex-nowrap">
 
     <%

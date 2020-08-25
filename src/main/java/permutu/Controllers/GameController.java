@@ -26,7 +26,7 @@ public class GameController {
     @SendTo("/play")
     public String play(StreamMessageModel message) throws Exception {
         SingletonRooms rooms = SingletonRooms.getInstance();
-        Room room = rooms.getRoom("Room_1");//TODO Change to get room name dynamic.
+        Room room = rooms.getPlayerRoom(message.getPlayerLogin());
         Player p = room.getPlayer(message.getPlayerLogin());
         BlockCollection playerBlocks = p.getBlocksInHand();
          for(String s: message.getselectedBlocks()){

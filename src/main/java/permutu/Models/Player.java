@@ -6,6 +6,16 @@ public class Player extends User {
 
     private BlockCollection blocksInHand;
 
+    private String roomName;
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
     Player(){
         super();
         this.blocksInHand = new BlockCollection(this.getLogin());
@@ -30,4 +40,5 @@ public class Player extends User {
     public void setBlocksInHand(BlockCollection blocksInHand) {
         this.blocksInHand = blocksInHand;
     }
+
 }

@@ -26,34 +26,31 @@ public class HomeController {
 
     @GetMapping("/home")
     public String showHomeView(HttpServletRequest request, Model model) {
-        if(request.getAttribute("rooms") == null) roomsFactory(request);
+        if(request.getAttribute("rooms") == null) setRoomsAttribute(request);
         return "home";
     }
 
 
     @GetMapping("/join")
     @ResponseBody
-    public ModelAndView join(Principal principal,@RequestParam String room ) {
+    public ModelAndView join(HttpServletRequest request,Principal principal,@RequestParam String room ) {
         String login = principal.getName();
         if(rooms.getRoom(room).isPlayer(login)){
             return new ModelAndView("redirect:" + "game");
         }
         else{
             User currentUser = userRepository.findUserByLogin(login);
-            rooms.getRoom("Room_1").addPlayer(currentUser);
+            rooms.getRoom(room).addPlayer(currentUser);
+            rooms.getRoom(room).getPlayer(login).setRoomName(room);
+            request.getSession().setAttribute("room",room);
+            request.getSession().setAttribute("player",login);
         }
         return new ModelAndView("redirect:" + "game");
     }
 
-    private void roomsFactory(HttpServletRequest request){
+    private void setRoomsAttribute(HttpServletRequest request){
         request.setAttribute("rooms",rooms);
     }
 
-    public SingletonRooms getRooms() {
-        return rooms;
-    }
 
-    public void setRooms(SingletonRooms rooms) {
-        this.rooms = rooms;
-    }
 }
