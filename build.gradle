@@ -18,6 +18,7 @@ repositories {
 
 dependencies {
 
+    implementation 'org.jetbrains:annotations:19.0.0'
     compile group: 'com.google.collections', name: 'google-collections', version: '1.0-rc2'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-security'
