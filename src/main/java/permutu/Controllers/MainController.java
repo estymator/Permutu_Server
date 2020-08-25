@@ -64,7 +64,7 @@ public class MainController {
         return "Error";
     }
 
-    @GetMapping(path="/")
+    @GetMapping(path="/root")
     public @ResponseBody String sendRoot()
     {
         return "root";

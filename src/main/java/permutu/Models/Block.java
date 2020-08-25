@@ -23,13 +23,33 @@ public class Block{
         this.color = color;
     }
 
+    public Block(String s){
+        int indexOf = s.indexOf('-');
+        int signIndex = 0;
+        int colorIndex = 0;
+        String colorFromString = s.substring(0,indexOf);
+        String signFromString = s.substring(indexOf + 1,s.length());
+        for(int i = 0; i < SIGNS.length; i++){
+            if(SIGNS[i].equals(signFromString)) signIndex = i;
+        }
+        for(int i = 0; i < COLORS.length; i++){
+            if(COLORS[i].equals(colorFromString)) colorIndex = i;
+        }
+        this.sign=signIndex;
+        this.color=colorIndex;
+    }
+
     /**
      * Override method which cmopare two blocks, and decide if thers sign are equal.
      * @param that - card to which is compared.
      * @return = true if both signs are same
      */
-    public boolean equals(Block that){
+    public boolean thisSameSign(Block that){
         return this.sign == that.sign;
+    }
+
+    public boolean equals(Block that){
+        return this.getColor() == that.getColor() && this.getSign() == that.getSign();
     }
 
     /**
@@ -48,9 +68,16 @@ public class Block{
     }
 
     public String genereteHTMLBlock(){
-        return "<button onclick=\"selected(this)\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2\" " +
+        String color = getBootstrapCoolor(this.getColor());
+        return "<button onclick=\"selected(this)\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2 " + color + "\" " +
                 "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\">\n" +
                 "               " + SIGNS[this.sign].toUpperCase() +"\n" +
                 "            </button>";
+    }
+
+    private String getBootstrapCoolor(int index){
+        if(index == 0) return "text-danger";
+        else if(index == 1) return "text-dark";
+        else return "text-success";
     }
 }

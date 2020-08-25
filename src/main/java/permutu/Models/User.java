@@ -10,6 +10,9 @@ public class User {
     private String login,password,email;
     private int userRoleID;
 
+
+
+
     public Integer getUserId() {
         return userId;
     }
