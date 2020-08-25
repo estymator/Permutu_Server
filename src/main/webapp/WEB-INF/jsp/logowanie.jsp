@@ -29,9 +29,9 @@
  
 	</form>
     <% if(request.getParameter("error")!=null)
-                    {   %>
-                    <script> $(".container").append("Błędne dane logowania") </script
-                     <% } %>
+    {   %>
+    <script> $(".container").append("Błędne dane logowania") </script
+     <% } %>
 </div>
 
 

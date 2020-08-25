@@ -57,8 +57,14 @@
                                                     },
         function(returnedData){
             console.log(returnedData);
-        }).fail(function(){
-            console.log("error");
+            if(returnedData.login==login)
+            {
+                window.location='/login'
+            }
+        }).error(function(XHR, status, error){
+            console.log(XHR.responseJSON.message);
+            $(".container").append(XHR.responseJSON.message)
+
         });
 
 
