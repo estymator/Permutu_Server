@@ -1,5 +1,7 @@
 package permutu.Models;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Permutu {
 
     private Players players;
@@ -72,7 +74,7 @@ public class Permutu {
         this.greenPile = greenPile;
     }
 
-    public void remove(Block b){ //TODO Bug with removing green block. Sometimes doesn't working.
+    public void remove(Block b){
         if(b.getColor() == 0){
             for(Block bb : this.redPile.getBlocks()){
                 if(bb.equals(b)) {
@@ -83,8 +85,10 @@ public class Permutu {
         }
         else if(b.getColor() == 2){
             for(Block bb : this.greenPile.getBlocks()){
-                if(bb.equals(b)) this.greenPile.getBlocks().remove(bb);
-                break;
+                if(bb.equals(b)) {
+                    this.greenPile.getBlocks().remove(bb);
+                    return;
+                }
             }
         }
         else{
