@@ -13,7 +13,7 @@ public class Room {
     private Permutu game;
     private Players players;
 
-    public ArrayList<User> getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return players.getPlayers();
     }
 
@@ -26,6 +26,8 @@ public class Room {
         this.game = game;
         this.players = new Players();
     }
+
+
 
   public void addPlayer(User user){
         players.addPlayer(user);
@@ -73,5 +75,12 @@ public class Room {
             if(u.getLogin().equals(name)) return true;
         }
         return false;
+    }
+
+    public Player getPlayer(String name){
+        for(Player p: this.getPlayers()){
+            if(p.getLogin().equals(name)) return p;
+        }
+        return null;
     }
 }

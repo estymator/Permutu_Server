@@ -71,4 +71,29 @@ public class Permutu {
     public void setGreenPile(Pile greenPile) {
         this.greenPile = greenPile;
     }
+
+    public void remove(Block b){ //TODO Bug with removing green block. Sometimes doesn't working.
+        if(b.getColor() == 0){
+            for(Block bb : this.redPile.getBlocks()){
+                if(bb.equals(b)) {
+                    this.redPile.getBlocks().remove(bb);
+                    return;
+                }
+            }
+        }
+        else if(b.getColor() == 2){
+            for(Block bb : this.greenPile.getBlocks()){
+                if(bb.equals(b)) this.greenPile.getBlocks().remove(bb);
+                break;
+            }
+        }
+        else{
+            for(Block bb : this.blackPile.getBlocks()){
+                if(bb.equals(b)) {
+                    this.blackPile.getBlocks().remove(bb);
+                    return;
+                }
+            }
+        }
+    }
 }

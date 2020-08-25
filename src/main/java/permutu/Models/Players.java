@@ -6,24 +6,28 @@ public class Players extends User {
     /**
      * List of players.
      */
-    protected ArrayList<User> players;
+    protected ArrayList<Player> players;
     /**
      * Create list of players
      * @param name new player
      */
     public Players(String name) {
-        this.players = new ArrayList<User>();
+        this.players = new ArrayList<Player>();
     }
 
     public Players() {
-        this.players = new ArrayList<User>();
+        this.players = new ArrayList<Player>();
     }
     /**
      * Add new player  to list
      * @param player who will be add to list
      */
-    public void addPlayer(User player) {
+    public void addPlayer(Player player) {
         players.add(player);
+    }
+
+    public void addPlayer(User user){
+        players.add(new Player(user));
     }
     /**
      * Getter returned player which index is <code>i</code>
@@ -54,11 +58,11 @@ public class Players extends User {
         return -1;
     }
 
-    public ArrayList<User> getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(ArrayList<User> players) {
+    public void setPlayers(ArrayList<Player> players) {
         this.players = players;
     }
 }

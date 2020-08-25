@@ -4,10 +4,10 @@ public class StreamMessageModel {
 
     private String playerLogin;
 
-    private String[] move;
+    private String[] selectedBlocks;
 
-    public StreamMessageModel(String playerLogin, String[] move) {
-        this.move = move;
+    public StreamMessageModel(String playerLogin, String[] selectedBlocks) {
+        this.selectedBlocks = selectedBlocks;
         this.playerLogin = playerLogin;
     }
 
@@ -17,11 +17,11 @@ public class StreamMessageModel {
     }
 
 
-    public String[] getMove() {
-        return move;
+    public String[] getselectedBlocks() {
+        return selectedBlocks;
     }
 
-    public void setMove(String[] move) {
-        this.move = move;
+    public void setselectedBlocks(String[] selectedBlocks) {
+        this.selectedBlocks = selectedBlocks;
     }
 }

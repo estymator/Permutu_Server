@@ -30,11 +30,12 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/join/room/{roomName}")
+
+    @GetMapping("/join")
     @ResponseBody
-    public ModelAndView join(Principal principal, @PathVariable String roomName) {
+    public ModelAndView join(Principal principal,@RequestParam String room ) {
         String login = principal.getName();
-        if(rooms.getRoom(roomName).isPlayer(login)){
+        if(rooms.getRoom(room).isPlayer(login)){
             return new ModelAndView("redirect:" + "game");
         }
         else{

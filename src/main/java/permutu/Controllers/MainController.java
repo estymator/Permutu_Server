@@ -68,7 +68,7 @@ public class MainController {
         return userRepository.findByEmail(email);
     }
 
-    @GetMapping(path="/")
+    @GetMapping(path="/root")
     public @ResponseBody String sendRoot()
     {
         return "root";
