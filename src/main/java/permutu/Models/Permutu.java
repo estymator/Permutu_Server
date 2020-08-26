@@ -2,6 +2,8 @@ package permutu.Models;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 public class Permutu {
 
     private Players players;
@@ -95,6 +97,36 @@ public class Permutu {
             for(Block bb : this.blackPile.getBlocks()){
                 if(bb.equals(b)) {
                     this.blackPile.getBlocks().remove(bb);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void removeFromBoard(Block b){
+        if(b.getColor() == 0){
+            ArrayList<Block> blockList = this.redPile.getBlocks();
+            for (int ii=0; ii<blockList.size(); ii++){
+                if(blockList.get(ii).equals(b)) {
+                    blockList.set(ii, new Block("white- "));
+                    return;
+                }
+            }
+        }
+        else if(b.getColor() == 2){
+            ArrayList<Block> blockList = this.greenPile.getBlocks();
+            for (int ii=0; ii<blockList.size(); ii++){
+                if(blockList.get(ii).equals(b)) {
+                    blockList.set(ii, new Block("white- "));
+                    return;
+                }
+            }
+        }
+        else{
+            ArrayList<Block> blockList = this.blackPile.getBlocks();
+            for (int ii=0; ii<blockList.size(); ii++){
+                if(blockList.get(ii).equals(b)) {
+                    blockList.set(ii, new Block("white- "));
                     return;
                 }
             }

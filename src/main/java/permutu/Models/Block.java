@@ -14,9 +14,9 @@ public class Block{
     private final int color;
 
     public static final String[] SIGNS = {"a","b","c","d","e","f","g","h","i","j","k","l","m",
-                                          "n","o","p","q","r","s","t","u","v","w","x","y","z"};
+                                          "n","o","p","q","r","s","t","u","v","w","x","y","z"," "};
 
-    public static final String[] COLORS = {"red", "black", "green"};
+    public static final String[] COLORS = {"red", "black", "green", "white"};
 
     public Block(int sign, int color) {
         this.sign = sign;
@@ -69,14 +69,20 @@ public class Block{
 
     public String genereteHTMLBlock(){
         String color = getBootstrapCoolor(this.getColor());
-        return "<button onclick=\"selected(this)\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2 " + color + "\" " +
-                "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\">\n" +
-                "               " + SIGNS[this.sign].toUpperCase() +"\n" +
-                "            </button>";
+        if(color!="text-hidden"){
+            return "<button onclick=\"selected(this)\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2 " + color + "\" " +
+                    "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\">\n" +
+                    "               " + SIGNS[this.sign].toUpperCase() +"\n" +
+                    "            </button>";
+        } else {
+            return "<button class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2\" style=\"opacity:0;min-height:40px\" ></button>";
+        }
+
     }
 
     private String getBootstrapCoolor(int index){
-        if(index == 0) return "text-danger";
+        if (index==3) return "text-hidden";
+        else if(index == 0) return "text-danger";
         else if(index == 1) return "text-dark";
         else return "text-success";
     }

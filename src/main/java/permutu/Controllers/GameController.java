@@ -31,7 +31,8 @@ public class GameController {
         BlockCollection playerBlocks = p.getBlocksInHand();
          for(String s: message.getselectedBlocks()){
              Block b = new Block(s);
-             room.getGame().remove(b);
+             //room.getGame().remove(b);
+             room.getGame().removeFromBoard(b);
              playerBlocks.addBlock(b);
          }
         return "OK";
