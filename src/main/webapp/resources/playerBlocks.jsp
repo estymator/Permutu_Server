@@ -40,6 +40,7 @@
             if(!blocks1.getBlocks().isEmpty()) {
                 String output = "<section class=\"player-blocks d-flex container\" id=\"player-"+counter+"\" >";
                 output += "<div class=\"in-hand-player"+counter+"\" >";
+                output += "<h1>PLAYER"+counter+"</h1>";
                 for (int i = 0; i < blocks1.size()-1; i++) {
                     if (blocks1.getBlock(i).thisSameSign(blocks1.getBlock(i + 1))) {
                         output += blocks1.getBlock(i).genereteHTMLBlock();

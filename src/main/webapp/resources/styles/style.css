@@ -128,18 +128,21 @@ body {
   position: absolute;top: 40%;left: 40%;
 }
 
-#player-one-blocks {
+#main-player {
   justify-content: center;
   min-height: 90px;
 }
 
-.in-hand-player0{
-
+.player-0{
+  justify-content: center;
+  min-height: 90px;
 }
 
-.in-hand-player1{
-
+.player-1{
+  justify-content: center;
+  min-height: 90px;
 }
-.in-hand-player1{
-
+.player-2{
+  justify-content: center;
+  min-height: 90px;
 }
