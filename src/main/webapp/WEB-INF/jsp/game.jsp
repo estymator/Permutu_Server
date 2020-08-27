@@ -49,22 +49,10 @@
 
 
     </section>
-
-    <section class="player-one-blocks d-flex container" id="player-one-blocks" >
-
-    </section>
-
-    <section class="player-two-blocks" >
+    <section class="players-block d-flex container" id="players-block">
 
     </section>
 
-    <section class="player-three-blocks" >
-
-    </section>
-
-    <section class="player-four-blocks" >
-
-    </section>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

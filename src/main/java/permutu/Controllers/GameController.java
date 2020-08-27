@@ -33,7 +33,8 @@ public class GameController {
              Block b = new Block(s);
              //room.getGame().remove(b);
              room.getGame().removeFromBoard(b);
-             playerBlocks.addBlock(b);
+             //playerBlocks.addBlock(b);
+             playerBlocks.addBlockOrdered(b);
          }
         return "OK";
     }

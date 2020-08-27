@@ -41,7 +41,7 @@ function showState() {
     console.log("HERE");
     move.playerLogin = "";
     selectedBlocks = [];
-    $('#player-one-blocks').load('../resources/playerBlocks.jsp');
+    $('#players-block').load('../resources/playerBlocks.jsp');
     $('#main-board').load('../resources/mainBoard.jsp');
 
 }
@@ -59,6 +59,7 @@ $(function () {
 function selected(elem){
     let blockId =  document.getElementById(elem.id);
     if(blockId.style.backgroundColor === "pink"){
+        blockId.setAttribute('selected','false');
         blockId.style.backgroundColor = "gray";
         let index = selectedBlocks.indexOf(blockId.id);
         if(index > -1){
@@ -68,6 +69,7 @@ function selected(elem){
 
     }
     else{
+        blockId.setAttribute('selected','true');
         blockId.style.backgroundColor = "pink";
         selectedBlocks.push(blockId.id);
         console.log(selectedBlocks);

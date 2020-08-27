@@ -17,6 +17,17 @@ public class BlockCollection{
         blocks.add(block);
     }
 
+    public void addBlockOrdered(Block block){
+        for (int i=0; i<blocks.size(); i++){
+            if (blocks.get(i).getSign()>block.getSign()) {
+                blocks.add(i, block);
+                return;
+            }
+        }
+        blocks.add(block);
+        return;
+    }
+
     public int size(){
         return blocks.size();
     }

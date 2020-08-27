@@ -108,3 +108,38 @@ body {
   opacity: 0;
   min-height: 40px;
 }
+
+.in-hand .btn{
+  min-height: 40px;
+}
+.in-hand {
+  min-height: 40px;
+  width: 40px;
+  position: relative;
+}
+.in-hand .btn:nth-child(1){
+  position: absolute;top: 0;left: 0;
+}
+
+.in-hand .btn:nth-child(2){
+  position: absolute;top: 20%;left: 20%;
+}
+.in-hand .btn:nth-child(3){
+  position: absolute;top: 40%;left: 40%;
+}
+
+#player-one-blocks {
+  justify-content: center;
+  min-height: 90px;
+}
+
+.in-hand-player0{
+
+}
+
+.in-hand-player1{
+
+}
+.in-hand-player1{
+
+}
