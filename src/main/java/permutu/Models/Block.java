@@ -75,7 +75,7 @@ public class Block{
                     "               " + SIGNS[this.sign].toUpperCase() +"\n" +
                     "            </button>";
         } else {
-            return "<button class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2\" style=\"opacity:0;min-height:40px\" ></button>";
+            return "<button class=\"btn takenFromBoard block d-flex justify-content-center align-items-center rounded p-2 m-2\"></button>";
         }
 
     }

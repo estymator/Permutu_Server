@@ -104,3 +104,7 @@ body {
   color: green;
 }
 
+.btn.takenFromBoard {
+  opacity: 0;
+  min-height: 40px;
+}
