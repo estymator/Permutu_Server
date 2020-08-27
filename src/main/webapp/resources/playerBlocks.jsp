@@ -25,7 +25,6 @@
                 output += "</div>";
                 output += "<div class=\"in-hand\" >";
             }
-            System.out.println("OUTPUT "+i+" "+output);
         }
         output += blocks.getBlock(blocks.size()-1).genereteHTMLBlock();
         output += "</div></section>";
