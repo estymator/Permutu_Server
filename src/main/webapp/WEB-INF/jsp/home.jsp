@@ -18,7 +18,7 @@
 <body class="bg-light">
 
     <section class="greetings">
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a href="/logout">Logout</a></h2>
     </section>
     <div class="container">
         <% SingletonRooms rooms = (SingletonRooms) request.getAttribute("rooms");%>

@@ -48,6 +48,7 @@ public class HomeController {
         return new ModelAndView("redirect:" + "game");
     }
 
+
     private void setRoomsAttribute(HttpServletRequest request){
         request.setAttribute("rooms",rooms);
     }

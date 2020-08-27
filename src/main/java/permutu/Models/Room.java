@@ -29,10 +29,40 @@ public class Room {
 
 
 
-  public void addPlayer(User user){
-        players.addPlayer(user);
-        playersInRoom++;
-  }
+    public void addPlayer(User user){
+        if(players.size()<MAX_NUMBERS_OF_PLAYERS)
+        {
+            players.addPlayer(user);
+            playersInRoom++;
+        }
+
+    }
+
+    /**
+     * Usuwanie gracza opuszczającego pokój
+     * @param player
+     * @return
+     */
+    public boolean removePlayer(Player player){
+        if(players.size()>0)
+        {
+            System.out.println("przed usuwaniem gracza, liczba graczy"+players.size());
+            if(players.getPlayers().remove(player))
+            {
+                System.out.println("po usunieciu gracza, liczba graczy"+players.size());
+
+                playersInRoom--;
+                if(players.size()==0)
+                {
+
+                    resetRoom();
+                }
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public Permutu getGame() {
         return game;
@@ -82,5 +112,10 @@ public class Room {
             if(p.getLogin().equals(name)) return p;
         }
         return null;
+    }
+
+    public void resetRoom(){
+        System.out.println("Resetowanie rozgrywki "+roomName);
+        this.game=new Permutu();
     }
 }

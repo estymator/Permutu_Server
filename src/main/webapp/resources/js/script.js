@@ -22,11 +22,14 @@ function connect() {
 }
 
 function disconnect() {
+    move.playerLogin=document.getElementById("login").innerText ;
+    move.send("/leave",{},JSON.stringify(move));
     if (move !== null) {
         move.disconnect();
     }
     setConnected(false);
     console.log("Disconnected");
+    window.location='/home'
 }
 
 function sendMove() {
@@ -53,6 +56,7 @@ $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendMove(); });
+    $("#reset").click(function() {resetGame();});
 });
 
 
@@ -73,3 +77,16 @@ function selected(elem){
         console.log(selectedBlocks);
     }
 }
+
+function resetGame(){
+//    move.playerLogin = document.getElementById("login").innerText;
+//    if(move.connected)
+//    {
+//        move.send("/reset",{}, JSON.stringify(move));
+//    }else
+//    {
+//        console.log("Not connected yet")
+//    }
+
+    $("#reset").prop("disabled", true);
+    }
