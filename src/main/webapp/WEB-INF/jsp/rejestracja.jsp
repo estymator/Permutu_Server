@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 
 <html lang="pl">
@@ -24,7 +25,7 @@
 		<h1 class="form-signin-heading text-muted">Rejestracja</h1>
 		<input type="text" name="login" class="form-control" placeholder="Login" required="" autofocus=""> </br></br>
         <input type="password" name="password" class="form-control" placeholder="Hasło" required="">
-        <input type="password" name="passwordRepeat" class="form-control" placeholder="Powórz hasło" required=""></br></br>
+        <input type="password" name="passwordRepeat" class="form-control" placeholder="Powtórz hasło" required=""></br></br>
         <input type="text" name="email" class="form-control" placeholder="Email" required="" autofocus=""></br></br></br>
         
 		<button class="btn btn-lg btn-primary btn-block" type="submit">
