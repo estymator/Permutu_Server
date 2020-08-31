@@ -49,8 +49,8 @@ public class GameController {
                 for (Block b : selectedBlocks.getBlocks()) {
                     room.getGame().removeFromBoard(b);
                     playerBlocks.addBlockOrdered(b);
-                    room.nextTurn();
                 }
+                room.nextTurn();
             }
         }
         p.countPoints();
