@@ -30,13 +30,32 @@ public class GameController {
         Room room = rooms.getPlayerRoom(message.getPlayerLogin());
         Player p = room.getPlayer(message.getPlayerLogin());
         BlockCollection playerBlocks = p.getBlocksInHand();
-         for(String s: message.getselectedBlocks()){
-             Block b = new Block(s);
-             //room.getGame().remove(b);
-             room.getGame().removeFromBoard(b);
-             //playerBlocks.addBlock(b);
-             playerBlocks.addBlockOrdered(b);
-         }
+        BlockCollection selectedBlocks =  new BlockCollection("selectedBlocks");
+        if(message.getselectedBlocks().length > 0){
+            for(String s : message.getselectedBlocks())
+            selectedBlocks.addBlock(new Block(s));
+        }
+
+        if(message.getselectedBlocks().length == 1){
+            if(room.getGame().isInFullColumn(selectedBlocks.getBlock(0)) && room.getGame().haventAnyPlayer(room.getPlayers(),selectedBlocks.getBlock(0),p)){
+                room.getGame().removeFromBoard(selectedBlocks.getBlock(0));
+                playerBlocks.addBlockOrdered(selectedBlocks.getBlock(0));
+            }
+        }
+
+        else if(room.getGame().checkWhetherIsFromThisSameColumn(selectedBlocks) && room.getGame().anyPLayerDontHaveAnySignFromThisSet(room.getPlayers(),selectedBlocks,p)) {
+            if (room.getGame().playerHaveAllSignFromColumn(p, selectedBlocks) || room.getGame().playerDontHaveOneSignFromThisColumn(p,selectedBlocks)) {
+                for (Block b : selectedBlocks.getBlocks()) {
+
+                    //room.getGame().remove(b);
+                    room.getGame().removeFromBoard(b);
+                    //playerBlocks.addBlock(b);
+                    playerBlocks.addBlockOrdered(b);
+                }
+            }
+        }
+        p.countPoints();
+
         return "OK";
     }
 

@@ -118,4 +118,18 @@ public class Room {
         System.out.println("Resetowanie rozgrywki "+roomName);
         this.game=new Permutu();
     }
+
+    public  String getWinner(){
+        int max = 0;
+        String winnerLogin = "";
+
+        for (Player p : players.players) {
+            if (p.getPoints() > max) {
+                max = p.getPoints();
+                winnerLogin = p.getLogin();
+            }
+        }
+        return winnerLogin;
+    }
+
 }

@@ -14,8 +14,8 @@
     System.out.println((String )request.getSession().getAttribute("room"));
     String playerLogin = (String) request.getSession().getAttribute("player");
     BlockCollection blocks = room.getPlayer(playerLogin).getBlocksInHand();
+    Integer score = room.getPlayer(playerLogin).getPoints();
     int counter1 = 1;
-    int score = 0;
     if(!blocks.getBlocks().isEmpty()) {
         String output = "<section class=\"player-blocks d-flex container\" id=\"main-player\" >";
         output += "<div class=\"in-hand\" >";
@@ -24,22 +24,13 @@
                 output += blocks.getBlock(i).genereteHTMLBlock();
                 counter1++;
             } else {
-                if (counter1==1 || counter1==2){
-                    score++;
-                } else {
-                    score+=3;
-                }
                 counter1=1;
                 output += blocks.getBlock(i).genereteHTMLBlock();
                 output += "</div>";
                 output += "<div class=\"in-hand\" >";
             }
         }
-        if (counter1==1 || counter1==2){
-            score++;
-        } else {
-            score+=3;
-        }
+
         output += blocks.getBlock(blocks.size()-1).genereteHTMLBlock();
         output += "<h1>SCORE: "+score+" </h1>";
         output += "</div></section>";
@@ -50,7 +41,6 @@
     int counter=0;
     for (Player p : room.getPlayers()){
         int counter2 = 1;
-        int score1 = 0;
         if(p!=room.getPlayer(playerLogin)){
             BlockCollection blocks1 = p.getBlocksInHand();
             if(!blocks1.getBlocks().isEmpty()) {
@@ -62,11 +52,6 @@
                         output += blocks1.getBlock(i).genereteHTMLBlock();
                         counter2++;
                     } else {
-                        if (counter2==1 || counter2==2){
-                            score1++;
-                        } else {
-                            score1+=3;
-                        }
                         counter2=1;
                         output += blocks1.getBlock(i).genereteHTMLBlock();
                         output += "</div>";
@@ -74,13 +59,8 @@
                     }
                     System.out.println("OUTPUT "+i+" "+output);
                 }
-                if (counter2==1 || counter2==2){
-                    score1++;
-                } else {
-                    score1+=3;
-                }
                 output += blocks1.getBlock(blocks1.size()-1).genereteHTMLBlock();
-                output += "<br><h1>SCORE: "+score1+" </h1>";
+                output += "<br><h1>SCORE: "+p.getPoints()+" </h1>";
                 output += "</div></section>";
 
                 System.out.println(output);

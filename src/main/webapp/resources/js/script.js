@@ -92,3 +92,15 @@ function resetGame(){
 
     $("#reset").prop("disabled", true);
     }
+
+    function winnerAlert(winner){
+        $.post('http://localhost:8081/winner', { "winner": winner,
+            }).error(function(XHR, status, error){
+            console.log(XHR.responseJSON.message);
+            $(".container").append(XHR.responseJSON.message)
+
+        });
+
+        alert("The winner is " + winner);
+
+    }

@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/resources/styles/style.css">
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/c43499c33d.js" crossorigin="anonymous"></script>
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
@@ -46,17 +46,24 @@
     </div>
 </form>
 
-<section id="main-board" class="main-board rounded">
+<%
+    if (room.getGame().isDone()) {
+        out.println("<script>winnerAlert(" +room.getWinner() + ");</script>");
+    }
+%>
 
+
+    <section id="main-board" class="main-board rounded">
+
+
+        </section>
+
+    <section class="players-block d-flex container" id="players-block">
 
     </section>
-
-<section class="players-block d-flex container" id="players-block">
-
-</section>
-<%
-    if(room.getPlayers().size()==1)
-    {   %>
+    <%
+        if(room.getPlayers().size()==1)
+        {   %>
 <script>$("#reset").prop("disabled", false);</script>
 <%  } %>
 

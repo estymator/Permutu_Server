@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import permutu.Exceptions.EmailAlreadyInUseException;
+import permutu.Exceptions.LoginAlreadyInUseException;
 import permutu.Models.*;
 import permutu.Repositories.UserRepository;
 
@@ -40,6 +42,8 @@ public class HomeController {
         }
         else{
             User currentUser = userRepository.findUserByLogin(login);
+            currentUser.incTotalGames();
+            userRepository.save(currentUser);
             rooms.getRoom(room).addPlayer(currentUser);
             rooms.getRoom(room).getPlayer(login).setRoomName(room);
             request.getSession().setAttribute("room",room);
@@ -48,10 +52,19 @@ public class HomeController {
         return new ModelAndView("redirect:" + "game");
     }
 
+    @PostMapping(path="/winner")
+    public @ResponseBody void addNewUser(@RequestParam String winner){
+        User u = userRepository.findUserByLogin(winner);
+        u.incWinnGames();
+        userRepository.save(u);
+    }
+
 
     private void setRoomsAttribute(HttpServletRequest request){
         request.setAttribute("rooms",rooms);
     }
 
-
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
 }

@@ -51,7 +51,7 @@
 
       
         //POST request
-        $.post('http://147.135.208.197:8081/register', { "login": login,
+        $.post('http://localhost:8081/register', { "login": login,
                                                     "password": password,
                                                     "email": email,
                                                     "userRoleID": userRoleID,

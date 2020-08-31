@@ -17,32 +17,32 @@
 </head>
 <body class="bg-light">
 
-    <section class="greetings">
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a href="/logout">Logout</a></h2>
-    </section>
-    <div class="container">
-        <% SingletonRooms rooms = (SingletonRooms) request.getAttribute("rooms");%>
+<section class="greetings">
+    <h2>Welcome ${pageContext.request.userPrincipal.name} | <a href="/logout">Logout</a></h2>
+</section>
+<div class="container">
+    <% SingletonRooms rooms = (SingletonRooms) request.getAttribute("rooms");%>
 
-                <form action="/join" method="get">
-            <table class="table table-sm">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Room Name</th>
-                    <th scope="col">Number of Players in Room</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-               <% for(Room r : rooms.getRooms()){
-                   out.print(r.genereteHTMLtrForRoom());
-               }
-               %>
-                </tbody>
-            </table>
-            <button class="btn btn-primary" type="submit">Zagraj</button>
-        </form>
-    </div>
+    <form action="/join" method="get">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Room Name</th>
+                <th scope="col">Number of Players in Room</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(Room r : rooms.getRooms()){
+                out.print(r.genereteHTMLtrForRoom());
+            }
+            %>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" type="submit">Zagraj</button>
+    </form>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

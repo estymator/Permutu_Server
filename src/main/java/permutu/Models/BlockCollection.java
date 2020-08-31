@@ -62,4 +62,24 @@ public class BlockCollection{
         }
     }
 
+    public int indexOf(Block b){
+        for(Block bb : this.getBlocks()){
+            if(bb.equals(b)){
+                return this.getBlocks().indexOf(bb);
+            }
+        }
+        return -1;
+    }
+
+
+
+    public boolean isThisSign(Block b){
+        for(Block bb: this.getBlocks()){
+            if(bb.thisSameSign(b)) return true;
+        }
+        return false;
+    }
+
+
+
 }
