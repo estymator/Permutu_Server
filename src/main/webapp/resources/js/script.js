@@ -62,7 +62,7 @@ $(function () {
 
 function selected(elem){
     let blockId =  document.getElementById(elem.id);
-    if(blockId.style.backgroundColor === "pink"){
+    if(blockId.getAttribute("selected")=='true'){
         blockId.setAttribute('selected','false');
         blockId.style.backgroundColor = "gray";
         let index = selectedBlocks.indexOf(blockId.id);
@@ -104,3 +104,21 @@ function resetGame(){
         alert("The winner is " + winner);
 
     }
+
+function hovered(elem) {
+    var sign = elem.getAttribute('letter');
+    [].forEach.call(document.querySelectorAll('.btn[letter="' + sign + '"]'), (div) => {
+        if (div.style.backgroundColor!="pink") {
+            div.style.backgroundColor = 'lightgreen';
+        }
+    })
+}
+
+function unhovered(el) {
+    var sign = el.getAttribute('letter');
+    [].forEach.call(document.querySelectorAll('.btn[letter="' + sign + '"]'), (div) => {
+        if (div.style.backgroundColor!="pink") {
+            div.style.backgroundColor = 'rgba(159,151,151,0.46)';
+        }
+    })
+}
