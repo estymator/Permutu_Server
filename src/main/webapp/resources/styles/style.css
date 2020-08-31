@@ -146,3 +146,11 @@ body {
   justify-content: center;
   min-height: 90px;
 }
+
+.players-blocks {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}
