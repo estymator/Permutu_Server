@@ -40,22 +40,21 @@ public class GameController {
             if(room.getGame().isInFullColumn(selectedBlocks.getBlock(0)) && room.getGame().haventAnyPlayer(room.getPlayers(),selectedBlocks.getBlock(0),p)){
                 room.getGame().removeFromBoard(selectedBlocks.getBlock(0));
                 playerBlocks.addBlockOrdered(selectedBlocks.getBlock(0));
+                room.nextTurn();
             }
         }
 
         else if(room.getGame().checkWhetherIsFromThisSameColumn(selectedBlocks)) {
             if (room.getGame().playerHaveAllSignFromColumn(p, selectedBlocks) || room.getGame().playerDontHaveOneSignFromThisColumn(p,selectedBlocks)) {
                 for (Block b : selectedBlocks.getBlocks()) {
-
-                    //room.getGame().remove(b);
                     room.getGame().removeFromBoard(b);
-                    //playerBlocks.addBlock(b);
                     playerBlocks.addBlockOrdered(b);
+                    room.nextTurn();
                 }
             }
         }
         p.countPoints();
-        room.nextTurn();
+
         System.out.println(room.getOrder());
         return "OK";
     }
