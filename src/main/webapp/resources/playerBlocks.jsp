@@ -16,7 +16,7 @@
     BlockCollection blocks = room.getPlayer(playerLogin).getBlocksInHand();
     Integer score = room.getPlayer(playerLogin).getPoints();
     if(!blocks.getBlocks().isEmpty()) {
-        String output = "<section class=\"player-blocks d-flex container\" id=\"main-player\" >";
+        String output = "<section class=\"player-blocks d-flex container border\" id=\"main-player\" >";
         output += "<div class=\"flexed-row\"><div class=\"in-hand\" >";
         for (int i = 0; i < blocks.size()-1; i++) {
             if (blocks.getBlock(i).thisSameSign(blocks.getBlock(i + 1))) {
@@ -39,7 +39,7 @@
         if(p!=room.getPlayer(playerLogin)){
             BlockCollection blocks1 = p.getBlocksInHand();
             if(!blocks1.getBlocks().isEmpty()) {
-                String output = "<section class=\"player-blocks d-flex container\" id=\"player-"+counter+"\" >";
+                String output = "<section class=\"player-blocks d-flex container border\" id=\"player-"+counter+"\" >";
                 output += "<h1>"+p.getLogin()+"</h1><div class=\"flexed-row\"><div class=\"in-hand\" >";
 
                 for (int i = 0; i < blocks1.size()-1; i++) {

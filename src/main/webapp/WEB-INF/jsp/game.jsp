@@ -28,7 +28,7 @@
     System.out.println(roomName);
 
     Room room = rooms.getRoom(roomName);
-    for (User u: room.getPlayers()) { //TODO Change to get room name dynamic.
+    for (User u: room.getPlayers()) {
         out.print("-"+u.getLogin());
     }%>
 
