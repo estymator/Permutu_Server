@@ -43,7 +43,7 @@ public class GameController {
             }
         }
 
-        else if(room.getGame().checkWhetherIsFromThisSameColumn(selectedBlocks) && room.getGame().anyPLayerDontHaveAnySignFromThisSet(room.getPlayers(),selectedBlocks,p)) {
+        else if(room.getGame().checkWhetherIsFromThisSameColumn(selectedBlocks)) {
             if (room.getGame().playerHaveAllSignFromColumn(p, selectedBlocks) || room.getGame().playerDontHaveOneSignFromThisColumn(p,selectedBlocks)) {
                 for (Block b : selectedBlocks.getBlocks()) {
 
@@ -56,7 +56,7 @@ public class GameController {
         }
         p.countPoints();
         room.nextTurn();
-
+        System.out.println(room.getOrder());
         return "OK";
     }
 

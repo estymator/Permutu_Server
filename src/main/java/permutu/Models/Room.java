@@ -55,7 +55,7 @@ public class Room {
             if(players.getPlayers().remove(player))
             {
                 System.out.println("po usunieciu gracza, liczba graczy"+players.size());
-
+                order.removeFirstOccurrence(player.getId());
                 playersInRoom--;
                 if(players.size()==0)
                 {
@@ -122,6 +122,7 @@ public class Room {
     public void resetRoom(){
         System.out.println("Resetowanie rozgrywki "+roomName);
         this.game=new Permutu();
+        order = new LinkedList<>();
     }
 
     public  String getWinner(){
