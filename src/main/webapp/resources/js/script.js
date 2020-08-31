@@ -106,8 +106,7 @@ function resetGame(){
     }
 
 function hovered(elem) {
-    var sign = elem.getAttribute('letter');
-    [].forEach.call(document.querySelectorAll('.btn[letter="' + sign + '"]'), (div) => {
+    [].forEach.call(document.querySelectorAll('.btn[letter="' + elem.getAttribute('letter') + '"]'), (div) => {
         if (div.style.backgroundColor!="pink") {
             div.style.backgroundColor = 'lightgreen';
         }

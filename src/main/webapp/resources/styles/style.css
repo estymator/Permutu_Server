@@ -6,16 +6,17 @@ body {
 }
 
 .player-blocks {
-  flex-direction: column;
-  width: fit-content;
-  margin: 0;
-  border-radius: 25px;
-  border: 1px solid black;
+    flex-direction: column;
+    width: fit-content;
+    width: -moz-fit-content;
+    margin: 0;
+    border-radius: 25px;
+    border: 1px solid black;
 }
 
 .flexed-row {
-  display: flex !important;
-  min-height: 82px;
+    display: flex !important;
+    min-height: 82px;
 }
 
 .btn {
