@@ -7,6 +7,8 @@ public class Player extends User {
 
     private BlockCollection blocksInHand;
 
+    private  Integer id;
+
     private String roomName;
 
     private Integer points = 0;
@@ -26,7 +28,7 @@ public class Player extends User {
 
     Player(User user){
         super();
-        this.setUserId(user.getUserId());
+        this.id = user.getUserId();
         this.setLogin(user.getLogin());
         this.setEmail(user.getEmail());
         this.setUserRoleId(getUserRoleId());
@@ -63,10 +65,13 @@ public class Player extends User {
         }
 
         for(int i : signs){
-            if(i == 2) points += 2;
+            if(i == 2) points += 1;
             else if(i == 3) points += 3;
         }
 
     }
 
+    public Integer getId() {
+        return id;
+    }
 }

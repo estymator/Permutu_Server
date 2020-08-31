@@ -1,6 +1,10 @@
 package permutu.Models;
 
+
 import java.util.ArrayList;
+
+import java.util.LinkedList;
+import java.util.Stack;
 
 public class Room {
 
@@ -17,14 +21,14 @@ public class Room {
         return players.getPlayers();
     }
 
-    public void setPlayers(Players players) {
-        this.players = players;
-    }
+    private LinkedList<Integer> order;
+
 
     public Room(String roomName, Permutu game) {
         this.roomName = roomName;
         this.game = game;
         this.players = new Players();
+        this.order = new LinkedList<>();
     }
 
 
@@ -34,6 +38,7 @@ public class Room {
         {
             players.addPlayer(user);
             playersInRoom++;
+            order.addFirst(user.getUserId());
         }
 
     }
@@ -132,4 +137,12 @@ public class Room {
         return winnerLogin;
     }
 
+    public void nextTurn(){
+        Integer temp = order.removeLast();
+        order.addFirst(temp);
+    }
+
+    public LinkedList<Integer> getOrder() {
+        return order;
+    }
 }

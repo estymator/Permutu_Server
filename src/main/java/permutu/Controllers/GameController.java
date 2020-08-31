@@ -55,6 +55,7 @@ public class GameController {
             }
         }
         p.countPoints();
+        room.nextTurn();
 
         return "OK";
     }
