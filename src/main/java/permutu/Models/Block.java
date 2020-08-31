@@ -80,6 +80,19 @@ public class Block{
 
     }
 
+    public String genereteHTMLDisabledBlock(){
+        String color = getBootstrapCoolor(this.getColor());
+        if(color!="text-hidden"){
+            return "<button onclick=\"selected(this)\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2 " + color + "\" " +
+                    "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\" disabled>\n" +
+                    "               " + SIGNS[this.sign].toUpperCase() +"\n" +
+                    "            </button>";
+        } else {
+            return "<button class=\"btn takenFromBoard block d-flex justify-content-center align-items-center rounded p-2 m-2\"></button>";
+        }
+
+    }
+
     private String getBootstrapCoolor(int index){
         if (index==3) return "text-hidden";
         else if(index == 0) return "text-danger";
