@@ -132,9 +132,9 @@ public class Room {
         {
             resultHTMLBlock +=  "    <td>" +
                     "<select name=\"players\" class=\"selectpicker show-tick\">\n" +
-                    "  <option selected=\"selected\" value=\"4\">4 Graczy</option>\n" +
-                    "  <option value=\"2\">2 Graczy</option>\n" +
-                    "  <option value=\"1\">1 graczy</option>\n" +
+                    "  <option selected=\"selected\" value=\"4\">4 graczy</option>\n" +
+                    "  <option value=\"2\">2 graczy</option>\n" +
+                    "  <option value=\"1\">1 gracz</option>\n" +
                     "</select>" +
                     "</td>" +
                     "    <td>" +
@@ -157,17 +157,25 @@ public class Room {
             resultHTMLBlock +=  "    <td>" +
                    + this.maxNumberOfPlayers +
                     "</td>" +
-                    "    <td>" +
-                   + this.timeForGame +
-                    "</td>" +
+                    "    <td>";
+            if(this.timeForGame==0)
+            {
+                resultHTMLBlock+= "Nie na czas";
+            }else{
+                resultHTMLBlock+=this.timeForGame+" min ";
+            }
+            resultHTMLBlock += "</td>" +
                     "    <td>" +
                      this.numberOfSymbols +
                     "</td>";
         }
-        resultHTMLBlock +=  "    <td>" +
-                "        <button type=\"submit\" class=\"btn btn-primary\" id=\"roomName\" name=\"room\" value=\"" + this.roomName + "\"> Wybierz </button> " +
-                "</td>" +
-                "</tr>";
+        if(this.players.size()<maxNumberOfPlayers)
+        {
+            resultHTMLBlock +=  "    <td>" +
+                    "        <button type=\"submit\" class=\"btn btn-primary\" id=\"roomName\" name=\"room\" value=\"" + this.roomName + "\"> Wybierz </button> " +
+                    "</td>";
+        }
+       resultHTMLBlock+= "</tr>";
         return resultHTMLBlock;
 
     }
@@ -198,6 +206,7 @@ public class Room {
         this.timeForGame=time;
         this.maxNumberOfPlayers=players;
         this.game=new Permutu(numberOfSymbols);
+
     }
 
     /**
@@ -205,6 +214,9 @@ public class Room {
      */
     public void resetRoom(){
         System.out.println("Resetowanie rozgrywki "+roomName);
+        this.maxNumberOfPlayers=4;
+        this.timeForGame=0;
+        this.numberOfSymbols=24;
         this.game=new Permutu();
         order = new LinkedList<>();
     }
@@ -215,7 +227,8 @@ public class Room {
      */
     public void resetRoom(Player p){
         System.out.println("Resetowanie rozgrywki i pozostawienie jednego gracza "+roomName);
-        this.game=new Permutu();
+
+        this.game=new Permutu(numberOfSymbols);
         p.resetPlayer();
     }
 

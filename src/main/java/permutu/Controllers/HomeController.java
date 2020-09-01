@@ -35,8 +35,9 @@ public class HomeController {
                             ,@RequestParam(required = false) Integer time
                             ,@RequestParam(required = false) Integer symbols) {
         String login = principal.getName();
-        if(players != null && time!=null && symbols!=null && rooms.getRoom(room).getPlayers().size()<=1)
+        if(players != null && time!=null && symbols!=null && rooms.getRoom(room).getPlayers().size()==0)
         {
+            System.out.println("Zmiana parametrów pokoju");
             rooms.getRoom(room).setGameParameters(players, time,symbols);
         }
         if(rooms.getRoom(room).isPlayer(login)){

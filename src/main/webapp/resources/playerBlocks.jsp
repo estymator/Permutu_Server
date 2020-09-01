@@ -15,25 +15,26 @@
     String playerLogin = (String) request.getSession().getAttribute("player");
     BlockCollection blocks = room.getPlayer(playerLogin).getBlocksInHand();
     Integer score = room.getPlayer(playerLogin).getPoints();
+    String hostOutput = "<section class=\"player-blocks d-flex container border\" id=\"main-player\" >";
+    hostOutput += "<div class=\"flexed-row\"><div class=\"in-hand\" >";
     if(!blocks.getBlocks().isEmpty()) {
-        String output = "<section class=\"player-blocks d-flex container border\" id=\"main-player\" >";
-        output += "<div class=\"flexed-row\"><div class=\"in-hand\" >";
+
         for (int i = 0; i < blocks.size()-1; i++) {
             if (blocks.getBlock(i).thisSameSign(blocks.getBlock(i + 1))) {
-                output += blocks.getBlock(i).genereteHTMLDisabledBlock();
+                hostOutput += blocks.getBlock(i).genereteHTMLDisabledBlock();
             } else {
-                output += blocks.getBlock(i).genereteHTMLDisabledBlock();
-                output += "</div>";
-                output += "<div class=\"in-hand\" >";
+                hostOutput += blocks.getBlock(i).genereteHTMLDisabledBlock();
+                hostOutput += "</div>";
+                hostOutput += "<div class=\"in-hand\" >";
             }
         }
-
-        output += blocks.getBlock(blocks.size()-1).genereteHTMLDisabledBlock();
-        output += "</div></div><h1>SCORE: "+score+" </h1></section>";
-
-        System.out.println(output);
-        out.print(output);
+        hostOutput += blocks.getBlock(blocks.size()-1).genereteHTMLDisabledBlock();
     }
+
+    hostOutput += "</div></div><h1>SCORE: "+score+" </h1></section>";
+
+    System.out.println(hostOutput);
+    out.print(hostOutput);
     int counter=0;
     for (Player p : room.getPlayers()){
         if(p!=room.getPlayer(playerLogin)){

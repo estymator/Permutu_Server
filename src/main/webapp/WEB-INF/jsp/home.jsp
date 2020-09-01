@@ -34,7 +34,7 @@
 <div class="container">
     <% SingletonRooms rooms = (SingletonRooms) request.getAttribute("rooms");%>
 
-    <form action="/join" method="get">
+
         <table class="table table-sm">
             <thead>
             <tr>
@@ -42,20 +42,28 @@
                 <th scope="col">Room Name</th>
                 <th scope="col">Number of Players in Room</th>
                 <th scope="col">Max Number of Players in room</th>
-                <th scope="col">Time for one player</th>
+                <th scope="col">Time for One Player</th>
                 <th scope="col">Number of Symbols</th>
                 <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
-            <% for(Room r : rooms.getRooms()){
+
+            <%
+            for(Room r : rooms.getRooms()){
+            %>
+            <form action="/join" method="get">
+            <%
                 out.print(r.genereteHTMLtrForRoom());
+            %>
+             </form>
+            <%
             }
             %>
             </tbody>
         </table>
 
-    </form>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
