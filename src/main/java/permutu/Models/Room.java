@@ -12,7 +12,11 @@ public class Room {
 
     private Integer playersInRoom = 0;
 
-    private final Integer MAX_NUMBERS_OF_PLAYERS = 4;
+
+
+    private int maxNumberOfPlayers=4;
+    private int timeForGame=0;
+    private int numberOfSymbols=24;
 
     private Permutu game;
     private Players players;
@@ -31,17 +35,41 @@ public class Room {
         this.order = new LinkedList<>();
     }
 
+    public int getMaxNumberOfPlayers() {
+        return maxNumberOfPlayers;
+    }
 
+    public void setMaxNumberOfPlayers(int maxNumberOfPlayers) {
+        this.maxNumberOfPlayers = maxNumberOfPlayers;
+    }
+
+    public int getTimeForGame() {
+        return timeForGame;
+    }
+
+    public void setTimeForGame(int timeForGame) {
+        this.timeForGame = timeForGame;
+    }
+
+    public int getNumberOfSymbols() {
+        return numberOfSymbols;
+    }
+
+    public void setNumberOfSymbols(int numberOfSymbols) {
+        this.numberOfSymbols = numberOfSymbols;
+    }
 
     public void addPlayer(User user){
-        if(players.size()<MAX_NUMBERS_OF_PLAYERS)
+        if(players.size()<maxNumberOfPlayers)
         {
             players.addPlayer(user);
             playersInRoom++;
             order.addFirst(user.getUserId());
+
         }
 
     }
+
 
     /**
      * Usuwanie gracza opuszczającego pokój
@@ -64,6 +92,7 @@ public class Room {
                 }
                 return true;
             }
+            return false;
         }
 
         return false;
@@ -94,15 +123,53 @@ public class Room {
     }
 
     public String genereteHTMLtrForRoom(){
-        return "<tr>" +
+        String resultHTMLBlock = "<tr>" +
                 "    <th scope=\"row\">1</th>" +
                 "    <td>" + this.roomName + "</td>" +
-                "    <td>" + this.playersInRoom + "</td>" +
-                "    <td>" +
-                "        <input type=\"checkbox\" class=\"form-check-input\" id=\"roomName\" name=\"room\" value=\"" + this.roomName + "\">" +
-                "        <label for=\"roomId\">Wybierz</label>" +
+                "    <td>" + this.playersInRoom + "</td>";
+//        Jeżeli w pokoju nie ma jeszcze graczy mozna ustawić opcje pokoju
+        if(players.size()==0)
+        {
+            resultHTMLBlock +=  "    <td>" +
+                    "<select name=\"players\" class=\"selectpicker show-tick\">\n" +
+                    "  <option selected=\"selected\" value=\"4\">4 Graczy</option>\n" +
+                    "  <option value=\"2\">2 Graczy</option>\n" +
+                    "  <option value=\"1\">1 graczy</option>\n" +
+                    "</select>" +
                     "</td>" +
+                    "    <td>" +
+                    "<select name=\"time\" class=\"selectpicker show-tick\">\n" +
+                    "  <option selected=\"selected\" value=\"0\">Nieograniczony</option>\n" +
+                    "  <option value=\"1\">1 minuta</option>\n" +
+                    "  <option value=\"5\">5 minut</option>\n" +
+                    "  <option value=\"15\">15 minut</option>\n" +
+                    "</select>" +
+                    "</td>" +
+                    "    <td>" +
+                    "<select name=\"symbols\" class=\"selectpicker show-tick\">\n" +
+                    "  <option selected=\"selected\" value=\"24\">Wszystkie symbole</option>\n" +
+                    "  <option value=\"10\">10 symboli</option>\n" +
+                    "  <option value=\"20\">20 symboli</option>\n" +
+                    "</select>" +
+                    "</td>";
+        }else
+        {
+            resultHTMLBlock +=  "    <td>" +
+                   + this.maxNumberOfPlayers +
+                    "</td>" +
+                    "    <td>" +
+                   + this.timeForGame +
+                    "</td>" +
+                    "    <td>" +
+                     this.numberOfSymbols +
+                    "</td>";
+        }
+        resultHTMLBlock +=  "    <td>" +
+                "        <button type=\"submit\" class=\"btn btn-primary\" id=\"roomName\" name=\"room\" value=\"" + this.roomName + "\"> Wybierz </button> " +
+                "</td>" +
                 "</tr>";
+        return resultHTMLBlock;
+
     }
 
     public boolean isPlayer(String name){
@@ -119,10 +186,37 @@ public class Room {
         return null;
     }
 
+    /**
+     * Zmiana parametrów gry
+     * @param players
+     * @param time
+     * @param symbols
+     */
+    public void setGameParameters(int players, int time, int symbols)
+    {
+        this.numberOfSymbols=symbols;
+        this.timeForGame=time;
+        this.maxNumberOfPlayers=players;
+        this.game=new Permutu(numberOfSymbols);
+    }
+
+    /**
+     * Resetowanie pokoju gdy wszyscy gracze opuszczą pokój
+     */
     public void resetRoom(){
         System.out.println("Resetowanie rozgrywki "+roomName);
         this.game=new Permutu();
         order = new LinkedList<>();
+    }
+
+    /**
+     * Resetowanie pokoju gdy jedyny gracz pozostały w pokoju chce zresetować grę
+     * @param p
+     */
+    public void resetRoom(Player p){
+        System.out.println("Resetowanie rozgrywki i pozostawienie jednego gracza "+roomName);
+        this.game=new Permutu();
+        p.resetPlayer();
     }
 
     public  String getWinner(){

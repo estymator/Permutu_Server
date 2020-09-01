@@ -71,6 +71,11 @@ public class Player extends User {
 
     }
 
+    void resetPlayer(){
+        this.blocksInHand = new BlockCollection(this.getLogin());
+        points=0;
+    }
+
     public Integer getId() {
         return id;
     }

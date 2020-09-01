@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Permutu - logowanie </title>
     <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
 
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>

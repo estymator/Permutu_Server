@@ -36,6 +36,29 @@ public class Permutu {
         }
     }
 
+    /**
+     * Constructor for custom symbols number
+     * @param size
+     */
+    public Permutu(int size) {
+        try {
+            this.redPile = new Pile("red",size);
+            redPile.shuffle();
+
+            this.blackPile = new Pile("black",size);
+            blackPile.shuffle();
+
+            this.greenPile = new Pile("green",size);
+            greenPile.shuffle();
+
+            players = new Players("RoomName");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
     public Players getPlayers() {
         return players;
     }

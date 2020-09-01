@@ -29,12 +29,22 @@ public class HomeController {
 
     @GetMapping("/join")
     @ResponseBody
-    public ModelAndView join(HttpServletRequest request,Principal principal,@RequestParam String room ) {
+    public ModelAndView join(HttpServletRequest request,Principal principal
+                            ,@RequestParam String room
+                            ,@RequestParam(required = false) Integer players
+                            ,@RequestParam(required = false) Integer time
+                            ,@RequestParam(required = false) Integer symbols) {
         String login = principal.getName();
+        if(players != null && time!=null && symbols!=null && rooms.getRoom(room).getPlayers().size()<=1)
+        {
+            rooms.getRoom(room).setGameParameters(players, time,symbols);
+        }
         if(rooms.getRoom(room).isPlayer(login)){
+            System.out.println("User jest juz obecny w pokoju");
             return new ModelAndView("redirect:" + "game");
         }
         else{
+            System.out.println("Dodanie usera do pokoju");
             User currentUser = userRepository.findUserByLogin(login);
             currentUser.incTotalGames();
             userRepository.save(currentUser);
@@ -42,7 +52,7 @@ public class HomeController {
             rooms.getRoom(room).getPlayer(login).setRoomName(room);
             request.getSession().setAttribute("room",room);
             request.getSession().setAttribute("player",login);
-            System.out.println(rooms.getRoom(room).getOrder());
+            System.out.println("Order - "+rooms.getRoom(room).getOrder());
         }
         return new ModelAndView("redirect:" + "game");
     }

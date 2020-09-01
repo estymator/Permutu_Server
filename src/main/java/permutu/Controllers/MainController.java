@@ -27,26 +27,18 @@ public class MainController {
                     @RequestParam String email,
                     @RequestParam int userRoleID){
         User u = new User();
-        if(findUserByLogin(login).toString()!="[]")
-        {
-            System.out.println("Istnieje juz taki login - "+login);
-            throw new LoginAlreadyInUseException();
 
-        }else if(findUserByEmail(email).toString()!="[]")
-        {
-            System.out.println("Konto z podanym adresem email już istnieje - "+email);
-            throw new EmailAlreadyInUseException();
-        }else
-        {
+        validRegisterData(login,email);
 
-            u.setLogin(login);
-            u.setEmail(email);
-            u.setPassword(passwordEncoder.encode(password));
-            u.setUserRoleId(1);
-            u.setLogin(login);
-            userRepository.save(u);
-            System.out.println("Rejestracja " + u.getLogin());
-        }
+
+        u.setLogin(login);
+        u.setEmail(email);
+        u.setPassword(passwordEncoder.encode(password));
+        u.setUserRoleId(1);
+        u.setLogin(login);
+        userRepository.save(u);
+        System.out.println("Rejestracja " + u.getLogin());
+
 
         return u;
 
@@ -74,6 +66,24 @@ public class MainController {
     }
 
 
+    /**
+     * Function which validate register data, in case of problem, throw error
+     * @param login - login from register form
+     * @param email - email from register form
+     */
+    void validRegisterData(String login, String email)
+    {
+        if(findUserByLogin(login).toString()!="[]")
+        {
+            System.out.println("Istnieje juz taki login - "+login);
+            throw new LoginAlreadyInUseException();
+
+        }else if(findUserByEmail(email).toString()!="[]")
+        {
+            System.out.println("Konto z podanym adresem email już istnieje - "+email);
+            throw new EmailAlreadyInUseException();
+        }
+    }
 }
 
 

@@ -5,7 +5,9 @@ let move = {};
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
+    $("#reset").prop("disabled", !connected);
     $('#main-board').load('../resources/mainBoard.jsp');
+    $('#players-block').load('../resources/playerBlocks.jsp');
     $("#disconnect").prop("disabled", !connected);
 }
 
@@ -81,16 +83,18 @@ function selected(elem){
 }
 
 function resetGame(){
-//    move.playerLogin = document.getElementById("login").innerText;
-//    if(move.connected)
-//    {
-//        move.send("/reset",{}, JSON.stringify(move));
-//    }else
-//    {
-//        console.log("Not connected yet")
-//    }
 
-    $("#reset").prop("disabled", true);
+    if(move.connected)
+    {
+        move.playerLogin = document.getElementById("login").innerText;
+        console.log(move);
+        move.send("/reset",{}, JSON.stringify(move));
+    }else
+    {
+        console.log("Not connected yet")
+    }
+
+
     }
 
     function winnerAlert(winner){

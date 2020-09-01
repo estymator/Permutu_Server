@@ -2,22 +2,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<% SingletonRooms rooms = SingletonRooms.getInstance();
+<%
+    SingletonRooms rooms = SingletonRooms.getInstance();
     String roomName = (String)  request.getSession().getAttribute("room");
     Room room = rooms.getRoom(roomName);
     Permutu game = room.getGame();
-    %>
+%>
+
 <%
     String playerLogin = (String) request.getSession().getAttribute("player");
-    Integer playerID = room.getPlayer(playerLogin).getId();
-    if(room.getOrder().getLast().equals(playerID)) { %>
-<div class="container block-row red-block d-flex flex-nowrap">
+    if(room.getPlayer(playerLogin)!=null && room.getOrder().getLast()!=null){
+        Integer playerID = room.getPlayer(playerLogin).getId();
+        if(room.getOrder().getLast().equals(playerID)) {
+%>
+            <div class="container block-row red-block d-flex flex-nowrap">
 
-    <%
-        for (Block b : game.getRedPile().getBlocks()) {
-            out.print(b.genereteHTMLBlock());
-        }
-    %>
+        <%
+            for (Block b : game.getRedPile().getBlocks()) {
+                out.print(b.genereteHTMLBlock());
+            }
+        %>
 </div>
 
 <div class="container block-row black-block d-flex flex-nowrap">
@@ -65,4 +69,6 @@
         }
     %>
 </div>
-<% } %>
+<%  }
+   }
+%>

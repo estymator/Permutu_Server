@@ -30,6 +30,9 @@
                 <th scope="col">#</th>
                 <th scope="col">Room Name</th>
                 <th scope="col">Number of Players in Room</th>
+                <th scope="col">Max Number of Players in room</th>
+                <th scope="col">Time for one player</th>
+                <th scope="col">Number of Symbols</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -40,7 +43,7 @@
             %>
             </tbody>
         </table>
-        <button class="btn btn-primary" type="submit">Zagraj</button>
+
     </form>
 </div>
 

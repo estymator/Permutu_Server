@@ -1,5 +1,6 @@
 package permutu.Controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -7,10 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 import permutu.Models.*;
+import permutu.Repositories.UserRepository;
 
 @Controller
 public class GameController {
 
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/game")
     public String showLoginView(Model model) {
@@ -65,6 +69,7 @@ public class GameController {
         SingletonRooms rooms = SingletonRooms.getInstance();
         Room room = rooms.getPlayerRoom(message.getPlayerLogin());
         Player p = room.getPlayer(message.getPlayerLogin());
+
         if(room.removePlayer(p))
         {
             System.out.println("Remove "+p.getLogin());
@@ -72,7 +77,7 @@ public class GameController {
         {
             System.out.println("Nie odnaleziono gracza");
         }
-        System.out.println(room.getRoomName()+" "+p.getLogin());
+
 
 
         return p.getLogin()+" leaving room";
@@ -83,11 +88,21 @@ public class GameController {
     public String resetGame(StreamMessageModel message) throws Exception {
         SingletonRooms rooms = SingletonRooms.getInstance();
         Room room = rooms.getPlayerRoom(message.getPlayerLogin());
+        User currentUser = userRepository.findUserByLogin(message.getPlayerLogin());
 
-        if(room.getPlayers().size()<=1)
+        if(room.getPlayers().size()==1)
         {
-            room.resetRoom();
-            return room.getRoomName()+" - reset room";
+            if(message.getPlayerLogin()!=null)
+            {
+
+
+                Player p = room.getPlayer(message.getPlayerLogin());
+                room.resetRoom(p);
+                return room.getRoomName()+" - reset room";
+            }else {
+                System.out.println("/reset - nie zidentyfikowano gracza");
+                return "Error";
+            }
         }else
         {
             System.out.println("Nie można zresetować gry, zbyt wielu graczzy");
