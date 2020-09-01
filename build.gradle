@@ -30,13 +30,14 @@ dependencies {
     implementation 'org.webjars:jquery:3.1.1-1'
     implementation 'org.springframework:spring-websocket'
     implementation 'org.springframework:spring-messaging'
-    implementation 'com.fasterxml.jackson.core:jackson-core'
+    compile 'com.fasterxml.jackson.core:jackson-core'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
     runtimeOnly 'mysql:mysql-connector-java'
     providedRuntime 'javax.servlet:jstl:1.2'
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.14'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile ('com.fasterxml.jackson.core:jackson-databind:2.9.8')
     //compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

@@ -59,6 +59,7 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendMove(); });
     $("#reset").click(function() {resetGame();});
+    $("#change").click(function() {change();});
 });
 
 
@@ -124,4 +125,73 @@ function unhovered(el) {
             div.style.backgroundColor = 'rgba(159,151,151,0.46)';
         }
     })
+}
+
+function change(){
+    let settingsModel = JSON.stringify({
+        "inputLogin": document.getElementById("inputLogin").value,
+        "inputPassword4": document.getElementById("inputPassword4").value,
+        "inputEmail4": document.getElementById("inputEmail4").value,
+        "inputPassword24": document.getElementById("inputPassword24").value,
+        "currentLogin": document.getElementById("currentLogin").value
+    })
+
+
+
+    $.post('http://localhost:8081/change', { "inputLogin": document.getElementById("inputLogin").value,
+            "inputPassword4": document.getElementById("inputPassword4").value,
+            "inputEmail4": document.getElementById("inputEmail4").value,
+            "inputPassword24": document.getElementById("inputPassword24").value,
+            "currentLogin": document.getElementById("currentLogin").value
+        },
+        function(returnedData){
+            console.log(returnedData);
+            if(returnedData.login==login)
+            {
+                window.location='/login'
+            }
+        }).error(function(XHR, status, error){
+        console.log(XHR.responseJSON.message);
+        $(".container").append(XHR.responseJSON.message)
+
+    });
+    /*
+
+        $.ajax({
+            url: 'http://localhost:8081/change',
+            type: 'post',
+            headers: {'Access-Control-Allow-Origin': '', 'Content-Type': 'application/json', 'Accept': 'application/json',},
+                data: JSON.stringify( {
+                "inputLogin": document.getElementById("inputLogin").value,
+                "inputPassword4": document.getElementById("inputPassword4").value,
+                "inputEmail4": document.getElementById("inputEmail4").value,
+                "inputPassword24": document.getElementById("inputPassword24").value,
+                "currentLogin": document.getElementById("currentLogin").value
+            } ),
+            processData: false,
+            success: function(){
+                alert("Zmieniono ustawienia");
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+
+        fetch('http://localhost:8081/change', {
+            method: 'POST',
+            body: JSON.stringify(settings),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(response => {
+                if(response.ok){
+                }
+                throw new Error('Request failed!');
+            }, networkError => console.log(networkError.message)
+        ).then(jsonResponse => {
+                alert("Zmieniono ustawienia");
+        });
+    */
+
 }
