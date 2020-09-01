@@ -11,11 +11,13 @@
 
 <%
     String playerLogin = (String) request.getSession().getAttribute("player");
+
     if(room.getPlayer(playerLogin)!=null && room.getOrder().getLast()!=null){
         Integer playerID = room.getPlayer(playerLogin).getId();
         if(room.getOrder().getLast().equals(playerID)) {
 %>
             <div class="container block-row red-block d-flex flex-nowrap">
+
 
         <%
             for (Block b : game.getRedPile().getBlocks()) {
