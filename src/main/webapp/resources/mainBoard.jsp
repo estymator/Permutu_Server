@@ -3,19 +3,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-
-
-
-
-
 <%
     SingletonRooms rooms = SingletonRooms.getInstance();
     String roomName = (String)  request.getSession().getAttribute("room");
     Room room = rooms.getRoom(roomName);
     Permutu game = room.getGame();
+    Integer gameTime=room.getTimeForGame();
 %>
-
-
 
 <%
     if (room.getGame().isDone()) {
@@ -30,8 +24,10 @@
 
     if(room.getPlayer(playerLogin)!=null && room.getOrder().getLast()!=null){
         Integer playerID = room.getPlayer(playerLogin).getId();
-        if(room.getOrder().getLast().equals(playerID)) {
-%>
+        if(room.getOrder().getLast().equals(playerID) &&room.getPlayers().size()==room.getMaxNumberOfPlayers()) {
+    %>
+
+
             <div class="container block-row red-block d-flex flex-nowrap">
 
 
@@ -61,6 +57,7 @@
 </div>
 
 <% } else { %>
+
 <div class="container block-row red-block d-flex flex-nowrap">
 
     <%

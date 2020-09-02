@@ -1,23 +1,32 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="permutu.Models.*" %>
 
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permutu - Play</title>
+    <script src="/webjars/jquery/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/resources/styles/style.css">
     <script src="https://kit.fontawesome.com/c43499c33d.js" crossorigin="anonymous"></script>
-    <script src="/webjars/jquery/jquery.min.js"></script>
+
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="../../resources/js/script.js"></script>
+    <script src="../../resources/js/timer.js"></script>
 </head>
+
+<script>
+    //deklaracja tablicy timerów dla kazdego gracza
+    timers=[];
+</script>
+
 <body class="bg-light">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

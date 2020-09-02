@@ -20,6 +20,7 @@ function connect() {
         move.subscribe('/play', function (play) {
             showState();
         });
+        // Powiadomienie dla innych graczy ze ktos wszedł do pokoju
         move.send("/knock",{},JSON.stringify(move));
     });
 
@@ -49,8 +50,8 @@ function showState() {
     move.playerLogin = "";
     selectedBlocks = [];
     $('#playersLoginSection').load('../resources/loginBoard.jsp');
-    $('#players-block').load('../resources/playerBlocks.jsp');
     $('#main-board').load('../resources/mainBoard.jsp');
+    $('#players-block').load('../resources/playerBlocks.jsp');
 
 }
 
@@ -97,28 +98,26 @@ function resetGame(){
     {
         console.log("Not connected yet")
     }
+}
 
+function winnerAlert(winner){
+    $.post('http://localhost:8081/winner', {
+        "winner": winner,
+        "room" : document.getElementById("roomName").value,
+        },
+        function(returnedData){
+            console.log(returnedData);
+            if(returnedData === winner)
+            {
+                alert("Wygrał " + winner)
+            }
+        }).error(function(XHR, status, error){
+        console.log(XHR.responseJSON.message);
+        $(".container").append(XHR.responseJSON.message)
 
-    }
+    });
 
-    function winnerAlert(winner){
-        $.post('http://localhost:8081/winner', {
-            "winner": winner,
-            "room" : document.getElementById("roomName").value,
-            },
-            function(returnedData){
-                console.log(returnedData);
-                if(returnedData === winner)
-                {
-                    alert("Wygrał " + winner)
-                }
-            }).error(function(XHR, status, error){
-            console.log(XHR.responseJSON.message);
-            $(".container").append(XHR.responseJSON.message)
-
-        });
-
-    }
+}
 
 function hovered(elem) {
     [].forEach.call(document.querySelectorAll('.btn[letter="' + elem.getAttribute('letter') + '"]'), (div) => {
