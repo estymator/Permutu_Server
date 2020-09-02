@@ -49,6 +49,7 @@
             </table>
         </div>
     </div>
+    <a class="nav-item nav-link" href="/samouczek">Samouczek</a>
 </div>
 </body>
 </html>

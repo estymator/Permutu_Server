@@ -49,7 +49,7 @@
                     } else {
                         output += blocks1.getBlock(i).genereteHTMLDisabledBlock();
                         output += "</div>";
-                        output += "<div class=\"in-hand-player"+counter+"\" >";
+                        output += "<div class=\"in-hand in-hand-player"+counter+"\" >";
                     }
                     System.out.println("OUTPUT "+i+" "+output);
                 }
