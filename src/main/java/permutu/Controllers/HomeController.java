@@ -45,12 +45,11 @@ public class HomeController {
                             ,@RequestParam(required = false) Integer time
                             ,@RequestParam(required = false) Integer symbols) {
         String login = principal.getName();
-
         if(players != null && time!=null && symbols!=null && rooms.getRoom(room).getPlayers().size()<=1)
         {
+            System.out.println("Zmiana parametrów pokoju");
             rooms.getRoom(room).setGameParameters(players, time,symbols);
         }
-
         if(rooms.getRoom(room).isPlayer(login)){
             System.out.println("User jest juz obecny w pokoju");
             return new ModelAndView("redirect:" + "game");
@@ -59,18 +58,12 @@ public class HomeController {
             System.out.println("Dodanie usera do pokoju");
             User currentUser = userRepository.findUserByLogin(login);
             currentUser.incTotalGames();
-
             userRepository.save(currentUser);
-
             rooms.getRoom(room).addPlayer(currentUser);
             rooms.getRoom(room).getPlayer(login).setRoomName(room);
-
             request.getSession().setAttribute("room",room);
             request.getSession().setAttribute("player",login);
-
             System.out.println("Order - "+rooms.getRoom(room).getOrder());
-
-
         }
         return new ModelAndView("redirect:" + "game");
     }

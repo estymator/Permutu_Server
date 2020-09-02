@@ -20,7 +20,9 @@ function connect() {
         move.subscribe('/play', function (play) {
             showState();
         });
+        move.send("/knock",{},JSON.stringify(move));
     });
+
 }
 
 function disconnect() {
@@ -46,6 +48,7 @@ function showState() {
     console.log("HERE");
     move.playerLogin = "";
     selectedBlocks = [];
+    $('#playersLoginSection').load('../resources/loginBoard.jsp');
     $('#players-block').load('../resources/playerBlocks.jsp');
     $('#main-board').load('../resources/mainBoard.jsp');
 

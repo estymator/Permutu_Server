@@ -37,15 +37,30 @@
 </nav>
 
 
+<section id="playersLoginSection" class="hidden">
+Gracze w pokoju :
 
-<% SingletonRooms rooms = SingletonRooms.getInstance();
-    String roomName = (String)  request.getSession().getAttribute("room");
-    System.out.println("game.jsp - "+roomName);
+   <%
+       SingletonRooms rooms = SingletonRooms.getInstance();
+       String roomName = (String)  request.getSession().getAttribute("room");
+       System.out.println("game.jsp - "+roomName);
 
-    Room room = rooms.getRoom(roomName);
-    for (User u: room.getPlayers()) {
-        out.print("-"+u.getLogin());
-    }%>
+       Room room = rooms.getRoom(roomName);
+       for (User u: room.getPlayers()) {
+           out.print(" -"+u.getLogin());
+       }
+       out.println(""); //next line
+       if(room.getPlayers().size()==room.getMaxNumberOfPlayers())
+       {
+       %>
+           <script>     $("#connect").prop("disabled", false); </script>
+       <%
+       }else
+       {
+           out.println("Poczekaj aż pokój się zapełni");
+       }
+       %>
+</section>
 
 <div id="login" class="hidden">
     ${pageContext.request.userPrincipal.name}
@@ -59,7 +74,7 @@
         <label for="connect">WebSocket connection:</label>
         <button id="connect" class="btn btn-default" type="submit">Connect</button>
         <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button>
-        <button id="send" class="btn btn-default" type="submit">Send</button>
+        <button id="send" class="btn btn-default" type="submit" disabled="disabled">Send</button>
         <button id="reset" class="btn btn-default" type="submit" disabled="disabled">Reset Game</br>(Only when you are alone in the room)</button>
     </div>
 </form>

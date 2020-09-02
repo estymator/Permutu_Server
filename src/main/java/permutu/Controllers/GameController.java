@@ -27,12 +27,18 @@ public class GameController {
         return "index";
     }
 
+
+
     @MessageMapping("/move")
     @SendTo("/play")
     public String play(StreamMessageModel message) throws Exception {
         SingletonRooms rooms = SingletonRooms.getInstance();
         Room room = rooms.getPlayerRoom(message.getPlayerLogin());
         Player p = room.getPlayer(message.getPlayerLogin());
+        if(room.getPlayers().size()<room.getMaxNumberOfPlayers())
+        {
+            return "Nie można zacząć gry dopóki wszystkie miejsca nie będą zajęte";
+        }
         BlockCollection playerBlocks = p.getBlocksInHand();
         BlockCollection selectedBlocks =  new BlockCollection("selectedBlocks");
         if(message.getselectedBlocks().length > 0){
@@ -109,9 +115,19 @@ public class GameController {
             return room.getRoomName()+" - Nie można zrestartowąć gry, co najmniej 2 graczy obecnych w pokoju";
         }
 
+    }
 
 
-
+    /**
+     * Simple method to let others users know about new user in room
+     * @param message
+     * @return
+     * @throws Exception
+     */
+    @MessageMapping("/knock")
+    @SendTo("/play")
+    public String newUserConnect(StreamMessageModel message) throws Exception {
+     return "New user joined";
     }
 
 
