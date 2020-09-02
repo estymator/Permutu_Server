@@ -27,21 +27,44 @@ public class HistoryController {
     public String getHistory(Principal principal, HttpServletRequest request) {
         String login = principal.getName();
         User user = userRepository.findUserByLogin(login);
+
         ArrayList<GameHistory> histories = gameHistoryRepository.findByUserId(user.getUserId());
+        ArrayList<HistoryDTO> historyDTOS = new ArrayList<>();
+        ArrayList<Integer> games = new ArrayList<Integer>();
+        if(histories.size() > 0) {
+            for(int i = 0; i < histories.size(); i++)
+            {
+                if(!isInArray(games,histories.get(i).getGameId())) {
+                    int gameId = histories.get(i).getGameId();
+                    games.add(gameId);
+                    HistoryDTO historyDTO = new HistoryDTO();
+                    historyDTO.setGameid(gameId);
+                    historyDTO.setWinner(histories.get(i).getWinner());
+                    historyDTO.setTimestamp(histories.get(i).getDate());
+                    for (GameHistory gh : histories) {
+                        if(gh.getGameId() == gameId) {
+                            User u = userRepository.findByUserId(gh.getUserId());
+                            historyDTO.getUserLogins().add(u.getLogin());
+                        }
+                    }
+                    historyDTOS.add(historyDTO);
+                }
+            }
 
-        HistoryDTO historyDTO = new HistoryDTO();
 
-        historyDTO.setGameid(histories.get(0).getGameId());
-        historyDTO.setWinner(histories.get(0).getWinner());
-        historyDTO.setTimestamp(histories.get(0).getDate());
 
-        for(GameHistory gh : histories){
-            User u = userRepository.findByUserId(gh.getUserId());
-            historyDTO.getUserLogins().add(u.getLogin());
+
+
+            request.getSession().setAttribute("histories", historyDTOS);
+
         }
-
-
-        request.getSession().setAttribute("histories",historyDTO);
         return "history";
+    }
+
+    public boolean isInArray(ArrayList<Integer> array, int a){
+        for(Integer i: array){
+            if(i == a) return true;
+        }
+        return false;
     }
 }

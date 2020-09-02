@@ -68,31 +68,7 @@ public class HomeController {
         return new ModelAndView("redirect:" + "game");
     }
 
-    @PostMapping(path="/winner")
-    public @ResponseBody String winner(@RequestParam String room, @RequestParam String winner){
-        User u = userRepository.findUserByLogin(winner);
-        u.incWinnGames();
-        userRepository.save(u);
-        GameModel game = new GameModel();
-        gameModelRepository.save(game);
 
-        game = gameModelRepository.findTopByOrderByIdDesc();
-
-        Room currentRoom = rooms.getRoom(room);
-
-        for(Player p : currentRoom.getPlayers()){
-            GameHistory gameHistory = new GameHistory();
-            gameHistory.setUserId(p.getId());
-            gameHistory.setGameId(game.getId());
-            gameHistory.setWinner(winner);
-            gameHistoryRepository.save(gameHistory);
-        }
-
-
-
-
-        return winner;
-    }
 
 
     private void setRoomsAttribute(HttpServletRequest request){
