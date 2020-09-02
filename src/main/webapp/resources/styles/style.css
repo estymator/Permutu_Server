@@ -2,10 +2,6 @@ body {
     padding-top: 120px;
     padding-bottom: 40px;
     background-color: #444444;
-    -webkit-transition: all 2s ease;
-    -moz-transition:    all 2s ease;
-    -ms-transition:     all 2s ease;
-    -o-transition:      all 2s ease;
 }
 
 .player-blocks {
@@ -23,10 +19,11 @@ body {
 }
 
 .btn {
-  outline:0;
-  border:none;
-  box-shadow:inset 2px -3px rgba(0,0,0,0.15);
-  min-height: 40px;
+    outline:0;
+    border:none;
+    box-shadow:inset 2px -3px rgba(0,0,0,0.15);
+    min-height: 50px;
+    min-width: 30px;
 }
 
 .btn:focus  {
@@ -126,17 +123,20 @@ body {
 }
 
 .btn.takenFromBoard {
-  opacity: 0;
-  min-height: 40px;
+    opacity: 0;
+    min-height: 50px;
+    min-width: 30px;
 }
 
 .in-hand .btn{
-  min-height: 40px;
+    min-height: 50px;
+    min-width: 30px;
 }
 .in-hand {
-  min-height: 40px;
-  width: 40px;
-  position: relative;
+    min-height: 50px;
+    min-width: 30px;
+    width: 40px;
+    position: relative;
 }
 .in-hand .btn:nth-child(1){
   position: absolute;
