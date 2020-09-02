@@ -69,7 +69,6 @@ public class Block{
 
     public String genereteHTMLBlock(){
         String color = getBootstrapCoolor(this.getColor());
-//        return "<button type=\"button\" class=\"btn btn-light btn-lg\"><span class=\"icon-" +  COLORS[this.color] + "_" + SIGNS[this.sign] +"\"></span></button>";
         if(color!="text-hidden"){
                return "<button onclick=\"selected(this)\" onmouseout=\"unhovered(this)\" onmousemove=\"hovered(this)\" letter=\""+sign+"\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2 " + color + "\" " +
                     "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\">\n" +
@@ -87,8 +86,8 @@ public class Block{
         if(color!="text-hidden"){
 
              return "<button onclick=\"selected(this)\" onmouseout=\"unhovered(this)\" onmousemove=\"hovered(this)\" letter=\""+sign+"\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2 " + color + "\" " +
-                    "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\">\n" +
-                    "               "  + "<span class=\"icon-" +  COLORS[this.color] + "_" + SIGNS[this.sign] +"\"></span></button>";
+                    "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\" disabled>\n" +
+                    "               "  + "<span class=\"icon-" +  COLORS[this.color] + "_" + SIGNS[this.sign] + "\"></span></button>";
 
 
 
