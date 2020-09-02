@@ -1,10 +1,17 @@
 package permutu.Models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import permutu.Repositories.GameHistoryRepository;
+
+
+
 import java.util.ArrayList;
 
 public class SingletonRooms {
 
     private ArrayList<Room> rooms;
+
+
 
     private SingletonRooms(){
         if(Holder.INSTANCE != null){
@@ -12,9 +19,13 @@ public class SingletonRooms {
         }
         else{
             this.rooms = new ArrayList<>();
+
             rooms.add(new Room("Room_1", new Permutu()));
+
             rooms.add(new Room("Room_2", new Permutu()));
+
             rooms.add(new Room("Room_4", new Permutu()));
+
         }
     }
 

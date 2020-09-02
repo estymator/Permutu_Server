@@ -1,10 +1,9 @@
 package permutu.Models;
 
-
 import java.util.ArrayList;
 
 import java.util.LinkedList;
-import java.util.Stack;
+
 
 public class Room {
 
@@ -151,7 +150,8 @@ public class Room {
                     "  <option value=\"10\">10 symboli</option>\n" +
                     "  <option value=\"20\">20 symboli</option>\n" +
                     "</select>" +
-                    "</td>";
+                    "</td>"
+                    ;
         }else
         {
             resultHTMLBlock +=  "    <td>" +

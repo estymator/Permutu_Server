@@ -1,5 +1,11 @@
+
 <%@ page import="permutu.Models.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+
+
+
 
 
 <%
@@ -7,6 +13,16 @@
     String roomName = (String)  request.getSession().getAttribute("room");
     Room room = rooms.getRoom(roomName);
     Permutu game = room.getGame();
+%>
+
+
+
+<%
+    if (room.getGame().isDone()) {
+        request.getSession().setAttribute("winner",room.getWinner());
+        out.print("<script>winnerAlert('"+ room.getWinner() + "')</script>");
+
+    }
 %>
 
 <%

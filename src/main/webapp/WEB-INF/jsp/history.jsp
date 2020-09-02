@@ -2,7 +2,9 @@
 <%@ page import="permutu.Repositories.UserRepository" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="permutu.Models.User" %>
-<%@ page import="permutu.Controllers.HomeController" %><%--
+<%@ page import="permutu.Controllers.HomeController" %>
+<%@ page import="permutu.Models.GameHistory" %>
+<%@ page import="permutu.Models.HistoryDTO" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 30.08.2020
@@ -25,8 +27,8 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link active" href="/score">Wyniki <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/history">Historia Twoich gier</a>
+            <a class="nav-item nav-link" href="/score">Wyniki</a>
+            <a class="nav-item nav-link active" href="/history">Historia Twoich gier <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="/settings">Ustawienia</a>
             <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
         </div>
@@ -34,24 +36,24 @@
 </nav>
 
 <%
-    ArrayList<User> users = (ArrayList<User>) request.getSession().getAttribute("users");
+    HistoryDTO histories = (HistoryDTO) request.getSession().getAttribute("histories");
+
 %>
 <div class="container">
-    <h1 class="text-center">Tablica wyników</h1>
+    <h1 class="text-center">Historia Twoich gier</h1>
     <table class="table table-sm">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nazwa użytkownika</th>
-            <th scope="col">Rozegrane gry</th>
-            <th scope="col">Wygrane</th>
-            <th scope="col">Wspołćzynnik wygranych gier</th>
+            <th scope="col">Data</th>
+            <th scope="col">Gracze</th>
+            <th scope="col">Wygrany</th>
+
         </tr>
         </thead>
         <tbody>
-        <% for(User u : users){
-            out.print(u.genereteHTMLtrForUser());
-        }
+        <%
+            out.print(histories.genereteHTML());
         %>
         </tbody>
     </table>

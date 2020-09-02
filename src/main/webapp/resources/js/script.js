@@ -99,14 +99,21 @@ function resetGame(){
     }
 
     function winnerAlert(winner){
-        $.post('http://localhost:8081/winner', { "winner": winner,
+        $.post('http://localhost:8081/winner', {
+            "winner": winner,
+            "room" : document.getElementById("roomName").value,
+            },
+            function(returnedData){
+                console.log(returnedData);
+                if(returnedData === winner)
+                {
+                    alert("Wygrał " + winner)
+                }
             }).error(function(XHR, status, error){
             console.log(XHR.responseJSON.message);
             $(".container").append(XHR.responseJSON.message)
 
         });
-
-        alert("The winner is " + winner);
 
     }
 

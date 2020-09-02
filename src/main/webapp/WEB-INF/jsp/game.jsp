@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/resources/styles/style.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/c43499c33d.js" crossorigin="anonymous"></script>
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
@@ -30,6 +29,7 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="/home">Home</a>
             <a class="nav-item nav-link" href="/score">Wyniki</a>
+            <a class="nav-item nav-link" href="/history">Historia Twoich gier</a>
             <a class="nav-item nav-link" href="/settings">Ustawienia</a>
             <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
         </div>
@@ -51,6 +51,9 @@
     ${pageContext.request.userPrincipal.name}
 </div>
 
+<input type="hidden" id="winner" value='<%=(String) request.getSession().getAttribute("winner")%>'/>
+<input type="hidden" id="roomName" value='<%=room.getRoomName()%>'/>
+
 <form class="form-inline">
     <div class="form-group">
         <label for="connect">WebSocket connection:</label>
@@ -61,11 +64,7 @@
     </div>
 </form>
 
-<%
-    if (room.getGame().isDone()) {
-        out.println("<script>winnerAlert(" +room.getWinner() + ");</script>");
-    }
-%>
+    <section id="winner"></section>
 
 
     <section id="main-board" class="main-board rounded">
