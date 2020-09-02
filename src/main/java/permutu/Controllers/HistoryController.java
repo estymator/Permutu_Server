@@ -27,21 +27,24 @@ public class HistoryController {
     public String getHistory(Principal principal, HttpServletRequest request) {
         String login = principal.getName();
         User user = userRepository.findUserByLogin(login);
+
         ArrayList<GameHistory> histories = gameHistoryRepository.findByUserId(user.getUserId());
+        if(histories.size() > 0) {
+            HistoryDTO historyDTO = new HistoryDTO();
 
-        HistoryDTO historyDTO = new HistoryDTO();
+            historyDTO.setGameid(histories.get(0).getGameId());
+            historyDTO.setWinner(histories.get(0).getWinner());
+            historyDTO.setTimestamp(histories.get(0).getDate());
 
-        historyDTO.setGameid(histories.get(0).getGameId());
-        historyDTO.setWinner(histories.get(0).getWinner());
-        historyDTO.setTimestamp(histories.get(0).getDate());
+            for (GameHistory gh : histories) {
+                User u = userRepository.findByUserId(gh.getUserId());
+                historyDTO.getUserLogins().add(u.getLogin());
+            }
 
-        for(GameHistory gh : histories){
-            User u = userRepository.findByUserId(gh.getUserId());
-            historyDTO.getUserLogins().add(u.getLogin());
+
+            request.getSession().setAttribute("histories", historyDTO);
+
         }
-
-
-        request.getSession().setAttribute("histories",historyDTO);
         return "history";
     }
 }

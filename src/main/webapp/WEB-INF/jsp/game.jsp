@@ -62,11 +62,7 @@
     </div>
 </form>
 
-<%
-    if (room.getGame().isDone()) {
-        out.println("<script>winnerAlert(" +room.getWinner() + ");</script>");
-    }
-%>
+<input type="hidden" id="roomName" value='<%=roomName%>'>
 
 
     <section id="main-board" class="main-board rounded">

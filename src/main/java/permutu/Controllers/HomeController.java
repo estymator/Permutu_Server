@@ -88,9 +88,6 @@ public class HomeController {
             gameHistoryRepository.save(gameHistory);
         }
 
-
-
-
         return winner;
     }
 

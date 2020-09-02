@@ -53,7 +53,9 @@
         </thead>
         <tbody>
         <%
-            out.print(histories.genereteHTML());
+            if(histories != null){
+                out.print(histories.genereteHTML());
+            }
         %>
         </tbody>
     </table>
