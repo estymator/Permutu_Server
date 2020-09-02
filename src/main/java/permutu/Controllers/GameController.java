@@ -6,8 +6,13 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import permutu.Models.*;
+import permutu.Repositories.GameHistoryRepository;
+import permutu.Repositories.GameModelRepository;
 import permutu.Repositories.UserRepository;
 
 @Controller
@@ -15,6 +20,14 @@ public class GameController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private GameModelRepository gameModelRepository;
+
+    @Autowired
+    private GameHistoryRepository gameHistoryRepository;
+
+    private SingletonRooms rooms = SingletonRooms.getInstance();
 
     @GetMapping("/game")
     public String showLoginView(Model model) {
@@ -32,7 +45,6 @@ public class GameController {
     @MessageMapping("/move")
     @SendTo("/play")
     public String play(StreamMessageModel message) throws Exception {
-        SingletonRooms rooms = SingletonRooms.getInstance();
         Room room = rooms.getPlayerRoom(message.getPlayerLogin());
         Player p = room.getPlayer(message.getPlayerLogin());
         if(room.getPlayers().size()<room.getMaxNumberOfPlayers())
@@ -50,7 +62,7 @@ public class GameController {
             if(room.getGame().isInFullColumn(selectedBlocks.getBlock(0)) && room.getGame().haventAnyPlayer(room.getPlayers(),selectedBlocks.getBlock(0),p)){
                 room.getGame().removeFromBoard(selectedBlocks.getBlock(0));
                 playerBlocks.addBlockOrdered(selectedBlocks.getBlock(0));
-                room.nextTurn();
+
             }
         }
 
@@ -60,11 +72,11 @@ public class GameController {
                     room.getGame().removeFromBoard(b);
                     playerBlocks.addBlockOrdered(b);
                 }
-                room.nextTurn();
+
             }
         }
         p.countPoints();
-
+        room.nextTurn();
         System.out.println(room.getOrder());
         return "OK";
     }
@@ -72,7 +84,7 @@ public class GameController {
     @MessageMapping("/leave")
     @SendTo("/play")
     public String leaveRoom(StreamMessageModel message) throws Exception {
-        SingletonRooms rooms = SingletonRooms.getInstance();
+
         Room room = rooms.getPlayerRoom(message.getPlayerLogin());
         Player p = room.getPlayer(message.getPlayerLogin());
 
@@ -128,6 +140,40 @@ public class GameController {
     @SendTo("/play")
     public String newUserConnect(StreamMessageModel message) throws Exception {
      return "New user joined";
+    }
+
+    @PostMapping(path="/winner")
+    public @ResponseBody
+    synchronized String winner(@RequestParam String room, @RequestParam String winner){
+        Permutu game = rooms.getRoom(room).getGame();
+        Room currentRoom = rooms.getRoom(room);
+
+        if(!game.isSaved()){
+
+            User u = userRepository.findUserByLogin(winner);
+            u.incWinnGames();
+            userRepository.save(u);
+
+            GameModel gameModel = new GameModel();
+            gameModelRepository.save(gameModel);
+
+            gameModel = gameModelRepository.findTopByOrderByIdDesc();
+
+            gameModel.setMaxNumberOfPlayers(currentRoom.getMaxNumberOfPlayers());
+            gameModel.setNumberOfSymbols(currentRoom.getNumberOfSymbols());
+            gameModel.setTimeForGame(currentRoom.getTimeForGame());
+
+
+            for(Player p : currentRoom.getPlayers()){
+                GameHistory gameHistory = new GameHistory();
+                gameHistory.setUserId(p.getId());
+                gameHistory.setGameId(gameModel.getId());
+                gameHistory.setWinner(winner);
+                gameHistoryRepository.save(gameHistory);
+            }
+            game.setSaved(true);
+        }
+        return winner;
     }
 
 

@@ -12,6 +12,11 @@ public class GameModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    private int maxNumberOfPlayers;
+    private int timeForGame;
+    private int numberOfSymbols;
+
+
 
     public Integer getId() {
         return id;
@@ -21,5 +26,27 @@ public class GameModel {
         this.id = id;
     }
 
+    public int getMaxNumberOfPlayers() {
+        return maxNumberOfPlayers;
+    }
 
+    public void setMaxNumberOfPlayers(int maxNumberOfPlayers) {
+        this.maxNumberOfPlayers = maxNumberOfPlayers;
+    }
+
+    public int getTimeForGame() {
+        return timeForGame;
+    }
+
+    public void setTimeForGame(int timeForGame) {
+        this.timeForGame = timeForGame;
+    }
+
+    public int getNumberOfSymbols() {
+        return numberOfSymbols;
+    }
+
+    public void setNumberOfSymbols(int numberOfSymbols) {
+        this.numberOfSymbols = numberOfSymbols;
+    }
 }

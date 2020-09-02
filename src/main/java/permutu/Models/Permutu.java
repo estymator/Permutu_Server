@@ -16,6 +16,8 @@ public class Permutu {
 
     private Pile greenPile;
 
+    private boolean saved = false;
+
     public Permutu() {
         try {
             this.redPile = new Pile("red");
@@ -241,8 +243,13 @@ public class Permutu {
     }
 
 
+    public boolean isSaved() {
+        return saved;
+    }
 
-
+    public void setSaved(boolean saved) {
+        this.saved = saved;
+    }
 }
 
 

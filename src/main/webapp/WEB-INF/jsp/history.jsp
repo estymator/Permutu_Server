@@ -36,7 +36,7 @@
 </nav>
 
 <%
-    HistoryDTO histories = (HistoryDTO) request.getSession().getAttribute("histories");
+    ArrayList<HistoryDTO> histories = (ArrayList<HistoryDTO> ) request.getSession().getAttribute("histories");
 
 %>
 <div class="container">
@@ -54,7 +54,8 @@
         <tbody>
         <%
             if(histories != null){
-                out.print(histories.genereteHTML());
+                for(HistoryDTO hd : histories)
+                out.print(hd.genereteHTML());
             }
         %>
         </tbody>
