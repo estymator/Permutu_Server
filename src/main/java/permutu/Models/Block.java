@@ -69,11 +69,13 @@ public class Block{
 
     public String genereteHTMLBlock(){
         String color = getBootstrapCoolor(this.getColor());
+//        return "<button type=\"button\" class=\"btn btn-light btn-lg\"><span class=\"icon-" +  COLORS[this.color] + "_" + SIGNS[this.sign] +"\"></span></button>";
         if(color!="text-hidden"){
-            return "<button onclick=\"selected(this)\" onmouseout=\"unhovered(this)\" onmouseenter=\"hovered(this)\" letter=\""+sign+"\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2 " + color + "\" " +
+               return "<button onclick=\"selected(this)\" onmouseout=\"unhovered(this)\" onmouseenter=\"hovered(this)\" letter=\""+sign+"\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2 " + color + "\" " +
                     "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\">\n" +
-                    "               " + SIGNS[this.sign].toUpperCase() +"\n" +
-                    "            </button>";
+                    "               "  + "<span class=\"icon-" +  COLORS[this.color] + "_" + SIGNS[this.sign] +"\"></span></button>";
+
+
         } else {
             return "<button class=\"btn takenFromBoard block d-flex justify-content-center align-items-center rounded p-2 m-2\"></button>";
         }
@@ -83,10 +85,13 @@ public class Block{
     public String genereteHTMLDisabledBlock(){
         String color = getBootstrapCoolor(this.getColor());
         if(color!="text-hidden"){
-            return "<button onclick=\"selected(this)\" onmouseout=\"unhovered(this)\" onmouseenter=\"hovered(this)\"  class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2 " + color + "\" " +
-                    "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\" disabled>\n" +
-                    "               " + SIGNS[this.sign].toUpperCase() +"\n" +
-                    "            </button>";
+
+             return "<button onclick=\"selected(this)\" onmouseout=\"unhovered(this)\" onmouseenter=\"hovered(this)\" letter=\""+sign+"\" class=\"btn block d-flex justify-content-center align-items-center rounded p-2 m-2 " + color + "\" " +
+                    "id=\"" + COLORS[this.color] + "-" + SIGNS[this.sign] + "\">\n" +
+                    "               "  + "<span class=\"icon-" +  COLORS[this.color] + "_" + SIGNS[this.sign] +"\"></span></button>";
+
+
+
         } else {
             return "<button class=\"btn takenFromBoard block d-flex justify-content-center align-items-center rounded p-2 m-2\"></button>";
         }

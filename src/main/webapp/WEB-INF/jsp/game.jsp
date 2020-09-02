@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/resources/styles/style.css">
+    <link rel="stylesheet" href="/resources/styles/pilestyle.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/c43499c33d.js" crossorigin="anonymous"></script>
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
@@ -29,7 +31,6 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="/home">Home</a>
             <a class="nav-item nav-link" href="/score">Wyniki</a>
-            <a class="nav-item nav-link" href="/history">Historia Twoich gier</a>
             <a class="nav-item nav-link" href="/settings">Ustawienia</a>
             <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
         </div>
@@ -37,49 +38,35 @@
 </nav>
 
 
-<section id="playersLoginSection" class="hidden">
-Gracze w pokoju :
 
-   <%
-       SingletonRooms rooms = SingletonRooms.getInstance();
-       String roomName = (String)  request.getSession().getAttribute("room");
-       System.out.println("game.jsp - "+roomName);
+<% SingletonRooms rooms = SingletonRooms.getInstance();
+    String roomName = (String)  request.getSession().getAttribute("room");
+    System.out.println("game.jsp - "+roomName);
 
-       Room room = rooms.getRoom(roomName);
-       for (User u: room.getPlayers()) {
-           out.print(" -"+u.getLogin());
-       }
-       out.println(""); //next line
-       if(room.getPlayers().size()==room.getMaxNumberOfPlayers())
-       {
-       %>
-           <script>     $("#connect").prop("disabled", false); </script>
-       <%
-       }else
-       {
-           out.println("Poczekaj aż pokój się zapełni");
-       }
-       %>
-</section>
+    Room room = rooms.getRoom(roomName);
+    for (User u: room.getPlayers()) {
+        out.print("-"+u.getLogin());
+    }%>
 
 <div id="login" class="hidden">
     ${pageContext.request.userPrincipal.name}
 </div>
-
-<input type="hidden" id="winner" value='<%=(String) request.getSession().getAttribute("winner")%>'/>
-<input type="hidden" id="roomName" value='<%=room.getRoomName()%>'/>
 
 <form class="form-inline">
     <div class="form-group">
         <label for="connect">WebSocket connection:</label>
         <button id="connect" class="btn btn-default" type="submit">Connect</button>
         <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button>
-        <button id="send" class="btn btn-default" type="submit" disabled="disabled">Send</button>
+        <button id="send" class="btn btn-default" type="submit">Send</button>
         <button id="reset" class="btn btn-default" type="submit" disabled="disabled">Reset Game</br>(Only when you are alone in the room)</button>
     </div>
 </form>
 
-    <section id="winner"></section>
+<%
+    if (room.getGame().isDone()) {
+        out.println("<script>winnerAlert(" +room.getWinner() + ");</script>");
+    }
+%>
 
 
     <section id="main-board" class="main-board rounded">
