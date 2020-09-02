@@ -127,6 +127,15 @@ function hovered(elem) {
     })
 }
 
+function hoveredTutorialRed(elem) {
+    elem.style.backgroundColor="red"
+}
+function unhoveredTutorialRed(elem) {
+    if (elem.style.backgroundColor="red") {
+        elem.style.backgroundColor="rgba(159,151,151,0.46)";
+    }
+}
+
 function unhovered(el) {
     var sign = el.getAttribute('letter');
     [].forEach.call(document.querySelectorAll('.btn[letter="' + sign + '"]'), (div) => {
@@ -203,4 +212,70 @@ function change(){
         });
     */
 
+}
+
+function showNext() {
+    var first = document.querySelectorAll('section.hidden.toshow')[0];
+    first.classList.remove('hidden');
+    first.classList.remove('toshow');
+    first.classList.add('active');
+}
+
+function hideActive() {
+    var active = document.querySelector('section.active');
+    active.classList.add('hidden');
+    active.classList.remove('active');
+}
+
+function potwierdzSamouczek0(elem) {
+    showNext();
+    document.querySelector('#first-section').classList.add('hidden');
+}
+
+function potwierdzSamouczek1(elem) {
+    if((document.querySelector('#black-B')).style.backgroundColor==="pink"){
+        console.log("potwierdz1 dziala");
+        hideActive();
+        showNext();
+    } else {
+        console.log("potwierdz1 nie dziala")
+    }
+}
+
+function potwierdzSamouczek12(elem) {
+    hideActive();
+    showNext();
+}
+
+function potwierdzSamouczek2() {
+    if((document.querySelector('#red-G')).style.backgroundColor==="pink"&&(document.querySelector('#black-H')).style.backgroundColor==="pink"&&(document.querySelector('#green-I')).style.backgroundColor==="pink"){
+        console.log("potwierdz2 dziala");
+        hideActive();
+        showNext();
+    } else {
+        console.log("potwierdz2 nie dziala")
+    }
+}
+function potwierdzSamouczek21() {
+    hideActive();
+    showNext();
+}
+
+function potwierdzSamouczek3() {
+    if((document.querySelector('#black-M')).style.backgroundColor==="pink"&&(document.querySelector('#green-N')).style.backgroundColor==="pink"){
+        console.log("potwierdz2 dziala");
+        hideActive();
+        showNext();
+    } else {
+        console.log("potwierdz2 nie dziala")
+    }
+}
+
+function potwierdzSamouczek31() {
+    hideActive();
+    showNext();
+}
+
+function potwierdzSamouczek4() {
+    window.location.replace("home");
 }
