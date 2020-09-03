@@ -119,6 +119,10 @@ function winnerAlert(winner){
 
 }
 
+function timeGoOut(userId){
+
+}
+
 function hovered(elem) {
     [].forEach.call(document.querySelectorAll('.btn[letter="' + elem.getAttribute('letter') + '"]'), (div) => {
         if (div.style.backgroundColor!="pink") {

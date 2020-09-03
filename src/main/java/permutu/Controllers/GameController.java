@@ -176,6 +176,45 @@ public class GameController {
         return winner;
     }
 
+    /**
+     *
+     * @param userId
+     * @return login gracza jeśli był to ostatni aktywny zawodnik, w przeciwnym razie 1
+     */
+    @PostMapping("/timeGoOut")
+    public @ResponseBody String timeGoOut(@RequestParam Integer userId){
+        System.out.println(userId);
+        SingletonRooms rooms = SingletonRooms.getInstance();
+        Room room = rooms.getPlayerRoomById(userId);
+        System.out.println(room.getOrder());
+
+        Player p = room.getPlayerById(userId);
+        System.out.println("Koniec czasu");
+        if(p!=null)
+        {
+            if(room.getOrder().size()==1)
+            {
+                System.out.println("Ostatni zawodnik");
+                winner(room.getRoomName(),p.getLogin());
+                return p.getLogin();
+            }else
+            {
+                System.out.println("Nie Ostatni zawodnik");
+                room.getOrder().removeFirstOccurrence(p.getId());
+                return "1";
+            }
+
+        }else
+        {
+            System.out.println("Przesłany user == null");
+            return "0";
+        }
+
+
+
+
+    }
+
 
 }
 

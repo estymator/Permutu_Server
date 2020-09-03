@@ -8,7 +8,7 @@
     String roomName = (String)  request.getSession().getAttribute("room");
     Room room = rooms.getRoom(roomName);
     Permutu game = room.getGame();
-    Integer gameTime=room.getTimeForGame();
+
 %>
 
 <%

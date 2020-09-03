@@ -6,10 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permutu - Play</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="/resources/styles/style.css">
 
     <script src="https://kit.fontawesome.com/c43499c33d.js" crossorigin="anonymous"></script>
@@ -27,6 +26,7 @@
             <a class="nav-item nav-link" href="/score">Wyniki</a>
             <a class="nav-item nav-link" href="/history">Historia Twoich gier</a>
             <a class="nav-item nav-link" href="/settings">Ustawienia</a>
+            <a class="nav-item nav-link" href="/samouczek">Samouczek</a>
             <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
         </div>
     </div>
@@ -40,11 +40,11 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Room Name</th>
-                <th scope="col">Number of Players in Room</th>
-                <th scope="col">Max Number of Players in room</th>
-                <th scope="col">Time for One Player</th>
-                <th scope="col">Number of Symbols</th>
+                <th scope="col">Pokój</th>
+                <th scope="col">Ilość graczy</th>
+                <th scope="col">Maksymalna ilość graczy</th>
+                <th scope="col">Czas na rozgrywkę</th>
+                <th scope="col">Ilość symboli</th>
                 <th scope="col"></th>
             </tr>
             </thead>

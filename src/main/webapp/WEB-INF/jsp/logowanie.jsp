@@ -27,6 +27,8 @@
 		<button class="btn btn-lg btn-primary btn-block" type="submit">
 			Zaloguj
         </button>
+        </br>
+        <a href="/register" class="btn btn-primary stretched-link">Zarejestruj się</a>
  
 	</form>
     <% if(request.getParameter("error")!=null)

@@ -28,6 +28,7 @@
             <a class="nav-item nav-link active" href="/score">Wyniki <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="/history">Historia Twoich gier</a>
             <a class="nav-item nav-link" href="/settings">Ustawienia</a>
+            <a class="nav-item nav-link" href="/samouczek">Samouczek</a>
             <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
         </div>
     </div>
@@ -45,7 +46,7 @@
             <th scope="col">Nazwa użytkownika</th>
             <th scope="col">Rozegrane gry</th>
             <th scope="col">Wygrane</th>
-            <th scope="col">Wspołćzynnik wygranych gier</th>
+            <th scope="col">Współczynnik wygranych gier</th>
         </tr>
         </thead>
         <tbody>

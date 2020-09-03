@@ -32,13 +32,13 @@ class Timer {
                 _this.clockisRunning=true;
 
                 if(!_this.isPaused){
-                    console.log("ustalenie czasu dwa"+_this.remainingTime);
+
                     _this.remainingTime=_this.remainingTime-1;
-                    console.log("ustalenie czasu trzy"+_this.remainingTime);
+
                     _this.minutes = Math.floor((_this.remainingTime / 60) % 60);
                     _this.seconds = Math.floor(_this.remainingTime % 60);
                     _this.remainingTimeString= _this.minutes + "m : " + _this.seconds + "s ";
-                    console.log("Pozostało - "+_this.remainingTimeString)
+
                     document.getElementById(div).innerHTML = _this.minutes + "m : " + _this.seconds + "s ";
 
 
@@ -46,6 +46,13 @@ class Timer {
                     if (_this.remainingTime < 0) {
                       clearInterval(_this.clock);
                       document.getElementById(div).innerHTML = "00 : 00";
+
+                      if(div=="timeHost")
+                      {
+                          console.log("Wysyłam sendAlert");
+                         _this.sendAlert();
+                      }
+
                     }
                 }else
                 {
@@ -54,6 +61,28 @@ class Timer {
             },1000);
 
         }
+    }
+
+    sendAlert(){
+        $.post('http://localhost:8081/timeGoOut', { "userId": this.userId},
+        function(returnedData){
+            console.log(returnedData);
+            if(returnedData=="1")
+            {
+                console.log("ladowanie");
+                $('#playersLoginSection').load('../resources/loginBoard.jsp');
+                $('#main-board').load('../resources/mainBoard.jsp');
+                $('#players-block').load('../resources/playerBlocks.jsp');
+            }else if(returnedData=="0")
+            {
+                console.log("Błąd");
+            }else
+            {
+                    alert("Wygrał " + returnedData)
+            }
+
+
+        });
     }
 
 }

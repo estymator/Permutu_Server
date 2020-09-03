@@ -14,6 +14,7 @@
 <%
     boolean playerIsHost=false;
     Room room = rooms.getRoom((String )request.getSession().getAttribute("room"));
+    Integer gameTime=room.getTimeForGame();
     System.out.println((String )request.getSession().getAttribute("room"));
     String playerLogin = (String) request.getSession().getAttribute("player");
     BlockCollection blocks = room.getPlayer(playerLogin).getBlocksInHand();
@@ -34,7 +35,14 @@
         hostOutput += blocks.getBlock(blocks.size()-1).genereteHTMLDisabledBlock();
     }
 
-    hostOutput += "</div></div><h1>SCORE: "+score+" </h1></br> <div id=\"timeHost\" class=\"flexed-row\" >  </div> </section>";
+    //dla wartosci 0 gra nie jest na czas
+    if(gameTime!=0)
+    {
+        hostOutput += "</div></div><h1>SCORE: "+score+" </h1></br> <div id=\"timeHost\" class=\"flexed-row\" > </div> </section>";
+    }else{
+        hostOutput += "</div></div><h1>SCORE: "+score+" </h1></br> <div id=\"timeHost\" class=\"flexed-row\" ></div> </section>";
+    }
+
 
 
     out.print(hostOutput);
@@ -63,7 +71,12 @@
                 output += blocks1.getBlock(blocks1.size()-1).genereteHTMLDisabledBlock();
 
             }
-            output += "</div></div><h1>SCORE: "+p.getPoints()+" </h1> </br> <div id=\"timePlayer"+counter+"\" class=\"flexed-row\" >  </div> </section>";
+            if(gameTime!=0){
+                output += "</div></div><h1>SCORE: "+p.getPoints()+" </h1> </br> <div id=\"timePlayer"+counter+"\" class=\"flexed-row\" > </div> </section>";
+            }else
+            {
+                output += "</div></div><h1>SCORE: "+p.getPoints()+" </h1> </br> <div id=\"timePlayer"+counter+"\" class=\"flexed-row\" >  </div> </section>";
+            }
             out.print(output);
 
             playerIsHost=false;
@@ -73,10 +86,11 @@
         }
         // kod odpowiedzialny za wyświetlanie timera
 
-        if(room.getOrder().getLast().equals(p.getId()) &&room.getPlayers().size()==room.getMaxNumberOfPlayers()) {
+        if(room.getOrder().getLast().equals(p.getId()) &&room.getPlayers().size()==room.getMaxNumberOfPlayers()&&gameTime!=0) {
             %>
             <script>
                 flag=0
+                gameTime=<%=gameTime%>;
                 playerID=<%=p.getId()%>;
                 playerIsHost=<%=playerIsHost%>;
                 if(playerIsHost)
@@ -86,38 +100,36 @@
                 {
                     divId="timePlayer"+<%=counter%>;
                 }
-                console.log("test, przypadek dla odliczania-"+divId);
-                if(document.getElementById(divId)==null)
-                {
-                    console.log("nullllllllllllll");
-                }
+
+
                 for(i=0; i< timers.length;i++)
                 {
-                    console.log("sprawdzam case");
+
                     t=timers[i];
                     if(t.userId==playerID)
                     {
-                        console.log("znaleziono case");
+
                         flag=1;
-                        t.toggleTimer(5,false, divId);
+                        t.toggleTimer(gameTime,false, divId);
                         break;
                     }
                 }
                 if(flag==0)
                 {
-                    console.log("nie znaleziono case");
+
                     timer = new Timer(playerID);
-                    timer.toggleTimer(5,false, divId);
+                    timer.toggleTimer(gameTime,false, divId);
                     timers[timers.length]=timer;
                 }
             </script>
             <%
-        }else
+        }else if(room.getPlayers().size()==room.getMaxNumberOfPlayers()&&gameTime!=0)
         {
         %>
              <script>
-                console.log("")
-                flag=0
+
+                flag=0;
+                gameTime=<%=gameTime%>;
                 playerID=<%=p.getId()%>;
                 playerIsHost=<%=playerIsHost%>;
                 if(playerIsHost)
@@ -127,29 +139,25 @@
                 {
                     divId="timePlayer"+<%=counter%>;
                 }
-                console.log("test, przypadek dla pauzy - "+divId);
 
-                if(document.getElementById(divId)==null)
-                {
-                    console.log("nullllllllllllll");
-                }
+
                 for(i=0; i< timers.length;i++)
                 {
-                    console.log("sprawdzam case");
+
                     t=timers[i];
                     if(t.userId==playerID)
                     {
-                        console.log("znaleziono case");
+
                         flag=1;
-                        t.toggleTimer(5,true, divId);
+                        t.toggleTimer(gameTime,true, divId);
                         break;
                     }
                 }
                 if(flag==0)
                 {
-                    console.log("nie znaleziono case");
+
                     timer = new Timer(playerID);
-                    timer.toggleTimer(5,true, divId);
+                    timer.toggleTimer(gameTime,true, divId);
                     timers[timers.length]=timer;
                 }
             </script>

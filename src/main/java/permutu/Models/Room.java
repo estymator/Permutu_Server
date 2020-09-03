@@ -187,9 +187,23 @@ public class Room {
         return false;
     }
 
+    public boolean isPlayerById(int id){
+        for(Player p: this.getPlayers()){
+            if(p.getId().equals(id)) return true;
+        }
+        return false;
+    }
+
     public Player getPlayer(String name){
         for(Player p: this.getPlayers()){
             if(p.getLogin().equals(name)) return p;
+        }
+        return null;
+    }
+
+    public Player getPlayerById(int id){
+        for(Player p: this.getPlayers()){
+            if(p.getId().equals(id)) return p;
         }
         return null;
     }

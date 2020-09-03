@@ -71,6 +71,13 @@ public class SingletonRooms {
         return null;
     }
 
+    public Room getPlayerRoomById(int id){
+        for(Room r : rooms){
+            if(r.isPlayerById(id)) return r;
+        }
+        return null;
+    }
+
 
 
 

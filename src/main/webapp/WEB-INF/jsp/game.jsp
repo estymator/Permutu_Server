@@ -41,6 +41,7 @@
             <a class="nav-item nav-link" href="/home">Home</a>
             <a class="nav-item nav-link" href="/score">Wyniki</a>
             <a class="nav-item nav-link" href="/settings">Ustawienia</a>
+            <a class="nav-item nav-link" href="/samouczek">Samouczek</a>
             <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
         </div>
     </div>
