@@ -43,3 +43,8 @@ body {
     word-wrap: normal;
     font-color: #e5ce1e;
 }
+
+.navbar {
+    color: #e5ce1e;
+    background-color: black;
+}
