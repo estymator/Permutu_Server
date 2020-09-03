@@ -51,7 +51,7 @@ public class Permutu {
 
             players = new Players("RoomName");
 
-            history = new ArrayList<String>();
+            history = new ArrayList<>();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -60,7 +60,7 @@ public class Permutu {
 
     /**
      * Constructor for custom symbols number
-     * @param size
+     * @param size size of board
      */
     public Permutu(int size) {
         try {
@@ -75,7 +75,7 @@ public class Permutu {
 
             players = new Players("RoomName");
 
-            history = new ArrayList<String>();
+            history = new ArrayList<>();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -196,10 +196,7 @@ public class Permutu {
                 return true;
             }
         }
-        if(indexFromBlacks == indexFromGreens && indexFromBlacks == indexFromReds && indexFromGreens == indexFromReds) {
-            return true;
-        }
-        return false;
+        return indexFromBlacks == indexFromGreens && indexFromBlacks == indexFromReds && indexFromGreens == indexFromReds;
     }
 
     public boolean isInFullColumn(Block b) {
@@ -207,14 +204,11 @@ public class Permutu {
         int indexFromGreens = this.greenPile.indexOf(b);
         int indexFromBlacks = this.blackPile.indexOf(b);
         if (indexFromBlacks != -1) {
-            if (this.redPile.getBlock(indexFromBlacks).getColor() != 3 && this.greenPile.getBlock(indexFromBlacks).getColor() != 3)
-                return true;
+            return this.redPile.getBlock(indexFromBlacks).getColor() != 3 && this.greenPile.getBlock(indexFromBlacks).getColor() != 3;
         } else if (indexFromReds != -1) {
-            if (this.greenPile.getBlock(indexFromReds).getColor() != 3 && this.blackPile.getBlock(indexFromReds).getColor() != 3)
-                return true;
+            return this.greenPile.getBlock(indexFromReds).getColor() != 3 && this.blackPile.getBlock(indexFromReds).getColor() != 3;
         } else if (indexFromGreens != -1) {
-            if (this.redPile.getBlock(indexFromGreens).getColor() != 3 && this.blackPile.getBlock(indexFromGreens).getColor() != 3)
-                return true;
+            return this.redPile.getBlock(indexFromGreens).getColor() != 3 && this.blackPile.getBlock(indexFromGreens).getColor() != 3;
         }
         return false;
     }
@@ -257,13 +251,6 @@ public class Permutu {
             if(b.getColor() != 3) return false;
         }
         return true;
-    }
-
-    public boolean anyPLayerDontHaveAnySignFromThisSet(ArrayList<Player> players, BlockCollection selectedBlocks, Player p){
-        for(Block b: selectedBlocks.getBlocks()){
-                return haventAnyPlayer(players,b,p);
-        }
-        return false;
     }
 
 
