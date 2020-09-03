@@ -55,8 +55,11 @@
         <tbody>
         <%
             if(histories != null){
-                for(HistoryDTO hd : histories)
-                out.print(hd.genereteHTML());
+                int counter = 1;
+                for(HistoryDTO hd : histories) {
+                    out.print(hd.genereteHTML(counter));
+                    counter++;
+                }
             }
         %>
         </tbody>

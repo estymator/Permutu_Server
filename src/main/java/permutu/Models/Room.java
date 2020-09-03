@@ -2,6 +2,7 @@ package permutu.Models;
 
 import java.util.ArrayList;
 
+import java.util.Collections;
 import java.util.LinkedList;
 
 
@@ -25,6 +26,8 @@ public class Room {
     }
 
     private LinkedList<Integer> order;
+
+    private int mode;
 
 
     public Room(String roomName, Permutu game) {
@@ -64,7 +67,11 @@ public class Room {
             players.addPlayer(user);
             playersInRoom++;
             order.addFirst(user.getUserId());
-
+        }
+        if(playersInRoom == maxNumberOfPlayers){
+            if(mode == 2){
+                Collections.shuffle(order);
+            }
         }
 
     }
@@ -130,14 +137,14 @@ public class Room {
         if(players.size()==0)
         {
             resultHTMLBlock +=  "    <td>" +
-                    "<select name=\"players\" class=\"selectpicker show-tick\">\n" +
+                    "<select id=\"players\" name=\"players\" class=\"selectpicker show-tick\">\n" +
                     "  <option selected=\"selected\" value=\"4\">4 graczy</option>\n" +
                     "  <option value=\"2\">2 graczy</option>\n" +
                     "  <option value=\"1\">1 gracz</option>\n" +
                     "</select>" +
                     "</td>" +
                     "    <td>" +
-                    "<select name=\"time\" class=\"selectpicker show-tick\">\n" +
+                    "<select id=\"time\" name=\"time\" class=\"selectpicker show-tick\">\n" +
                     "  <option selected=\"selected\" value=\"0\">Nieograniczony</option>\n" +
                     "  <option value=\"1\">1 minuta</option>\n" +
                     "  <option value=\"5\">5 minut</option>\n" +
@@ -145,10 +152,16 @@ public class Room {
                     "</select>" +
                     "</td>" +
                     "    <td>" +
-                    "<select name=\"symbols\" class=\"selectpicker show-tick\">\n" +
+                    "<select id=\"symbols\" name=\"symbols\" class=\"selectpicker show-tick\">\n" +
                     "  <option selected=\"selected\" value=\"24\">Wszystkie symbole</option>\n" +
                     "  <option value=\"10\">10 symboli</option>\n" +
                     "  <option value=\"20\">20 symboli</option>\n" +
+                    "</select>" +
+                    "</td>" +
+                    "    <td>" +
+                    "<select id=\"mode\" name=\"mode\" class=\"selectpicker show-tick\">\n" +
+                    "  <option selected=\"selected\" value=\"1\">Kto pierwszy ten lepszy</option>\n" +
+                    "  <option value=\"2\">Losowa kolejność</option>\n" +
                     "</select>" +
                     "</td>"
                     ;
@@ -168,6 +181,18 @@ public class Room {
                     "    <td>" +
                      this.numberOfSymbols +
                     "</td>";
+            if(mode == 1){
+                resultHTMLBlock += "</td>" +
+                        "    <td>" +
+                        "Kto pierwszy ten lepszy" +
+                        "</td>";
+            }else{
+                resultHTMLBlock += "</td>" +
+                        "    <td>" +
+                        "Losowa Kolejność" +
+                "</td>";
+            }
+
         }
         if(this.players.size()<maxNumberOfPlayers)
         {
@@ -214,12 +239,13 @@ public class Room {
      * @param time
      * @param symbols
      */
-    public void setGameParameters(int players, int time, int symbols)
+    public void setGameParameters(int players, int time, int symbols,int mode)
     {
         this.numberOfSymbols=symbols;
         this.timeForGame=time;
         this.maxNumberOfPlayers=players;
         this.game=new Permutu(numberOfSymbols);
+        this.mode = mode;
 
     }
 

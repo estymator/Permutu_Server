@@ -56,9 +56,9 @@ public class HistoryDTO {
 
 
 
-    public String genereteHTML(){
+    public String genereteHTML(int rowNumber){
         return "<tr>" +
-                "    <th scope=\"row\">1</th>" +
+                "    <th scope=\"row\">" + rowNumber +"</th>" +
                 "    <td>" + this.timestamp + "</td>" +
                 "    <td>" + this.userLoginsToOneString() + "</td>" +
                 "    <td>" + this.winner + "</td>" +

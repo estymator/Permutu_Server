@@ -10,4 +10,5 @@ public interface GameHistoryRepository extends CrudRepository<GameHistory, Integ
     Iterable<GameHistory> findAll();
 
     ArrayList<GameHistory> findByUserId(Integer userId);
+    ArrayList<GameHistory> findByGameId(Integer gameId);
 }

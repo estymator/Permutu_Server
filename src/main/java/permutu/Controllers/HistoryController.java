@@ -29,19 +29,28 @@ public class HistoryController {
         User user = userRepository.findUserByLogin(login);
 
         ArrayList<GameHistory> histories = gameHistoryRepository.findByUserId(user.getUserId());
+        ArrayList<GameHistory> completeHistory = new ArrayList<>();
+        for(GameHistory gh: histories){
+            ArrayList<GameHistory> tempArrayList = gameHistoryRepository.findByGameId(gh.getGameId());
+            for(GameHistory gh2 : tempArrayList){
+                completeHistory.add(gh2);
+            }
+        }
+
+
         ArrayList<HistoryDTO> historyDTOS = new ArrayList<>();
         ArrayList<Integer> games = new ArrayList<Integer>();
-        if(histories.size() > 0) {
+        if(completeHistory.size() > 0) {
             for(int i = 0; i < histories.size(); i++)
             {
-                if(!isInArray(games,histories.get(i).getGameId())) {
-                    int gameId = histories.get(i).getGameId();
+                if(!isInArray(games,completeHistory.get(i).getGameId())) {
+                    int gameId = completeHistory.get(i).getGameId();
                     games.add(gameId);
                     HistoryDTO historyDTO = new HistoryDTO();
                     historyDTO.setGameid(gameId);
                     historyDTO.setWinner(histories.get(i).getWinner());
                     historyDTO.setTimestamp(histories.get(i).getDate());
-                    for (GameHistory gh : histories) {
+                    for (GameHistory gh : completeHistory) {
                         if(gh.getGameId() == gameId) {
                             User u = userRepository.findByUserId(gh.getUserId());
                             historyDTO.getUserLogins().add(u.getLogin());
@@ -50,10 +59,6 @@ public class HistoryController {
                     historyDTOS.add(historyDTO);
                 }
             }
-
-
-
-
 
             request.getSession().setAttribute("histories", historyDTOS);
 

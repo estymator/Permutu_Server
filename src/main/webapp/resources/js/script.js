@@ -20,8 +20,10 @@ function connect() {
         move.subscribe('/play', function (play) {
             showState();
         });
+
         // Powiadomienie dla innych graczy ze ktos wszedł do pokoju
         move.send("/knock",{},JSON.stringify(move));
+
     });
 
 }
@@ -150,15 +152,6 @@ function unhovered(el) {
 }
 
 function change(){
-    let settingsModel = JSON.stringify({
-        "inputLogin": document.getElementById("inputLogin").value,
-        "inputPassword4": document.getElementById("inputPassword4").value,
-        "inputEmail4": document.getElementById("inputEmail4").value,
-        "inputPassword24": document.getElementById("inputPassword24").value,
-        "currentLogin": document.getElementById("currentLogin").value
-    })
-
-
 
     $.post('http://localhost:8081/change', { "inputLogin": document.getElementById("inputLogin").value,
             "inputPassword4": document.getElementById("inputPassword4").value,
@@ -177,44 +170,6 @@ function change(){
         $(".container").append(XHR.responseJSON.message)
 
     });
-    /*
-
-        $.ajax({
-            url: 'http://localhost:8081/change',
-            type: 'post',
-            headers: {'Access-Control-Allow-Origin': '', 'Content-Type': 'application/json', 'Accept': 'application/json',},
-                data: JSON.stringify( {
-                "inputLogin": document.getElementById("inputLogin").value,
-                "inputPassword4": document.getElementById("inputPassword4").value,
-                "inputEmail4": document.getElementById("inputEmail4").value,
-                "inputPassword24": document.getElementById("inputPassword24").value,
-                "currentLogin": document.getElementById("currentLogin").value
-            } ),
-            processData: false,
-            success: function(){
-                alert("Zmieniono ustawienia");
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-                console.log( errorThrown );
-            }
-        });
-
-
-        fetch('http://localhost:8081/change', {
-            method: 'POST',
-            body: JSON.stringify(settings),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then(response => {
-                if(response.ok){
-                }
-                throw new Error('Request failed!');
-            }, networkError => console.log(networkError.message)
-        ).then(jsonResponse => {
-                alert("Zmieniono ustawienia");
-        });
-    */
 
 }
 

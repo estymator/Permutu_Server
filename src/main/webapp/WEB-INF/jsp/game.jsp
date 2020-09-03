@@ -22,6 +22,12 @@
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="../../resources/js/script.js"></script>
     <script src="../../resources/js/timer.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            let button = document.getElementById('connect');
+            button.click();
+        }
+    </script>
 </head>
 
 <script>
@@ -61,17 +67,17 @@
 <div id="login" class="hidden">
     ${pageContext.request.userPrincipal.name}
 </div>
-
-<form class="form-inline">
-    <div class="form-group">
-        <label for="connect">WebSocket connection:</label>
-        <button id="connect" class="btn btn-default" type="submit">Connect</button>
-        <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button>
-        <button id="send" class="btn btn-default" type="submit">Send</button>
-        <button id="reset" class="btn btn-default" type="submit" disabled="disabled">Reset Game</br>(Only when you are alone in the room)</button>
-    </div>
-</form>
-
+<div class="container">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="connect">Panel Sterowania:</label>
+            <button id="connect" class="d-none btn btn-warning m-2" type="submit">Zacznij</button>
+            <button id="disconnect" class="btn btn-dark m-2" type="submit" disabled="disabled">Wyjdź z Gry</button>
+            <button id="send" class="btn btn-success m-2" type="submit">Potwierdź ruch</button>
+            <button id="reset" class="btn btn-danger m-2" type="submit" disabled="disabled">Reset Gry</br>(Tylko wtedy gdy w pokoju jesteś sam)</button>
+        </div>
+    </form>
+</div>
 <input type="hidden" id="roomName" value='<%=roomName%>'>
 
 

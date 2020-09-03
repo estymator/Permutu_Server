@@ -38,17 +38,17 @@ public class HomeController {
 
 
     @GetMapping("/join")
-    @ResponseBody
     public ModelAndView join(HttpServletRequest request,Principal principal
                             ,@RequestParam String room
                             ,@RequestParam(required = false) Integer players
                             ,@RequestParam(required = false) Integer time
-                            ,@RequestParam(required = false) Integer symbols) {
+                            ,@RequestParam(required = false) Integer symbols
+                            ,@RequestParam(required = false) Integer mode) {
         String login = principal.getName();
         if(players != null && time!=null && symbols!=null && rooms.getRoom(room).getPlayers().size()<=1)
         {
             System.out.println("Zmiana parametrów pokoju");
-            rooms.getRoom(room).setGameParameters(players, time,symbols);
+            rooms.getRoom(room).setGameParameters(players, time,symbols,mode);
         }
         if(rooms.getRoom(room).isPlayer(login)){
             System.out.println("User jest juz obecny w pokoju");
