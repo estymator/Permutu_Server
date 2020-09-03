@@ -33,13 +33,14 @@ public class SettingsController {
             @RequestParam String inputPassword24,
             @RequestParam String currentLogin){
         User u = userRepository.findUserByLogin(currentLogin);
-        if(inputLogin != null && userRepository.findByLogin(inputLogin) == null){
+
+        if(!inputLogin.isEmpty() && userRepository.findUserByLogin(inputLogin) == null){
             u.setLogin(inputLogin);
         }
-        if(inputEmail4!= null && userRepository.findByEmail(inputEmail4) == null){
+        if(!inputEmail4.isEmpty() && userRepository.findByEmail(inputEmail4).getClass() == null){
             u.setEmail(inputEmail4);
         }
-        if(inputPassword4 != null && inputPassword4.equals(inputPassword24)){
+        if(!inputPassword4.isEmpty() && inputPassword4.equals(inputPassword24)){
             u.setPassword(passwordEncoder.encode(inputPassword4));
         }
         userRepository.save(u);

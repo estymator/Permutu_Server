@@ -18,8 +18,8 @@
 
     }
 %>
+<% if(room.getMaxNumberOfPlayers() == room.getPlayersInRoom()){
 
-<%
     String playerLogin = (String) request.getSession().getAttribute("player");
 
     if(room.getPlayer(playerLogin)!=null && room.getOrder().getLast()!=null){
@@ -36,54 +36,63 @@
                 out.print(b.genereteHTMLBlock());
             }
         %>
-</div>
+    </div>
 
-<div class="container block-row black-block d-flex flex-nowrap">
+    <div class="container block-row black-block d-flex flex-nowrap">
 
-    <%
-        for (Block b : game.getBlackPile().getBlocks()) {
-            out.print(b.genereteHTMLBlock());
-        }
+        <%
+            for (Block b : game.getBlackPile().getBlocks()) {
+                out.print(b.genereteHTMLBlock());
+            }
+        %>
+    </div>
+
+    <div class="container block-row green-block d-flex flex-nowrap">
+
+        <%
+            for (Block b : game.getGreenPile().getBlocks()) {
+                out.print(b.genereteHTMLBlock());
+            }
+        %>
+    </div>
+
+    <% } else { %>
+
+    <div class="container block-row red-block d-flex flex-nowrap">
+
+        <%
+            for (Block b : game.getRedPile().getBlocks()) {
+                out.print(b.genereteHTMLDisabledBlock());
+            }
+        %>
+    </div>
+
+    <div class="container block-row black-block d-flex flex-nowrap">
+
+        <%
+            for (Block b : game.getBlackPile().getBlocks()) {
+                out.print(b.genereteHTMLDisabledBlock());
+            }
+        %>
+    </div>
+
+    <div class="container block-row green-block d-flex flex-nowrap">
+
+        <%
+            for (Block b : game.getGreenPile().getBlocks()) {
+                out.print(b.genereteHTMLDisabledBlock());
+            }
+        %>
+    </div>
+    <%  }
+       }
+    }else{
     %>
-</div>
+    <div class="container">
+        <div class="d-flex align-items-center">
+            <strong>Oczekiwanie na pozostałych graczy...</strong>
+            <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+        </div>
+    </div>
+<% } %>
 
-<div class="container block-row green-block d-flex flex-nowrap">
-
-    <%
-        for (Block b : game.getGreenPile().getBlocks()) {
-            out.print(b.genereteHTMLBlock());
-        }
-    %>
-</div>
-
-<% } else { %>
-
-<div class="container block-row red-block d-flex flex-nowrap">
-
-    <%
-        for (Block b : game.getRedPile().getBlocks()) {
-            out.print(b.genereteHTMLDisabledBlock());
-        }
-    %>
-</div>
-
-<div class="container block-row black-block d-flex flex-nowrap">
-
-    <%
-        for (Block b : game.getBlackPile().getBlocks()) {
-            out.print(b.genereteHTMLDisabledBlock());
-        }
-    %>
-</div>
-
-<div class="container block-row green-block d-flex flex-nowrap">
-
-    <%
-        for (Block b : game.getGreenPile().getBlocks()) {
-            out.print(b.genereteHTMLDisabledBlock());
-        }
-    %>
-</div>
-<%  }
-   }
-%>

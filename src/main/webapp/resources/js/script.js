@@ -2,17 +2,12 @@ let selectedBlocks = [];
 
 let move = {};
 
-let situation = {};
-
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#reset").prop("disabled", !connected);
     $('#main-board').load('../resources/mainBoard.jsp');
     $('#players-block').load('../resources/playerBlocks.jsp');
-    var mainboard=document.querySelector('#main-board').innerHTML;
-    var players=document.querySelector('#players-block').innerHTML;
-    sendHistory(mainboard, players);
     $("#disconnect").prop("disabled", !connected);
 }
 
@@ -25,8 +20,10 @@ function connect() {
         move.subscribe('/play', function (play) {
             showState();
         });
+
         // Powiadomienie dla innych graczy ze ktos wszedł do pokoju
         move.send("/knock",{},JSON.stringify(move));
+
     });
 
 }
@@ -57,9 +54,7 @@ function showState() {
     $('#playersLoginSection').load('../resources/loginBoard.jsp');
     $('#main-board').load('../resources/mainBoard.jsp');
     $('#players-block').load('../resources/playerBlocks.jsp');
-    /*var mainboard=document.querySelector('#main-board').innerHTML;
-    var players=document.querySelector('#players-block').innerHTML;
-    sendHistory(mainboard, players);*/
+
 }
 
 $(function () {
@@ -105,18 +100,6 @@ function resetGame(){
     {
         console.log("Not connected yet")
     }
-}
-
-function sendHistory(main, players){
-    $.post('http://localhost:8081/historyKK', {
-            "room": document.getElementById("roomName").value,
-            "mainBoard" : main,
-            "playersBlocks" : players,
-        }).error(function(XHR,status,error){
-        console.log(XHR.responseJSON.message);
-        console.log("tutaj");
-        $(".container").append(XHR.responseJSON.message)
-    });
 }
 
 function winnerAlert(winner){
@@ -169,15 +152,6 @@ function unhovered(el) {
 }
 
 function change(){
-    let settingsModel = JSON.stringify({
-        "inputLogin": document.getElementById("inputLogin").value,
-        "inputPassword4": document.getElementById("inputPassword4").value,
-        "inputEmail4": document.getElementById("inputEmail4").value,
-        "inputPassword24": document.getElementById("inputPassword24").value,
-        "currentLogin": document.getElementById("currentLogin").value
-    })
-
-
 
     $.post('http://localhost:8081/change', { "inputLogin": document.getElementById("inputLogin").value,
             "inputPassword4": document.getElementById("inputPassword4").value,
@@ -196,44 +170,6 @@ function change(){
         $(".container").append(XHR.responseJSON.message)
 
     });
-    /*
-
-        $.ajax({
-            url: 'http://localhost:8081/change',
-            type: 'post',
-            headers: {'Access-Control-Allow-Origin': '', 'Content-Type': 'application/json', 'Accept': 'application/json',},
-                data: JSON.stringify( {
-                "inputLogin": document.getElementById("inputLogin").value,
-                "inputPassword4": document.getElementById("inputPassword4").value,
-                "inputEmail4": document.getElementById("inputEmail4").value,
-                "inputPassword24": document.getElementById("inputPassword24").value,
-                "currentLogin": document.getElementById("currentLogin").value
-            } ),
-            processData: false,
-            success: function(){
-                alert("Zmieniono ustawienia");
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-                console.log( errorThrown );
-            }
-        });
-
-
-        fetch('http://localhost:8081/change', {
-            method: 'POST',
-            body: JSON.stringify(settings),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then(response => {
-                if(response.ok){
-                }
-                throw new Error('Request failed!');
-            }, networkError => console.log(networkError.message)
-        ).then(jsonResponse => {
-                alert("Zmieniono ustawienia");
-        });
-    */
 
 }
 
@@ -301,10 +237,4 @@ function potwierdzSamouczek31() {
 
 function potwierdzSamouczek4() {
     window.location.replace("home");
-}
-
-function redirectToHistory(){
-    $('#players-block').remove();
-    $('#main-board').remove();
-    $('#history-section').load('../resources/history.jsp');
 }

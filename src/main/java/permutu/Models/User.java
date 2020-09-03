@@ -70,7 +70,7 @@ public class User {
     }
 
     public String genereteHTMLtrForUser(){
-        int winrate = 0;
+        float winrate = 0;
         try{
             winrate =  this.winnGames / this.totalGames ;
         }catch(ArithmeticException e){
