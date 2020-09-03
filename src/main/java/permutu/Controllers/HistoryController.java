@@ -28,47 +28,52 @@ public class HistoryController {
         String login = principal.getName();
         User user = userRepository.findUserByLogin(login);
 
-        ArrayList<GameHistory> histories = gameHistoryRepository.findByUserId(user.getUserId());
-        ArrayList<GameHistory> completeHistory = new ArrayList<>();
-        for(GameHistory gh: histories){
-            ArrayList<GameHistory> tempArrayList = gameHistoryRepository.findByGameId(gh.getGameId());
-            for(GameHistory gh2 : tempArrayList){
-                completeHistory.add(gh2);
-            }
+        ArrayList<GameHistory> histories = gameHistoryRepository.findAll();
+        ArrayList<GameHistory> userGames = gameHistoryRepository.findByUserId(user.getUserId());
+
+        ArrayList<Integer> userGamesId = new ArrayList<>();
+
+        for(GameHistory gh : userGames){
+            userGamesId.add(gh.getGameId());
         }
+
 
 
         ArrayList<HistoryDTO> historyDTOS = new ArrayList<>();
-        ArrayList<Integer> games = new ArrayList<Integer>();
-        if(completeHistory.size() > 0) {
-            for(int i = 0; i < histories.size(); i++)
-            {
-                if(!isInArray(games,completeHistory.get(i).getGameId())) {
-                    int gameId = completeHistory.get(i).getGameId();
-                    games.add(gameId);
-                    HistoryDTO historyDTO = new HistoryDTO();
-                    historyDTO.setGameid(gameId);
-                    historyDTO.setWinner(histories.get(i).getWinner());
-                    historyDTO.setTimestamp(histories.get(i).getDate());
-                    for (GameHistory gh : completeHistory) {
-                        if(gh.getGameId() == gameId) {
-                            User u = userRepository.findByUserId(gh.getUserId());
-                            historyDTO.getUserLogins().add(u.getLogin());
-                        }
+
+        ArrayList<Integer> saved = new ArrayList<>();
+
+        for(GameHistory gh: histories){
+            if(isInArray(userGamesId,gh.getGameId()) && !isInArray(saved,gh.getGameId())){
+                HistoryDTO historyDTO = new HistoryDTO(gh.getDate(),gh.getWinner(), gh.getGameId(), gh.getMode(), gh.getSymbols(), gh.getTime());
+                for(GameHistory ghh : histories){
+                    if(gh.getGameId().intValue() == ghh.getGameId().intValue()){
+                        User tempUser = userRepository.findByUserId(ghh.getUserId());
+                        historyDTO.getUserLogins().add(tempUser.getLogin());
                     }
-                    historyDTOS.add(historyDTO);
                 }
+                saved.add(gh.getGameId());
+                historyDTOS.add(historyDTO);
             }
-
-            request.getSession().setAttribute("histories", historyDTOS);
-
         }
+
+
+        request.getSession().setAttribute("histories", historyDTOS);
+
+
         return "history";
     }
 
     public boolean isInArray(ArrayList<Integer> array, int a){
         for(Integer i: array){
             if(i == a) return true;
+        }
+        return false;
+    }
+
+    private boolean isInList(ArrayList<Integer> array,int i){
+        for(Integer el : array){
+            if(el == i) return true;
         }
         return false;
     }

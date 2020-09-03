@@ -69,7 +69,7 @@ public class User {
         this.winnGames++;
     }
 
-    public String genereteHTMLtrForUser(){
+    public String genereteHTMLtrForUser(int rowNumber){
         float winrate = 0;
         try{
             winrate =  this.winnGames / this.totalGames ;
@@ -77,7 +77,7 @@ public class User {
 
         }
         return "<tr>" +
-                "    <th scope=\"row\">1</th>" +
+                "    <th scope=\"row\">" + rowNumber + "</th>" +
                 "    <td>" + this.login + "</td>" +
                 "    <td>" + this.totalGames + "</td>" +
                 "    <td>" + this.winnGames + "</td>" +

@@ -166,6 +166,9 @@ public class GameController {
 
             for(Player p : currentRoom.getPlayers()){
                 GameHistory gameHistory = new GameHistory();
+                gameHistory.setMode(currentRoom.getMode());
+                gameHistory.setSymbols(currentRoom.getNumberOfSymbols());
+                gameHistory.setTime(currentRoom.getTimeForGame());
                 gameHistory.setUserId(p.getId());
                 gameHistory.setGameId(gameModel.getId());
                 gameHistory.setWinner(winner);

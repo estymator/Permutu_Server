@@ -12,6 +12,9 @@ public class GameHistory {
     private Integer userId;
     private Integer gameId;
     private String winner;
+    private Integer mode;
+    private Integer symbols;
+    private Integer time;
     @Column(insertable=false, updatable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp date;
 
@@ -49,5 +52,33 @@ public class GameHistory {
 
     public Timestamp getDate() {
         return date;
+    }
+
+    public Integer getMode() {
+        return mode;
+    }
+
+    public void setMode(Integer mode) {
+        this.mode = mode;
+    }
+
+    public Integer getSymbols() {
+        return symbols;
+    }
+
+    public void setSymbols(Integer symbols) {
+        this.symbols = symbols;
+    }
+
+    public Integer getTime() {
+        return time;
+    }
+
+    public void setTime(Integer time) {
+        this.time = time;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 }
