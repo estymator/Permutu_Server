@@ -9,9 +9,12 @@
     Room room = rooms.getRoom(roomName);
     Permutu game = room.getGame();
     ArrayList<String> history = game.getHistory();
-    for (String i : history){
-        out.print("LOADING");
-        out.print(i);
+    int i = 0;
+    if (history != null && !history.isEmpty()) {
+        i=history.size()-1;
     }
-
+    out.print("<section style=\"display: flex; flex-direction: column; text-align: center;\">");
+    out.print("<h1>RUCH "+game.getStep()+" Z  "+i+"</h1>");
+    out.print(history.get(game.getStep()));
+    out.print("</section>");
 %>

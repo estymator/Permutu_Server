@@ -54,7 +54,9 @@ function showState() {
     $('#playersLoginSection').load('../resources/loginBoard.jsp');
     $('#main-board').load('../resources/mainBoard.jsp');
     $('#players-block').load('../resources/playerBlocks.jsp');
-
+    var mainboard=document.querySelector('#main-board').outerHTML;
+    var players=document.querySelector('#players-block').outerHTML;
+    sendHistory(mainboard, players);
 }
 
 $(function () {
@@ -100,6 +102,27 @@ function resetGame(){
     {
         console.log("Not connected yet")
     }
+}
+
+function sendHistory(main, players){
+    $.post('http://localhost:8081/historyKK', {
+        "room": document.getElementById("roomName").value,
+        "mainBoard" : main,
+        "playersBlocks" : players,
+    }).error(function(XHR,status,error){
+        console.log(XHR.responseJSON.message);
+        $(".container").append(XHR.responseJSON.message)
+    });
+}
+
+function sendHistoryD(direction){
+    $.post('http://localhost:8081/historyKKK', {
+        "room": document.getElementById("roomName").value,
+        "direction" : direction,
+    }).error(function(XHR,status,error){
+        console.log(XHR.responseJSON.message);
+        $(".container").append(XHR.responseJSON.message)
+    });
 }
 
 function winnerAlert(winner){
@@ -237,4 +260,12 @@ function potwierdzSamouczek31() {
 
 function potwierdzSamouczek4() {
     window.location.replace("home");
+}
+
+function redirectToHistory(){
+    $('#players-block').remove();
+    $('#main-board').remove();
+    $('#control-panel').remove();
+    $('#history-section').load('../resources/history.jsp');
+    $('#buttons-replay').css('display', 'block');
 }

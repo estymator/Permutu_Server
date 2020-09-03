@@ -67,7 +67,7 @@
 <div id="login" class="hidden">
     ${pageContext.request.userPrincipal.name}
 </div>
-<div class="container">
+<div class="container" id="control-panel">
     <form class="form-inline">
         <div class="form-group">
             <label for="connect">Panel Sterowania:</label>
@@ -75,6 +75,7 @@
             <button id="disconnect" class="btn btn-dark m-2" type="submit" disabled="disabled">Wyjdź z Gry</button>
             <button id="send" class="btn btn-success m-2" type="submit">Potwierdź ruch</button>
             <button id="reset" class="btn btn-danger m-2" type="submit" disabled="disabled">Reset Gry</br>(Tylko wtedy gdy w pokoju jesteś sam)</button>
+            <button onclick="redirectToHistory()" class="btn btn-dark m-2" >Obejrzyj powtórkę</button>
         </div>
     </form>
 </div>
@@ -87,8 +88,33 @@
     <section class="players-block d-flex container" id="players-block">
     </section>
 
+<div class="container" id="buttons-replay" style="display: none">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="connect">Panel Sterowania:</label>
+            <button class="btn btn-dark m-2" onclick="stepminus()">Poprzedni ruch</button>
+            <button class="btn btn-success m-2" onclick="stepplus()">Następny ruch</button>
+            <button class="btn btn-danger m-2" onclick="redirectH()">Zakończ</button>
+        </div>
+    </form>
+</div>
+<section style="display: flex; align-items: flex-end" id="history-section">
+</section>
 
-
+<script>
+    function redirectH() {
+        disconnect()
+        window.location.replace("home");
+    }
+    function stepplus() {
+        sendHistoryD("plus");
+        $('#history-section').load('../resources/history.jsp');
+    }
+    function stepminus() {
+        sendHistoryD("minus");
+        $('#history-section').load('../resources/history.jsp');
+    }
+</script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" 

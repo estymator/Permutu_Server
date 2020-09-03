@@ -16,6 +16,16 @@ public class Permutu {
 
     private ArrayList<String>history;
 
+    public int getStep() {
+        return step;
+    }
+
+    public void setStep(int step) {
+        this.step = step;
+    }
+
+    private int step=1;
+
     private Players players;
 
     private Hand mainPile;
