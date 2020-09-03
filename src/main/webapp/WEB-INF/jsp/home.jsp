@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/resources/styles/style.css">
+    <link rel="stylesheet" href="/resources/styles/homePagestyle.css">
 
     <script src="https://kit.fontawesome.com/c43499c33d.js" crossorigin="anonymous"></script>
     <script language="JavaScript" type="text/javascript" src="../../resources/js/script.js"></script>
@@ -36,34 +36,34 @@
     <% SingletonRooms rooms = (SingletonRooms) request.getAttribute("rooms");%>
 
 
-        <table class="table table-sm">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Pokój</th>
-                <th scope="col">Ilość graczy</th>
-                <th scope="col">Maksymalna ilość graczy</th>
-                <th scope="col">Czas na rozgrywkę</th>
-                <th scope="col">Ilość symboli</th>
-                <th scope="col">Typ Gry</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Pokój</th>
+            <th scope="col">Ilość graczy</th>
+            <th scope="col">Maksymalna ilość graczy</th>
+            <th scope="col">Czas na rozgrywkę</th>
+            <th scope="col">Ilość symboli</th>
+            <th scope="col">Typ Gry</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
 
-            <%
+        <%
             for(Room r : rooms.getRooms()){
-            %>
-            <form action="/join" method="get">
+        %>
+        <form action="/join" method="get">
             <%
                 out.print(r.genereteHTMLtrForRoom());
             %>
-             </form>
-            <%
+        </form>
+        <%
             }
-            %>
-            </tbody>
-        </table>
+        %>
+        </tbody>
+    </table>
 
 
 </div>

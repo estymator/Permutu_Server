@@ -14,6 +14,7 @@
 <head>
     <title>Scores</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/styles/homePagestyle.css">
 </head>
 <body>
 
@@ -53,9 +54,9 @@
         <%
             int counter = 1;
             for(User u : users){
-            out.print(u.genereteHTMLtrForUser(counter));
-            counter++;
-        }
+                out.print(u.genereteHTMLtrForUser(counter));
+                counter++;
+            }
         %>
         </tbody>
     </table>

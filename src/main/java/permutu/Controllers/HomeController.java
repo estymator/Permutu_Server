@@ -36,6 +36,12 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/start")
+    public String showStartView(HttpServletRequest request) {
+        if(request.getAttribute("rooms") == null) setRoomsAttribute(request);
+        return "start";
+    }
+
 
     @GetMapping("/join")
     public ModelAndView join(HttpServletRequest request,Principal principal
