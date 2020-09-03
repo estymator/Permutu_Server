@@ -45,6 +45,9 @@ function sendMove() {
     move.roomName = document;
     console.log(move);
     move.send("/move", {}, JSON.stringify(move));
+    var mainboard=document.querySelector('#main-board').outerHTML;
+    var players=document.querySelector('#players-block').outerHTML;
+    sendHistory(mainboard, players);
 }
 
 function showState() {
@@ -54,9 +57,11 @@ function showState() {
     $('#playersLoginSection').load('../resources/loginBoard.jsp');
     $('#main-board').load('../resources/mainBoard.jsp');
     $('#players-block').load('../resources/playerBlocks.jsp');
+    /*
     var mainboard=document.querySelector('#main-board').outerHTML;
     var players=document.querySelector('#players-block').outerHTML;
     sendHistory(mainboard, players);
+     */
 }
 
 $(function () {
@@ -135,6 +140,7 @@ function winnerAlert(winner){
             if(returnedData === winner)
             {
                 alert("Wygrał " + winner)
+                $('#watch-replay').css('display', 'block')
             }
         }).error(function(XHR, status, error){
         console.log(XHR.responseJSON.message);
@@ -263,6 +269,7 @@ function potwierdzSamouczek4() {
 }
 
 function redirectToHistory(){
+    showState();
     $('#players-block').remove();
     $('#main-board').remove();
     $('#control-panel').remove();
