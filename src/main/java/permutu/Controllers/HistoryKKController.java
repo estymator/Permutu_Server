@@ -60,11 +60,13 @@ public class HistoryKKController {
             if ((i - 1)>0) {
                 game.setStep(i-1);
                 System.out.println("direction changed");
+                return "fine";
             }
         } else {
             if (i+1<game.getHistory().size()) {
                 game.setStep(game.getStep() + 1);
                 System.out.println("direction changed");
+                return "fine";
             }
         }
         return "idk";
