@@ -112,11 +112,9 @@
     }
     function stepplus() {
         sendHistoryD("plus");
-        $('#history-section').load('../resources/history.jsp');
     }
     function stepminus() {
         sendHistoryD("minus");
-        $('#history-section').load('../resources/history.jsp');
     }
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

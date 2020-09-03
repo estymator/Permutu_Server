@@ -123,7 +123,12 @@ function sendHistory(main, players){
 function sendHistoryD(direction){
     $.post('http://localhost:8081/historyKKK', {
         "room": document.getElementById("roomName").value,
-        "direction" : direction,
+        "direction": direction,
+    },
+        function (returnedData) {
+            if(returnedData==="fine"){
+                $('#history-section').load('../resources/history.jsp');
+            }
     }).error(function(XHR,status,error){
         console.log(XHR.responseJSON.message);
         $(".container").append(XHR.responseJSON.message)
@@ -139,8 +144,8 @@ function winnerAlert(winner){
             console.log(returnedData);
             if(returnedData === winner)
             {
-                alert("Wygrał " + winner)
-                $('#watch-replay').css('display', 'block')
+                alert("Wygrał " + winner);
+                $('#watch-replay').css('display', 'block');
             }
         }).error(function(XHR, status, error){
         console.log(XHR.responseJSON.message);
