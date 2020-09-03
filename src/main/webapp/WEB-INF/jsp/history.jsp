@@ -48,6 +48,9 @@
             <th scope="col">#</th>
             <th scope="col">Data</th>
             <th scope="col">Gracze</th>
+            <th scope="col">Czas na rozgrywkę</th>
+            <th scope="col">Ilość symboli</th>
+            <th scope="col">Typ Gry</th>
             <th scope="col">Wygrany</th>
 
         </tr>

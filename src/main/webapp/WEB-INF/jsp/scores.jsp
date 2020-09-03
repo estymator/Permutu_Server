@@ -50,8 +50,11 @@
         </tr>
         </thead>
         <tbody>
-        <% for(User u : users){
-            out.print(u.genereteHTMLtrForUser());
+        <%
+            int counter = 1;
+            for(User u : users){
+            out.print(u.genereteHTMLtrForUser(counter));
+            counter++;
         }
         %>
         </tbody>
