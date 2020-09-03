@@ -61,6 +61,14 @@ public class Room {
         this.numberOfSymbols = numberOfSymbols;
     }
 
+    public int getMode() {
+        return mode;
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
+    }
+
     public void addPlayer(User user){
         if(players.size()<maxNumberOfPlayers)
         {
