@@ -9,6 +9,7 @@ function setConnected(connected) {
     $('#main-board').load('../resources/mainBoard.jsp');
     $('#players-block').load('../resources/playerBlocks.jsp');
     $("#disconnect").prop("disabled", !connected);
+
 }
 
 function connect() {
@@ -68,6 +69,7 @@ $(function () {
     $( "#send" ).click(function() { sendMove(); });
     $("#reset").click(function() {resetGame();});
     $("#change").click(function() {change();});
+
 });
 
 
@@ -268,4 +270,21 @@ function redirectToHistory(){
     $('#control-panel').remove();
     $('#history-section').load('../resources/history.jsp');
     $('#buttons-replay').css('display', 'block');
+}
+
+function unloadGame(){
+    playerLogin = document.getElementById("login").innerText;
+    room= document.getElementById("roomName").value;
+    console.log("Opuszczanie pokoju "+playerLogin+room);
+    $.post('http://localhost:8081/unload', {
+            "roomParam": room,
+            "userLogin" : playerLogin
+            },function(returnedData){
+                console.log(returnedData);
+            }).error(function(XHR, status, error){
+            console.log(XHR.responseJSON.message);
+            $(".container").append(XHR.responseJSON.message)
+
+        });
+
 }

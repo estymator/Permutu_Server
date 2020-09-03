@@ -35,6 +35,8 @@
 <script>
     //deklaracja tablicy timerów dla kazdego gracza
     timers=[];
+    //wywołanie funkcji usuwajec gracza z pokoju w razie gdy opusci pokoj
+    $( window ).unload(function(){ unloadGame();});
 </script>
 
 <body class="bg-light">

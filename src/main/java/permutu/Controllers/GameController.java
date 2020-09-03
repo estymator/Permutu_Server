@@ -218,6 +218,38 @@ public class GameController {
 
 
     }
+    /**
+     * Gdy gracz opuści pokój w trakcie rozgrywki
+     */
+    @PostMapping("/unload")
+    public @ResponseBody
+    synchronized String unloadPage(@RequestParam String roomParam, @RequestParam String userLogin){
+        System.out.println("unloadPAge");
+        if(roomParam==null||userLogin==null)
+        {
+            System.out.println("nullll");
+            return "";
+        }
+        Room room = rooms.getPlayerRoom(userLogin);
+        Player p = room.getPlayer(userLogin);
+        if(room==null||p==null)
+        {
+            System.out.println("nullll");
+            return "";
+        }
+        if(room.removePlayer(p))
+        {
+            System.out.println("Remove "+p.getLogin());
+        }else
+        {
+            System.out.println("Nie odnaleziono gracza");
+        }
+
+
+
+        return p.getLogin()+" leaving room";
+
+    }
 
 
 }

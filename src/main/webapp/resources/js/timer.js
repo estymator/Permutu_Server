@@ -9,6 +9,8 @@ class Timer {
         this.remainingTimeString= "00:00";
         this.minutes=0;
         this.seconds=0;
+        this.remove=false;
+        this.divId=null;
     }
 
     toggleTimer(period, flag, div){
@@ -17,6 +19,7 @@ class Timer {
         var _this=this;
         if(this.remainingTime==null&&!flag)
         {
+            this.divId=div;
 
 
             if(period<0 || period >15)
@@ -52,7 +55,7 @@ class Timer {
                           console.log("Wysyłam sendAlert");
                          _this.sendAlert();
                       }
-
+                      _this.remove=true;
                     }
                 }else
                 {
