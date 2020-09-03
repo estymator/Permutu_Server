@@ -77,6 +77,7 @@ public class GameController {
         }
         p.countPoints();
         room.nextTurn();
+
         System.out.println(room.getOrder());
         return "OK";
     }

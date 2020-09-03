@@ -2,12 +2,17 @@ let selectedBlocks = [];
 
 let move = {};
 
+let situation = {};
+
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#reset").prop("disabled", !connected);
     $('#main-board').load('../resources/mainBoard.jsp');
     $('#players-block').load('../resources/playerBlocks.jsp');
+    var mainboard=document.querySelector('#main-board').innerHTML;
+    var players=document.querySelector('#players-block').innerHTML;
+    sendHistory(mainboard, players);
     $("#disconnect").prop("disabled", !connected);
 }
 
@@ -52,7 +57,9 @@ function showState() {
     $('#playersLoginSection').load('../resources/loginBoard.jsp');
     $('#main-board').load('../resources/mainBoard.jsp');
     $('#players-block').load('../resources/playerBlocks.jsp');
-
+    /*var mainboard=document.querySelector('#main-board').innerHTML;
+    var players=document.querySelector('#players-block').innerHTML;
+    sendHistory(mainboard, players);*/
 }
 
 $(function () {
@@ -98,6 +105,18 @@ function resetGame(){
     {
         console.log("Not connected yet")
     }
+}
+
+function sendHistory(main, players){
+    $.post('http://localhost:8081/historyKK', {
+            "room": document.getElementById("roomName").value,
+            "mainBoard" : main,
+            "playersBlocks" : players,
+        }).error(function(XHR,status,error){
+        console.log(XHR.responseJSON.message);
+        console.log("tutaj");
+        $(".container").append(XHR.responseJSON.message)
+    });
 }
 
 function winnerAlert(winner){
@@ -282,4 +301,10 @@ function potwierdzSamouczek31() {
 
 function potwierdzSamouczek4() {
     window.location.replace("home");
+}
+
+function redirectToHistory(){
+    $('#players-block').remove();
+    $('#main-board').remove();
+    $('#history-section').load('../resources/history.jsp');
 }

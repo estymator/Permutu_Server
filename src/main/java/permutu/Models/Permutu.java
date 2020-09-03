@@ -6,6 +6,16 @@ import java.util.ArrayList;
 
 public class Permutu {
 
+    public ArrayList<String> getHistory() {
+        return history;
+    }
+
+    public void setHistory(ArrayList<String> history) {
+        this.history = history;
+    }
+
+    private ArrayList<String>history;
+
     private Players players;
 
     private Hand mainPile;
@@ -31,6 +41,8 @@ public class Permutu {
 
             players = new Players("RoomName");
 
+            history = new ArrayList<String>();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -52,6 +64,8 @@ public class Permutu {
             greenPile.shuffle();
 
             players = new Players("RoomName");
+
+            history = new ArrayList<String>();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
