@@ -16,29 +16,29 @@
 <head>
     <title>Scores</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/styles/homePagestyle.css">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name}</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand text-danger" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/score">Wyniki</a>
-            <a class="nav-item nav-link active" href="/history">Historia Twoich gier <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/settings">Ustawienia</a>
-            <a class="nav-item nav-link" href="/samouczek">Samouczek</a>
-            <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
+            <a class="nav-item nav-link text-danger" href="/home">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link text-danger" href="/score">Wyniki</a>
+            <a class="nav-item nav-link font-weight-bold text-danger" href="/history">Historia Twoich gier <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link text-danger" href="/settings">Ustawienia</a>
+            <a class="nav-item nav-link text-danger" href="/samouczek">Samouczek</a>
+            <a class="nav-item nav-link text-danger" href="/logout">Wyloguj się</a>
         </div>
     </div>
 </nav>
 
 <%
     ArrayList<HistoryDTO> histories = (ArrayList<HistoryDTO> ) request.getSession().getAttribute("histories");
-
 %>
 <div class="container">
     <h1 class="text-center">Historia Twoich gier</h1>

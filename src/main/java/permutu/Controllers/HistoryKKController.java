@@ -22,15 +22,26 @@ public class HistoryKKController {
         ArrayList<String>history = game.getHistory();
         String in = mainBoard+playersBlocks;
         if (history != null && !history.isEmpty()) {
-            System.out.println("wchodze");
-            if (!in.equals(history.get(history.size() - 1))){
+
+            String string = history.get(history.size() - 1);
+            String[] parts = string.split("<section class=\"players-block d-flex container\" id=\"players-block\">");
+
+
+            if (!mainBoard.equals(parts[0])){
+                history.add(in);
+                game.setHistory(history);
+            } else {
+                game.setHistory(history);
+                System.out.println("MOVE NOT SAVED");
+            }
+            /*if (!in.equals(history.get(history.size() - 1))){
                 history.add(in);
                 game.setHistory(history);
                 System.out.println("Saved move");
             } else {
                 game.setHistory(history);
                 System.out.println("MOVIE NOT SAVED");
-            }
+            }*/
         } else {
             history.add(in);
             game.setHistory(history);
@@ -49,11 +60,13 @@ public class HistoryKKController {
             if ((i - 1)>0) {
                 game.setStep(i-1);
                 System.out.println("direction changed");
+                return "fine";
             }
         } else {
             if (i+1<game.getHistory().size()) {
                 game.setStep(game.getStep() + 1);
                 System.out.println("direction changed");
+                return "fine";
             }
         }
         return "idk";

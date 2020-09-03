@@ -41,19 +41,19 @@
 
 <body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name}</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand text-danger" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/home">Home</a>
-            <a class="nav-item nav-link" href="/score">Wyniki</a>
-            <a class="nav-item nav-link active" href="/history">Historia Twoich gier <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/settings">Ustawienia</a>
-            <a class="nav-item nav-link" href="/samouczek">Samouczek</a>
-            <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
+            <a class="nav-item nav-link text-danger" href="/home">Home</a>
+            <a class="nav-item nav-link text-danger" href="/score">Wyniki</a>
+            <a class="nav-item nav-link font-weight-bold text-danger" href="/history">Historia Twoich gier <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link text-danger" href="/settings">Ustawienia</a>
+            <a class="nav-item nav-link text-danger" href="/samouczek">Samouczek</a>
+            <a class="nav-item nav-link text-danger" href="/logout">Wyloguj się</a>
         </div>
     </div>
 </nav>
@@ -80,7 +80,8 @@
             <button id="disconnect" class="btn btn-dark m-2" type="submit" disabled="disabled">Wyjdź z Gry</button>
             <button id="send" class="btn btn-success m-2" type="submit">Potwierdź ruch</button>
             <button id="reset" class="btn btn-danger m-2" type="submit" disabled="disabled">Reset Gry</br>(Tylko wtedy gdy w pokoju jesteś sam)</button>
-            <button onclick="redirectToHistory()" class="btn btn-dark m-2" >Obejrzyj powtórkę</button>
+            <button id="watch-replay" style="display:none;" onclick="redirectToHistory()" class="btn btn-dark m-2" >Obejrzyj powtórkę</button>
+            <button onclick="redirectToHistory()" class="btn btn-dark m-2" >Nieukryty guzik od powtórki</button>
         </div>
     </form>
 </div>
@@ -113,11 +114,9 @@
     }
     function stepplus() {
         sendHistoryD("plus");
-        $('#history-section').load('../resources/history.jsp');
     }
     function stepminus() {
         sendHistoryD("minus");
-        $('#history-section').load('../resources/history.jsp');
     }
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
