@@ -89,9 +89,9 @@
     }else{
     %>
     <div class="container">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center text-light">
             <strong>Oczekiwanie na pozostałych graczy...</strong>
-            <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+            <div class="spinner-border ml-auto " role="status" aria-hidden="true"></div>
         </div>
     </div>
 <% } %>

@@ -1,5 +1,6 @@
 body {
     background-image: url(img/Tło1.png);
+    background-position: center;
     background-size: cover;
 }
 

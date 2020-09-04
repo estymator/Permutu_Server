@@ -39,7 +39,7 @@
     $( window ).unload(function(){ unloadGame();});
 </script>
 
-<body class="bg-light" style="padding-top:0 !important ">
+<body style="padding-top:0 !important ">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <a class="navbar-brand text-danger" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name}</a>
@@ -82,10 +82,20 @@ SingletonRooms rooms = SingletonRooms.getInstance();
             <button id="send" class="btn btn-success m-2" type="submit">Potwierdź ruch</button>
             <button id="reset" class="btn btn-danger m-2" type="submit" disabled="disabled">Reset Gry</br>(Tylko wtedy gdy w pokoju jesteś sam)</button>
             <button id="watch-replay" style="display:none;" onclick="redirectToHistory()" class="btn btn-dark m-2" >Obejrzyj powtórkę</button>
+            <div class="form-group">
+                <label for="background">Wybierz stół</label>
+                <select class="form-control " id="background">
+                    <option value="Tło1.png">Opcja 1</option>
+                    <option value="Tło2.png">Opcja 2</option>
+                    <option value="Tło3.png">Opcja 3</option>
+                </select>
+            </div>
+            <button class="btn btn-dark m-2" onclick="changeBackground()">Wybierz</button>
         </div>
     </form>
 </div>
 <input type="hidden" id="roomName" value='<%=roomName%>'>
+
 
 
     <section id="main-board" class="main-board rounded">

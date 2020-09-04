@@ -300,3 +300,9 @@ function unloadGame(){
         });
 
 }
+
+function changeBackground(){
+    let background = document.getElementById("background").value;
+    console.log(background);
+    document.body.style.backgroundImage = `url(/resources/styles/img/${background})`;
+}
