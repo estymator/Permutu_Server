@@ -70,7 +70,7 @@ SingletonRooms rooms = SingletonRooms.getInstance();
     }
     %>
 
-<input id="login" type="hidden" value='${pageContext.request.userPrincipal.name}' />
+<input id="login" type="hidden" value='${pageContext.request.userPrincipal.name}'/>
 
 
 <div class="container" id="control-panel">
