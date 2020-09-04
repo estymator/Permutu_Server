@@ -21,7 +21,7 @@
         BlockCollection blocks = room.getPlayer(playerLogin).getBlocksInHand();
         Integer score = room.getPlayer(playerLogin).getPoints();
         String hostOutput = "<section class=\"player-blocks d-flex container border\" id=\"main-player\" >";
-        hostOutput += "<div id=\"hostBlock\" class=\"flexed-row\"><div class=\"in-hand\" >";
+        hostOutput += "<h2>"+playerLogin+"</h2><div id=\"hostBlock\" class=\"flexed-row\"><div class=\"in-hand\" >";
         if(!blocks.getBlocks().isEmpty()) {
 
             for (int i = 0; i < blocks.size()-1; i++) {
@@ -39,9 +39,9 @@
         //dla wartosci 0 gra nie jest na czas
         if(gameTime!=0)
         {
-            hostOutput += "</div></div><h1>SCORE: "+score+" </h1></br> <div id=\"timeHost\" class=\"flexed-row\" > </div> </section>";
+            hostOutput += "</div></div><h2>WYNIK: "+score+" </h2></br> <div id=\"timeHost\" class=\"flexed-row\" > </div> </section>";
         }else{
-            hostOutput += "</div></div><h1>SCORE: "+score+" </h1></br> <div id=\"timeHost\" class=\"flexed-row\" ></div> </section>";
+            hostOutput += "</div></div><h2>WYNIK: "+score+" </h2></br> <div id=\"timeHost\" class=\"flexed-row\" ></div> </section>";
         }
 
 
@@ -56,7 +56,7 @@
 
                 BlockCollection blocks1 = p.getBlocksInHand();
                  String output = "<section class=\"player-blocks d-flex container border\" id=\"player-"+counter+"\" >";
-                 output += "<h1>"+p.getLogin()+"</h1><div class=\"flexed-row\"><div class=\"in-hand\" >";
+                 output += "<h2>"+p.getLogin()+"</h2><div class=\"flexed-row\"><div class=\"in-hand\" >";
                 if(!blocks1.getBlocks().isEmpty()) {
 
                     for (int i = 0; i < blocks1.size()-1; i++) {
@@ -73,10 +73,10 @@
 
                 }
                 if(gameTime!=0){
-                    output += "</div></div><h1>SCORE: "+p.getPoints()+" </h1> </br> <div id=\"timePlayer"+counter+"\" class=\"flexed-row\" > </div> </section>";
+                    output += "</div></div><h2>WYNIK: "+p.getPoints()+" </h2> </br> <div id=\"timePlayer"+counter+"\" class=\"flexed-row\" > </div> </section>";
                 }else
                 {
-                    output += "</div></div><h1>SCORE: "+p.getPoints()+" </h1> </br> <div id=\"timePlayer"+counter+"\" class=\"flexed-row\" >  </div> </section>";
+                    output += "</div></div><h2>WYNIK: "+p.getPoints()+" </h2> </br> <div id=\"timePlayer"+counter+"\" class=\"flexed-row\" >  </div> </section>";
                 }
                 out.print(output);
 

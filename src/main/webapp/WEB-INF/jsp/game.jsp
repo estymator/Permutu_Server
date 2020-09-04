@@ -114,7 +114,7 @@ SingletonRooms rooms = SingletonRooms.getInstance();
         </div>
     </form>
 </div>
-<section style="display: flex; align-items: flex-end" id="history-section">
+<section style="display: flex;justify-content: center;" id="history-section">
 </section>
 
 <script>
