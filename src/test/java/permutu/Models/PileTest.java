@@ -27,7 +27,7 @@ class PileTest {
     }
 
     @Test
-    public void test_correctPileSize_PropertyParameter_returnFalse() throws Exception{
+    public void test_correctPileSize_PropertyParameter_returnTrue() throws Exception{
         //given
         Pile pile = new Pile("green");
         int size = 15;

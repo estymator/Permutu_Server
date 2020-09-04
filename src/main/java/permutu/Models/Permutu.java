@@ -28,7 +28,7 @@ public class Permutu {
 
     private Players players;
 
-    private Hand mainPile;
+
 
     private Pile redPile;
 
@@ -91,13 +91,7 @@ public class Permutu {
         this.players = players;
     }
 
-    public Hand getMainPile() {
-        return mainPile;
-    }
 
-    public void setMainPile(Hand mainPile) {
-        this.mainPile = mainPile;
-    }
 
     public Pile getRedPile() {
         return redPile;

@@ -35,24 +35,16 @@ public class Player extends User {
         this.blocksInHand = new BlockCollection(user.getLogin());
     }
 
-    private void setUserId(Integer userId) {
-    }
 
     public Integer getPoints() {
         return points;
     }
 
-    public void setPoints(Integer points) {
-        this.points = points;
-    }
 
     public BlockCollection getBlocksInHand() {
         return blocksInHand;
     }
 
-    public void setBlocksInHand(BlockCollection blocksInHand) {
-        this.blocksInHand = blocksInHand;
-    }
 
     public void countPoints(){
         points = 0;

@@ -1,4 +1,5 @@
 body {
+    padding-top: 0 !important;
     background-image: url(img/Background11.png);
     background-size: cover;
 }

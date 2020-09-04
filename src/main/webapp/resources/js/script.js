@@ -30,7 +30,7 @@ function connect() {
 }
 
 function disconnect() {
-    move.playerLogin=document.getElementById("login").innerText ;
+    move.playerLogin=document.getElementById("login").value ;
     move.send("/leave",{},JSON.stringify(move));
     if (move !== null) {
         move.disconnect();
@@ -41,7 +41,7 @@ function disconnect() {
 }
 
 function sendMove() {
-    move.playerLogin = document.getElementById("login").innerText ;
+    move.playerLogin = document.getElementById("login").value ;
     move.selectedBlocks = selectedBlocks;
     move.roomName = document;
     console.log(move);
@@ -102,7 +102,7 @@ function resetGame(){
 
     if(move.connected)
     {
-        move.playerLogin = document.getElementById("login").innerText;
+        move.playerLogin = document.getElementById("login").value;
         console.log(move);
         move.send("/reset",{}, JSON.stringify(move));
     }else
@@ -285,7 +285,7 @@ function redirectToHistory(){
 }
 
 function unloadGame(){
-    playerLogin = document.getElementById("login").innerText;
+    playerLogin = document.getElementById("login").value;
     room= document.getElementById("roomName").value;
     console.log("Opuszczanie pokoju "+playerLogin+room);
     $.post('http://localhost:8081/unload', {

@@ -39,7 +39,7 @@
     $( window ).unload(function(){ unloadGame();});
 </script>
 
-<body class="bg-light">
+<body class="bg-light" style="padding-top:0 !important ">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <a class="navbar-brand text-danger" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name}</a>
@@ -70,9 +70,9 @@ SingletonRooms rooms = SingletonRooms.getInstance();
     }
     %>
 
-<div id="login" class="hidden" style="display: none;">
-    ${pageContext.request.userPrincipal.name}
-</div>
+<input id="login" type="hidden" value='${pageContext.request.userPrincipal.name}' />
+
+
 <div class="container" id="control-panel">
     <form class="form-inline">
         <div class="form-group">
