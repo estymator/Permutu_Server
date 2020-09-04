@@ -81,7 +81,6 @@
             <button id="send" class="btn btn-success m-2" type="submit">Potwierdź ruch</button>
             <button id="reset" class="btn btn-danger m-2" type="submit" disabled="disabled">Reset Gry</br>(Tylko wtedy gdy w pokoju jesteś sam)</button>
             <button id="watch-replay" style="display:none;" onclick="redirectToHistory()" class="btn btn-dark m-2" >Obejrzyj powtórkę</button>
-            <button onclick="redirectToHistory()" class="btn btn-dark m-2" >Nieukryty guzik od powtórki</button>
         </div>
     </form>
 </div>
