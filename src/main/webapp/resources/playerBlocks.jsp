@@ -107,6 +107,11 @@
                     {
 
                         t=timers[i];
+                        if(t.remove)
+                        {
+                            //usun t z listy timers
+                            break;
+                        }
                         if(t.userId==playerID)
                         {
 

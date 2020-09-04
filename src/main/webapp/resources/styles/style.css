@@ -1,7 +1,6 @@
 body {
-    padding-top: 120px;
-    padding-bottom: 40px;
-    background-color: #444444;
+    background-image: url(img/Background11.png);
+    background-size: cover;
 }
 
 .player-blocks {
@@ -178,4 +177,14 @@ body {
     align-content: center;
 }
 
+label {
+    color: white;
+    display: block;
+    padding: 10px;
+    margin: 3px;
+}
+
+h1 {
+    color: white;
+}
 

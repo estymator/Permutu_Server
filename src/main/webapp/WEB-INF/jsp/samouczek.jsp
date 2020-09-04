@@ -32,9 +32,10 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="/resources/styles/style.css">
+    <link rel="stylesheet" href="/resources/styles/samouczekStyle.css">
     <link rel="stylesheet" href="/resources/styles/pilestyle.css">
+
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/c43499c33d.js" crossorigin="anonymous"></script>
     <script src="/webjars/jquery/jquery.min.js"></script>
@@ -55,34 +56,37 @@
 <main style="
     display: flex;
     flex-direction: column;
-    align-items: center;
 ">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name}</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand text-danger" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="/score">Wyniki</a>
-                <a class="nav-item nav-link" href="/history">Historia Twoich gier</a>
-                <a class="nav-item nav-link" href="/settings">Ustawienia</a>
-                <a class="nav-item nav-link" href="/samouczek">Samouczek</a>
-                <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
+                <a class="nav-item nav-link text-danger" href="/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link text-danger" href="/score">Wyniki</a>
+                <a class="nav-item nav-link text-danger" href="/history">Historia Twoich gier</a>
+                <a class="nav-item nav-link text-danger" href="/settings">Ustawienia</a>
+                <a class="nav-item nav-link font-weight-bold text-danger" href="/samouczek">Samouczek</a>
+                <a class="nav-item nav-link text-danger" href="/logout">Wyloguj się</a>
             </div>
         </div>
     </nav>
     <section id="first-section">
-        <div class="rules"><h1>Poznaj grę PERMUTU!</h1></div>
-        <button class="btn btn-default" onclick="potwierdzSamouczek0()">Dalej</button>
+        <br/><br/>
+        <h1 class="form-signin-heading ">Logowanie</h1>
+        <br/>
+        <div class="next">
+        <button class="btn btn-lg btn-primary btn-block" id="btn-1" type="submit" onclick="potwierdzSamouczek0()">Dalej</button>
+        </div>
     </section>
     <section class="hidden toshow">
         <div class="rules" style="text-align: center;">
-            <h3 style="text-align: center">Zasada A</h3>
-            <div class="sentence" style="display: flex;align-items: center;flex-direction: column;">
+            <h3 style="text-align: center; color: #b20a1d;">Zasada A</h3>
+            <div class="sentence" style="display: flex;align-items: center;flex-direction: column; color: #b20a1d;">
                 Możesz wziąć pojedynczy klocek, jeśli:
-                <ul style="display: flex; align-items: center; flex-direction: column;">
+                <ul style="display: flex; align-items: center; flex-direction: column; color: #b20a1d;">
                     <li>
                         leży on w kolumnie zawierającej 3 klocki
                     </li>
@@ -92,8 +96,8 @@
                 </ul>
             </div>
 
-            <div style="border: 1px solid black;border-radius: 20px;padding: 20px;">
-                <div class="sentence" style=" display: flex;align-items: center;flex-direction: column;">
+            <div style="border: 1px solid black;border-radius: 20px;padding: 20px; bg-color:white;">
+                <div class="sentence" style=" display: flex;align-items: center;flex-direction: column; color: #b20a1d;">
                     <h5>Klocki przeciwnika</h5>
                     <div>
                         <%
@@ -102,7 +106,7 @@
                         %>
                     </div>
                 </div>
-                <div class="sentence" style=" display: flex; align-items: center;flex-direction: column;">
+                <div class="sentence" style=" display: flex; align-items: center;flex-direction: column; color: #b20a1d;">
                     <h5 style=" text-decoration: underline;">Wez odpowiedni klocek z kolumny</h5>
                     <div style="display: flex; flex-direction: column;">
                         <%
@@ -113,21 +117,23 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-default" onclick="potwierdzSamouczek1()">Potwierdz Ruch</button>
+            <button class="btn btn-lg btn-primary btn-block" id="btn-2" type="submit" onclick="potwierdzSamouczek1()">Potwierdź ruch</button>
         </div>
     </section>
     <section class="hidden toshow">
-        <div style="text-align: center">
+        <div style="text-align: center; color: #b20a1d">
+            <br/><br/>
             <h1>DOBRZE!</h1>
-            <button class="btn btn-default" onclick="potwierdzSamouczek12()">Dalej</button>
+            <br/>
+            <button class="btn btn-lg btn-primary btn-block" id="btn-3" type="submit" onclick="potwierdzSamouczek12()">Dalej</button>
         </div>
     </section>
     <section class="hidden toshow">
-        <h3 style="text-align: center">Zasada B</h3>
-        <div class="sentence" style="display: flex;align-items: center;flex-direction: column;">Możesz wziąć całą
+        <h3 style="text-align: center; color: #b20a1d">Zasada B</h3>
+        <div class="sentence" style="display: flex;align-items: center;flex-direction: column; color: #b20a1d">Możesz wziąć całą
             kolumnę
             (kolumna może się składać z 2 lub 3 klocków), jeśli:
-            <ul style="display: flex; align-items: center; flex-direction: column;">
+            <ul style="display: flex; align-items: center; flex-direction: column; color: #b20a1d">
                 <li>masz wszystkie symbole leżące w tej kolumnie, lub jeśli</li>
                 <li> jeden klocek w tej kolumnie ma symbol, którego nie masz</li>
             </ul>
@@ -135,7 +141,7 @@
         <div id="part2.1"></div>
         <div style="border: 1px solid black;border-radius: 20px;padding: 20px;">
             <div class="sentence" style=" display: flex;align-items: center;flex-direction: column;">
-                <h5 style=" text-decoration: underline;">Zbierz całą kolumnę!</h5>
+                <h5 style=" text-decoration: underline; color: #b20a1d">Zbierz całą kolumnę!</h5>
                 <div style="display: flex">
                     <div style="display: flex; flex-direction: column;">
                         <%
@@ -153,9 +159,9 @@
                     </div>
                 </div>
             </div>
-            <div class="rules" style="display: flex; align-items: center; flex-direction: column;">
+            <div class="rules" style="display: flex; align-items: center; flex-direction: column; color: #b20a1d">
                 <h5>Twoje klocki</h5>
-                <div style="display: flex">
+                <div style="display: flex; flex-direction: column;">
                     <%
                         out.print(generateSpecifiedBlock("black", "G", "color:black", "nohighnosel"));
                         out.print(generateSpecifiedBlock("green", "H", "color:green", "nohighnosel"));
@@ -164,17 +170,21 @@
             </div>
         </div>
 
-        <button class="btn btn-default" onclick="potwierdzSamouczek2()">Potwierdz Ruch</button>
+        <button class="btn btn-lg btn-primary btn-block" id="btn-4" type="submit" onclick="potwierdzSamouczek2()">Potwierdź ruch</button>
     </section>
     <section class="hidden toshow">
-        <h1>DOBRZE!</h1>
-        <button class="btn btn-default" onclick="potwierdzSamouczek21()">Dalej</button>
+        <div style="text-align: center; color: #b20a1d">
+            <br/><br/>
+            <h1>DOBRZE!</h1>
+            <br/>
+            <button class="btn btn-lg btn-primary btn-block" id="btn-5" type="submit" onclick="potwierdzSamouczek21()">Dalej</button>
+        </div>
     </section>
     <section class="hidden toshow">
         </div>
         <div id="part2.2"></div>
         <div style="border: 1px solid black;border-radius: 20px;padding: 20px;">
-            <div class="sentence" style=" display: flex;align-items: center;flex-direction: column;">
+            <div class="sentence" style=" display: flex;align-items: center;flex-direction: column;color: #b20a1d" >
                 <h5 style=" text-decoration: underline;">Zbierz całą kolumnę!</h5>
                 <div style="display: flex">
                     <div style="display: flex; flex-direction: column;">
@@ -191,26 +201,36 @@
                         %>
                     </div>
                 </div>
-                <h5>Twoje klocki</h5>
+                <div class="rules" style="display: flex; align-items: center; flex-direction: column; color: #b20a1d">
+                    <h5>Twoje klocki</h5>
+
                 <div style="display: flex">
                     <%
                         out.print(generateSpecifiedBlock("green", "M", "color:green", "nohighnosel"));
                     %>
                 </div>
+                </div>
             </div>
         </div>
-        <button class="btn btn-default" onclick="potwierdzSamouczek3()">Potwierdz Ruch</button>
+        <button class="btn btn-lg btn-primary btn-block" id="btn-6" type="submit" onclick="potwierdzSamouczek3()">Potwierdź ruch</button>
+
     </section>
     <section class="hidden toshow">
-        <h1>DOBRZE!</h1>
-        <button class="btn btn-default" onclick="potwierdzSamouczek31()">Dalej</button>
+        <div style="text-align: center; color: #b20a1d">
+            <br/><br/>
+            <h1>DOBRZE!</h1>
+            <br/>
+            <button class="btn btn-lg btn-primary btn-block" id="btn-7" type="submit" onclick="potwierdzSamouczek31()">Dalej</button>
+        </div>
     </section>
     <section class="hidden toshow">
-        <div class="rules" style="text-align: center">Zbierz więcej punktów od przeciwnika, <br>
+        <br/><br/>
+        <div class="rules" style="text-align: center; color: #b20a1d">Zbierz więcej punktów od przeciwnika, <br>
             za zebranie 3 klocków o tym samym znaku otrzymujesz 3 punkty <br>
             jeżeli zbierzesz dwa to otrzymujesz 1
         </div>
-        <button class="btn btn-default" onclick="potwierdzSamouczek4()">Zrozumiałem</button>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" id="btn-8" type="submit" onclick="potwierdzSamouczek4()">Zrozumiałem</button>
     </section>
 </main>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

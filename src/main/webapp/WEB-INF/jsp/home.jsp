@@ -15,19 +15,19 @@
     <script language="JavaScript" type="text/javascript" src="../../resources/js/script.js"></script>
 </head>
 <body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name}</a>
+<nav class="navbar navbar-expand-lg bg-dark">
+    <a class="navbar-brand text-danger" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name} </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/score">Wyniki</a>
-            <a class="nav-item nav-link" href="/history">Historia Twoich gier</a>
-            <a class="nav-item nav-link" href="/settings">Ustawienia</a>
-            <a class="nav-item nav-link" href="/samouczek">Samouczek</a>
-            <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
+            <a class="nav-item nav-link font-weight-bold text-danger" href="/home">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link  text-danger" href="/score">Wyniki</a>
+            <a class="nav-item nav-link  text-danger" href="/history">Historia Twoich gier</a>
+            <a class="nav-item nav-link  text-danger" href="/settings">Ustawienia</a>
+            <a class="nav-item nav-link  text-danger" href="/samouczek">Samouczek</a>
+            <a class="nav-item nav-link  text-danger" href="/logout">Wyloguj się</a>
         </div>
     </div>
 </nav>
@@ -35,17 +35,18 @@
 <div class="container">
     <% SingletonRooms rooms = (SingletonRooms) request.getAttribute("rooms");%>
 
-
+<br/><br/>
     <table class="table table-sm">
         <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Pokój</th>
             <th scope="col">Ilość graczy</th>
-            <th scope="col">Maksymalna ilość graczy</th>
+            <th scope="col">Max. ilość graczy</th>
             <th scope="col">Czas na rozgrywkę</th>
             <th scope="col">Ilość symboli</th>
             <th scope="col">Typ Gry</th>
+<%--            <th scope="col">Wybór tła</th>--%>
             <th scope="col"></th>
         </tr>
         </thead>

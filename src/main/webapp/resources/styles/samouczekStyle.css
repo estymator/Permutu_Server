@@ -1,5 +1,5 @@
 body {
-    background-image: url(img/Background8.png);
+    background-image: url(img/Background9.png);
     background-size: cover;
 }
 
@@ -20,9 +20,12 @@ body {
     border-left:none;
     border-right:none;
     box-shadow:inset 2px -3px rgba(0,0,0,0.15);
-    background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
-
+    background-color: white;
+    /*background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);*/
+    width: 50%;
+    margin-left: 615px;
 }
+
 .btn:focus
 {   outline:0;
     -webkit-outline:0;
@@ -34,9 +37,46 @@ body {
 }
 
 #btn-1 {
-    position: center;
-    width: 5%;
+    width: 10%;
+    background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
+}
+#btn-2 {
+    width: 20%;
+    margin-left: 540px;
+    background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
+}
 
+#btn-3 {
+    width: 10%;
+    background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
+}
+
+#btn-4 {
+    width: 20%;
+    margin-left: 540px;
+    background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
+}
+
+#btn-5 {
+    width: 10%;
+    background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
+}
+
+#btn-6 {
+    width: 20%;
+    margin-left: 550px;
+    background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
+}
+
+#btn-7 {
+    width: 10%;
+    background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
+}
+
+#btn-8 {
+    width: 15%;
+    background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
+    margin-left: 570px;
 }
 .fullscreen_bg {
     position: fixed;
