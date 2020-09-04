@@ -75,7 +75,7 @@
     </nav>
     <section id="first-section">
         <br/><br/>
-        <h1 class="form-signin-heading ">Logowanie</h1>
+        <h1 class="form-signin-heading ">Poznaj grę PERMUTU!</h1>
         <br/>
         <div class="next">
         <button class="btn btn-lg btn-primary btn-block" id="btn-1" type="submit" onclick="potwierdzSamouczek0()">Dalej</button>
