@@ -23,7 +23,6 @@ body {
     background-color: white;
     /*background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);*/
     width: 50%;
-    margin-left: 615px;
 }
 
 .btn:focus
@@ -42,7 +41,6 @@ body {
 }
 #btn-2 {
     width: 20%;
-    margin-left: 540px;
     background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
 }
 
@@ -53,7 +51,6 @@ body {
 
 #btn-4 {
     width: 20%;
-    margin-left: 540px;
     background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
 }
 
@@ -64,7 +61,6 @@ body {
 
 #btn-6 {
     width: 20%;
-    margin-left: 550px;
     background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
 }
 
@@ -76,7 +72,6 @@ body {
 #btn-8 {
     width: 15%;
     background-image: linear-gradient(to right, #dc0a1d 0%, #b20a1d 25%, #640a1d 70%);
-    margin-left: 570px;
 }
 .fullscreen_bg {
     position: fixed;

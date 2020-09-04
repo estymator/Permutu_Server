@@ -42,14 +42,12 @@ body {
 .form-group {
    position: center;
     width: 20%;
-    margin-left: 445px;
     background-color: #c2b8b9
 }
 
 #change{
     position: center;
     width: 20%;
-    margin-left: 445px;
 }
 .form-signin {
     max-width: 280px;
