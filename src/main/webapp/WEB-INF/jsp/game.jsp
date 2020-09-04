@@ -50,7 +50,7 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link text-danger" href="/home">Home</a>
             <a class="nav-item nav-link text-danger" href="/score">Wyniki</a>
-            <a class="nav-item nav-link font-weight-bold text-danger" href="/history">Historia Twoich gier <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link text-danger" href="/history">Historia Twoich gier <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link text-danger" href="/settings">Ustawienia</a>
             <a class="nav-item nav-link text-danger" href="/samouczek">Samouczek</a>
             <a class="nav-item nav-link text-danger" href="/logout">Wyloguj się</a>

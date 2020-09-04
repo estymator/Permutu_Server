@@ -42,10 +42,11 @@
             <th scope="col">#</th>
             <th scope="col">Pokój</th>
             <th scope="col">Ilość graczy</th>
-            <th scope="col">Maksymalna ilość graczy</th>
+            <th scope="col">Max. ilość graczy</th>
             <th scope="col">Czas na rozgrywkę</th>
             <th scope="col">Ilość symboli</th>
             <th scope="col">Typ Gry</th>
+<%--            <th scope="col">Wybór tła</th>--%>
             <th scope="col"></th>
         </tr>
         </thead>
