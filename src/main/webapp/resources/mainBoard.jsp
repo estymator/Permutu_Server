@@ -28,7 +28,7 @@
     %>
 
 
-            <div class="container block-row red-block d-flex flex-nowrap">
+            <div class="container block-row red-block d-flex flex-nowrap" style="justify-content: center;">
 
 
         <%
@@ -38,7 +38,7 @@
         %>
     </div>
 
-    <div class="container block-row black-block d-flex flex-nowrap">
+    <div class="container block-row black-block d-flex flex-nowrap" style="justify-content: center;">
 
         <%
             for (Block b : game.getBlackPile().getBlocks()) {
@@ -47,7 +47,7 @@
         %>
     </div>
 
-    <div class="container block-row green-block d-flex flex-nowrap">
+    <div class="container block-row green-block d-flex flex-nowrap" style="justify-content: center;">
 
         <%
             for (Block b : game.getGreenPile().getBlocks()) {
@@ -58,7 +58,7 @@
 
     <% } else { %>
 
-    <div class="container block-row red-block d-flex flex-nowrap">
+    <div class="container block-row red-block d-flex flex-nowrap" style="justify-content: center;">
 
         <%
             for (Block b : game.getRedPile().getBlocks()) {
@@ -67,7 +67,7 @@
         %>
     </div>
 
-    <div class="container block-row black-block d-flex flex-nowrap">
+    <div class="container block-row black-block d-flex flex-nowrap" style="justify-content: center;">
 
         <%
             for (Block b : game.getBlackPile().getBlocks()) {
@@ -76,7 +76,7 @@
         %>
     </div>
 
-    <div class="container block-row green-block d-flex flex-nowrap">
+    <div class="container block-row green-block d-flex flex-nowrap" style="justify-content: center;">
 
         <%
             for (Block b : game.getGreenPile().getBlocks()) {

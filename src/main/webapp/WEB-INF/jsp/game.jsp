@@ -101,7 +101,7 @@ SingletonRooms rooms = SingletonRooms.getInstance();
     <section id="main-board" class="main-board rounded">
     </section>
 
-    <section class="players-block d-flex container" id="players-block">
+    <section class="players-block d-flex container" id="players-block" style="justify-content: center;">
     </section>
 
 <div class="container" id="buttons-replay" style="display: none">
