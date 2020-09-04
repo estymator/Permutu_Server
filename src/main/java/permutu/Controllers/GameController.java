@@ -67,12 +67,14 @@ public class GameController {
         }
 
         else if(room.getGame().checkWhetherIsFromThisSameColumn(selectedBlocks)) {
-            if (room.getGame().playerHaveAllSignFromColumn(p, selectedBlocks) || room.getGame().playerDontHaveOneSignFromThisColumn(p,selectedBlocks)) {
-                for (Block b : selectedBlocks.getBlocks()) {
-                    room.getGame().removeFromBoard(b);
-                    playerBlocks.addBlockOrdered(b);
-                }
+            if((selectedBlocks.getBlocks().size() == 2 && !room.getGame().isInFullColumn(selectedBlocks.getBlock(0))) || selectedBlocks.getBlocks().size() ==3) {
+                if (room.getGame().playerHaveAllSignFromColumn(p, selectedBlocks) || room.getGame().playerDontHaveOneSignFromThisColumn(p, selectedBlocks)) {
+                    for (Block b : selectedBlocks.getBlocks()) {
+                        room.getGame().removeFromBoard(b);
+                        playerBlocks.addBlockOrdered(b);
+                    }
 
+                }
             }
         }
         p.countPoints();
