@@ -39,7 +39,7 @@
     $( window ).unload(function(){ unloadGame();});
 </script>
 
-<body class="bg-light">
+<body class="bg-light" style="padding-top: 0 !important;">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <a class="navbar-brand text-danger" href="#">Permutu        Witaj ${pageContext.request.userPrincipal.name}</a>
