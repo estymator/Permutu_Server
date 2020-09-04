@@ -78,7 +78,7 @@
         <h1 class="form-signin-heading ">Poznaj grę PERMUTU!</h1>
         <br/>
         <div class="next">
-        <button class="btn btn-lg btn-primary btn-block" id="btn-1" type="submit" onclick="potwierdzSamouczek0()">Dalej</button>
+        <button style="margin: auto;" class="btn btn-lg btn-primary btn-block" id="btn-1" type="submit" onclick="potwierdzSamouczek0()">Dalej</button>
         </div>
     </section>
     <section class="hidden toshow">
@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" id="btn-2" type="submit" onclick="potwierdzSamouczek1()">Potwierdź ruch</button>
+            <button style="margin: auto;" class="btn btn-lg btn-primary btn-block" id="btn-2" type="submit" onclick="potwierdzSamouczek1()">Potwierdź ruch</button>
         </div>
     </section>
     <section class="hidden toshow">
@@ -125,7 +125,7 @@
             <br/><br/>
             <h1>DOBRZE!</h1>
             <br/>
-            <button class="btn btn-lg btn-primary btn-block" id="btn-3" type="submit" onclick="potwierdzSamouczek12()">Dalej</button>
+            <button style="margin: auto;" class="btn btn-lg btn-primary btn-block" id="btn-3" type="submit" onclick="potwierdzSamouczek12()">Dalej</button>
         </div>
     </section>
     <section class="hidden toshow">
@@ -170,14 +170,14 @@
             </div>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" id="btn-4" type="submit" onclick="potwierdzSamouczek2()">Potwierdź ruch</button>
+        <button style="margin: auto;" class="btn btn-lg btn-primary btn-block" id="btn-4" type="submit" onclick="potwierdzSamouczek2()">Potwierdź ruch</button>
     </section>
     <section class="hidden toshow">
         <div style="text-align: center; color: #b20a1d">
             <br/><br/>
             <h1>DOBRZE!</h1>
             <br/>
-            <button class="btn btn-lg btn-primary btn-block" id="btn-5" type="submit" onclick="potwierdzSamouczek21()">Dalej</button>
+            <button style="margin: auto;" class="btn btn-lg btn-primary btn-block" id="btn-5" type="submit" onclick="potwierdzSamouczek21()">Dalej</button>
         </div>
     </section>
     <section class="hidden toshow">
@@ -212,7 +212,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" id="btn-6" type="submit" onclick="potwierdzSamouczek3()">Potwierdź ruch</button>
+        <button style="margin: auto;" class="btn btn-lg btn-primary btn-block" id="btn-6" type="submit" onclick="potwierdzSamouczek3()">Potwierdź ruch</button>
 
     </section>
     <section class="hidden toshow">
@@ -220,7 +220,7 @@
             <br/><br/>
             <h1>DOBRZE!</h1>
             <br/>
-            <button class="btn btn-lg btn-primary btn-block" id="btn-7" type="submit" onclick="potwierdzSamouczek31()">Dalej</button>
+            <button style="margin: auto;" class="btn btn-lg btn-primary btn-block" id="btn-7" type="submit" onclick="potwierdzSamouczek31()">Dalej</button>
         </div>
     </section>
     <section class="hidden toshow">
@@ -230,7 +230,7 @@
             jeżeli zbierzesz dwa to otrzymujesz 1
         </div>
         <br/>
-        <button class="btn btn-lg btn-primary btn-block" id="btn-8" type="submit" onclick="potwierdzSamouczek4()">Zrozumiałem</button>
+        <button style="margin: auto;" class="btn btn-lg btn-primary btn-block" id="btn-8" type="submit" onclick="potwierdzSamouczek4()">Zrozumiałem</button>
     </section>
 </main>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

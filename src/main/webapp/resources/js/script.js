@@ -174,7 +174,7 @@ function hoveredTutorialRed(elem) {
 }
 function unhoveredTutorialRed(elem) {
     if (elem.style.backgroundColor="red") {
-        elem.style.backgroundColor="rgba(159,151,151,0.46)";
+        elem.style.backgroundColor="white";
     }
 }
 
