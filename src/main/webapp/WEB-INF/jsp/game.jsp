@@ -59,17 +59,18 @@
 </nav>
 
 
-
-<% SingletonRooms rooms = SingletonRooms.getInstance();
+<%
+SingletonRooms rooms = SingletonRooms.getInstance();
     String roomName = (String)  request.getSession().getAttribute("room");
     System.out.println("game.jsp - "+roomName);
 
     Room room = rooms.getRoom(roomName);
     for (User u: room.getPlayers()) {
-        out.print("-"+u.getLogin());
-    }%>
+        out.print("<div style=\"display:none\">-"+u.getLogin()+"</div>");
+    }
+    %>
 
-<div id="login" class="hidden">
+<div id="login" class="hidden" style="display: none;">
     ${pageContext.request.userPrincipal.name}
 </div>
 <div class="container" id="control-panel">
